@@ -5,10 +5,9 @@
 
 Battle::Battle()
 {
-	start = false;
-	finish = false;
-	result = false;
-	level = 25; //[GO]が出てから負け判定が出るまでの時間
+	isWin = false;
+	gameState = STATE_WAIT;
+	level = 60; //[GO]が出てから負け判定が出るまでの時間
 	count = 0; //実際の時間
 }
 
@@ -19,60 +18,63 @@ Battle::~Battle()
 void Battle::Update()
 {
 
-	//SPACEキーでスタート
-	if (start == false) {
-		if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
-			start = true;
-			Random();
-		}
-	}	
+	switch (gameState) {
 
-	//勝敗の判定
-	if (start == true && finish == false) {
-		count += 1;
-		//SPACEキーの入力が間に合わなかった時の負け判定
-		if (count > (randomtime + level)) {
-			finish = true;
-			result = false;
-		}
-		//SPACEキーで判定
-		if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
-			//勝ち判定
-			if (count <= (randomtime + level) && count >= randomtime) {
-					result = true;
+		//SPACEキーでスタート
+	case STATE_WAIT:
+			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
+				gameState = STATE_START;
+				Random();
 			}
-			//合図が出る前にキーを押した場合の負け判定
-			if (count < randomtime) {
-					result = false;
+			break;
+
+
+		//勝敗の判定
+	case STATE_START:
+			count += 1;
+			//SPACEキーの入力が間に合わなかった時の負け判定
+			if (count > (randomtime + level)) {
+				gameState = STATE_FINISH;
+				isWin = false;
 			}
-				finish = true;
-		}
-	}
+			//SPACEキーで判定
+			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
+				//勝ち判定
+				if (count <= (randomtime + level) && count >= randomtime) {
+					isWin = true;
+				}
+				//合図が出る前にキーを押した場合の負け判定
+				if (count < randomtime) {
+					isWin = false;
+				}
+				gameState = STATE_FINISH;
+			}
+			break;
 
 
-	//SPACEキーでもう一度遊ぶ
-	if (start == true && finish == true) {
+		//SPACEキーでもう一度遊ぶ
+	case STATE_FINISH:
 		if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
-			start = false;
-			finish = false;
-			result = false;
-			count = 0;
+				gameState = STATE_WAIT;
+				isWin = false;
+				count = 0;
 		}
+		break;
 	}
 }
 
 void Battle::Draw()
 {
-	if (start == false) {
+	if (gameState == STATE_WAIT) {
 		DrawString(525, 400, "Push [SPACE]Key To Start", GetColor(255, 255, 255));
 	}
-	if (count >= randomtime && finish == false && randomtime != 0) {
+	if (count >= randomtime && gameState == STATE_START && randomtime != 0) {
 		DrawString(620, 400, "GO!!", GetColor(255, 255, 255));
 	}
-	if (result == true && finish == true) {
+	if (isWin == true && gameState == STATE_FINISH) {
 		DrawString(620, 400, "WIN!!", GetColor(255, 255, 255));
 	}
-	if  (result == false && finish == true) {
+	if  (isWin == false && gameState == STATE_FINISH) {
 		DrawString(620, 400, "LOSE!!", GetColor(255, 255, 255));
 	}
 }
