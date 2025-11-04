@@ -83,6 +83,6 @@ void Battle::Random() //[GO]が出るまでの時間をランダムに生成
 {
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dist(60, 420);  //ランダムに生成される[GO]が出るまでの最低時間と最大時間
+	std::uniform_int_distribution<> dist(180, 540);  //ランダムに生成される[GO]が出るまでの最低時間と最大時間
 	randomtime = dist(gen);
 }
