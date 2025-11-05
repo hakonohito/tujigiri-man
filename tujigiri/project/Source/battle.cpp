@@ -9,7 +9,6 @@ Battle::Battle()
 {
 	isWin = false;
 	gameState = STATE_WAIT;
-	level = 60; //[GO]が出てから負け判定が出るまでの時間
 	count = 0; //実際の時間
 	point = 0;
 }
@@ -39,14 +38,14 @@ void Battle::Update()
 	case STATE_START:
 			count += 1;
 			//SPACEキーの入力が間に合わなかった時の負け判定
-			if (count > (randomtime + level)) {
-				gameState = STATE_FINISH;
+			if (count > (randomtime + level[point])) {
+				gameState = STATE_RESULT;
 				isWin = false;
 			}
 			//SPACEキーで判定
 			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
 				//勝ち判定
-				if (count <= (randomtime + level) && count >= randomtime) {
+				if (count <= (randomtime + level[point]) && count >= randomtime) {
 					isWin = true;
 					point += 1;
 				}
@@ -54,13 +53,13 @@ void Battle::Update()
 				if (count < randomtime) {
 					isWin = false;
 				}
-				gameState = STATE_FINISH;
+				gameState = STATE_RESULT;
 			}
 			break;
 
 
 		//SPACEキーでもう一度遊ぶ
-	case STATE_FINISH:
+	case STATE_RESULT:
 		if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
 				gameState = STATE_WAIT;
 				isWin = false;
@@ -71,7 +70,10 @@ void Battle::Update()
 		enemy.clear();
 
 		break;
+	case STATE_FINISH:
+		break;
 	}
+
 }
 
 void Battle::Draw()
@@ -79,11 +81,14 @@ void Battle::Draw()
 	if (gameState == STATE_WAIT) {
 		DrawString(525, 400, "Push [SPACE]Key To Start", GetColor(255, 255, 255));
 	}
+	if (gameState == STATE_START && count < 180) {
+		DrawString(580, 400, "konokaisha...", GetColor(255, 255, 255));
+	}
 	if (count >= randomtime && gameState == STATE_START && randomtime != 0) {
-		DrawString(620, 400, "konokaisha...", GetColor(255, 255, 255));
+		DrawString(580, 400, "yamemasu!!", GetColor(255, 255, 255));
 	}
 	if (isWin == true && gameState == STATE_FINISH) {
-		DrawString(620, 400, "yamemasu!!", GetColor(255, 255, 255));
+		DrawString(620, 400, "WIN!!", GetColor(255, 255, 255));
 	}
 	if  (isWin == false && gameState == STATE_FINISH) {
 		DrawString(620, 400, "LOSE!!", GetColor(255, 255, 255));

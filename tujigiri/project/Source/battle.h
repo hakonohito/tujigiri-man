@@ -6,6 +6,7 @@
 enum GameState {
 	STATE_WAIT,
 	STATE_START,
+	STATE_RESULT,
 	STATE_FINISH
 };
 
@@ -26,7 +27,7 @@ private:
 	bool isWin;
 	int count;
 	int randomtime = 0;
-	int level;
+	int level[3] = {180, 60, 25};//[GO]‚ªo‚Ä‚©‚ç•‰‚¯”»’è‚ªo‚é‚Ü‚Å‚ÌŠÔ
 	void Random();
 	int point;
 };
