@@ -80,10 +80,10 @@ void Battle::Draw()
 		DrawString(525, 400, "Push [SPACE]Key To Start", GetColor(255, 255, 255));
 	}
 	if (count >= randomtime && gameState == STATE_START && randomtime != 0) {
-		DrawString(620, 400, "GO!!", GetColor(255, 255, 255));
+		DrawString(620, 400, "konokaisha...", GetColor(255, 255, 255));
 	}
 	if (isWin == true && gameState == STATE_FINISH) {
-		DrawString(620, 400, "WIN!!", GetColor(255, 255, 255));
+		DrawString(620, 400, "yamemasu!!", GetColor(255, 255, 255));
 	}
 	if  (isWin == false && gameState == STATE_FINISH) {
 		DrawString(620, 400, "LOSE!!", GetColor(255, 255, 255));
