@@ -58,12 +58,30 @@ void Battle::Update()
 			break;
 
 
-		//SPACEキーでもう一度遊ぶ
 	case STATE_RESULT:
-		if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
-				gameState = STATE_WAIT;
-				isWin = false;
-				count = 0;
+		//勝ちの場合
+		if (point != 3) {
+			if (isWin == true) {
+				if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
+					gameState = STATE_WAIT;
+					isWin = false;
+					count = 0;
+				}
+			}
+			//負けの場合
+			if (isWin == false) {
+				//リトライ
+				if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
+					gameState = STATE_WAIT;
+					count = 0;
+					point = 0;
+				}
+			}
+		}
+
+		//タイトルに戻る
+		if (KeyUtility::CheckTrigger(KEY_INPUT_T)) {
+			SceneManager::ChangeScene("TITLE");
 		}
 
 		for (auto e : enemy) delete e;
@@ -82,16 +100,24 @@ void Battle::Draw()
 		DrawString(525, 400, "Push [SPACE]Key To Start", GetColor(255, 255, 255));
 	}
 	if (gameState == STATE_START && count < 180) {
-		DrawString(580, 400, "konokaisha...", GetColor(255, 255, 255));
+		DrawString(580, 400, "この会社...", GetColor(255, 255, 255));
 	}
 	if (count >= randomtime && gameState == STATE_START && randomtime != 0) {
-		DrawString(580, 400, "yamemasu!!", GetColor(255, 255, 255));
+		DrawString(580, 400, "辞めます！！", GetColor(255, 255, 255));
 	}
-	if (isWin == true && gameState == STATE_FINISH) {
-		DrawString(620, 400, "WIN!!", GetColor(255, 255, 255));
+	if (isWin == true && gameState == STATE_RESULT) {
+		DrawString(620, 400, "勝利!!", GetColor(255, 255, 255));
+		if (point == 3) {
+			DrawString(525, 430, "退職成功！！", GetColor(255, 255, 255));
+		}
+		else {
+			DrawString(525, 430, "SPACE:次のステージ T:タイトル", GetColor(255, 255, 255));
+		}
+		
 	}
-	if  (isWin == false && gameState == STATE_FINISH) {
-		DrawString(620, 400, "LOSE!!", GetColor(255, 255, 255));
+	if  (isWin == false && gameState == STATE_RESULT) {
+		DrawString(620, 400, "負け!!", GetColor(255, 255, 255));
+		DrawString(550, 430, "SPACE:リトライ T:タイトル", GetColor(255, 255, 255));
 	}
 }
 
