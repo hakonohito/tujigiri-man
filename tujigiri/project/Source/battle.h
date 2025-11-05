@@ -25,7 +25,9 @@ private:
 
 	GameState gameState;
 	bool isWin;
+	bool early = false;
 	int count;
+	int count2 = 0;
 	int randomtime = 0;
 	int level[3] = {180, 60, 25};//[GO]‚ªo‚Ä‚©‚ç•‰‚¯”»’è‚ªo‚é‚Ü‚Å‚ÌŠÔ
 	void Random();
