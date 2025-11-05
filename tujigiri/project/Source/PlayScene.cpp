@@ -5,9 +5,8 @@
 
 PlayScene::PlayScene()
 {
-	new Player();
-	new Enemy();
 	new Battle();
+	new Player();
 }
 
 PlayScene::~PlayScene()

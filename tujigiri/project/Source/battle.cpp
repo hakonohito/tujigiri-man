@@ -1,7 +1,9 @@
 #include "battle.h"
 #include "utility.h"
+#include "enemy.h"
 #include <iostream>
 #include <random>
+#include <vector>
 
 Battle::Battle()
 {
@@ -9,6 +11,7 @@ Battle::Battle()
 	gameState = STATE_WAIT;
 	level = 60; //[GO]が出てから負け判定が出るまでの時間
 	count = 0; //実際の時間
+	point = 0;
 }
 
 Battle::~Battle()
@@ -25,6 +28,9 @@ void Battle::Update()
 			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
 				gameState = STATE_START;
 				Random();
+				if (enemy.empty()) {
+					enemy.push_back(new Enemy(point));
+				}
 			}
 			break;
 
@@ -42,6 +48,7 @@ void Battle::Update()
 				//勝ち判定
 				if (count <= (randomtime + level) && count >= randomtime) {
 					isWin = true;
+					point += 1;
 				}
 				//合図が出る前にキーを押した場合の負け判定
 				if (count < randomtime) {
@@ -59,6 +66,10 @@ void Battle::Update()
 				isWin = false;
 				count = 0;
 		}
+
+		for (auto e : enemy) delete e;
+		enemy.clear();
+
 		break;
 	}
 }
