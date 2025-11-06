@@ -133,7 +133,7 @@ void Battle::Draw()
 				DrawString(525, 430, "SPACE:次のステージ T:タイトル", GetColor(255, 255, 255));
 			}
 			else {
-				DrawString(580, 430, "退職成功！！", GetColor(255, 255, 255));
+				DrawString(600, 430, "退職成功！！", GetColor(255, 255, 255));
 			}
 		}
 		if (!isWin) {

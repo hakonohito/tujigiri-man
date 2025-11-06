@@ -1,16 +1,27 @@
 #include "TitleScene.h"
+#include <assert.h>
+#include "utility.h"
 
 TitleScene::TitleScene()
 {
+	BGMHandle = LoadSoundMem("data/SE_BGM/titlescene/Driving_Wheel.mp3");
+	assert(BGMHandle != -1);
+	PlaySoundMem(BGMHandle, DX_PLAYTYPE_LOOP);
+	
+	
 }
 
 TitleScene::~TitleScene()
 {
+	DeleteSoundMem(BGMHandle);
+	
 }
 
 void TitleScene::Update()
 {
+	
 	if (CheckHitKey(KEY_INPUT_P)) {
+		
 		SceneManager::ChangeScene("PLAY");
 	}
 	if (CheckHitKey(KEY_INPUT_ESCAPE)) {
