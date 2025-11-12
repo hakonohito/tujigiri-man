@@ -24,14 +24,18 @@ void Battle::Update()
 
 		//SPACEキーでスタート
 	case STATE_WAIT:
-			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
-				gameState = STATE_START;
-				Random();
-				if (enemy.empty()) {
-					enemy.push_back(new Enemy(point));
-				}
-			}
-			break;
+
+		if (enemy.empty()) {
+			enemy.push_back(new Enemy(point));
+		}
+
+		count += 1;
+		if (count == 60 * 5) {
+			count = 0;
+			gameState = STATE_START;
+			Random();
+		}
+		break;
 
 
 		//勝敗の判定
@@ -114,7 +118,7 @@ void Battle::Draw()
 	switch (gameState) {
 
 	case STATE_WAIT:
-		DrawString(525, 400, "Push [SPACE]Key To Start", GetColor(255, 255, 255));
+		//DrawString(525, 400, "Push [SPACE]Key To Start", GetColor(255, 255, 255));
 		break;
 
 	case STATE_START:
