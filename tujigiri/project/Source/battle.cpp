@@ -1,12 +1,18 @@
 #include "battle.h"
 #include "utility.h"
 #include "enemy.h"
+#include <assert.h>
 #include <iostream>
 #include <random>
 #include <vector>
 
 Battle::Battle()
 {
+	SEHandle = LoadSoundMem("data/SE_BGM/playscene/和太鼓・尺八・和な場面転換.mp3");
+	assert(SEHandle != -1);
+	SEHandle2 = LoadSoundMem("data/SE_BGM/playscene/シャキン！.mp3");
+	assert(SEHandle2 != -1);
+
 	isWin = false;
 	gameState = STATE_WAIT;
 	count = 0; //実際の時間
@@ -15,6 +21,8 @@ Battle::Battle()
 
 Battle::~Battle()
 {
+	DeleteSoundMem(SEHandle);
+	DeleteSoundMem(SEHandle2);
 }
 
 void Battle::Update()
@@ -31,10 +39,15 @@ void Battle::Update()
 
 		count += 1;
 		if (count == 60 * 5) {
+			PlaySoundMem(SEHandle, DX_PLAYTYPE_BACK);
+			
+		}
+		if (count == 60 * 6) {
 			count = 0;
 			gameState = STATE_START;
 			Random();
 		}
+
 		break;
 
 
@@ -48,6 +61,7 @@ void Battle::Update()
 			}
 			//SPACEキーで判定
 			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE) && !early) {
+				PlaySoundMem(SEHandle2, DX_PLAYTYPE_BACK);
 				//勝ち判定
 				if (count <= (randomtime + level[point]) && count >= randomtime) {
 					isWin = true;
@@ -61,6 +75,7 @@ void Battle::Update()
 				}
 				
 			}
+			//上記の続き
 			if (early && count >= (count2 + 120)) {
 				count2 = 0;
 				gameState = STATE_RESULT;

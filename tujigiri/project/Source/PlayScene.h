@@ -12,6 +12,7 @@ public:
 	void Update() override;
 	void Draw() override;
 private:
-	int hImage;
 	int SEHandle = -1;
+	int SEHandle2 = -1;
+	int SEHandle3 = -1;
 };

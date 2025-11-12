@@ -32,4 +32,8 @@ private:
 	int level[3] = {180, 60, 25};//[GO]‚ªo‚Ä‚©‚ç•‰‚¯”»’è‚ªo‚é‚Ü‚Å‚ÌŠÔ
 	void Random();
 	int point;
+
+	int SEHandle = -1;
+	int SEHandle2 = -1;
+
 };
