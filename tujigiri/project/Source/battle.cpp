@@ -13,6 +13,8 @@ Battle::Battle()
 	SEHandle2 = LoadSoundMem("data/SE_BGM/playscene/シャキン！.mp3");
 	assert(SEHandle2 != -1);
 
+	hImage = LoadGraph("data/image/taisyoku.png");
+
 	isWin = false;
 	gameState = STATE_WAIT;
 	count = 0; //実際の時間
@@ -95,6 +97,8 @@ void Battle::Update()
 					gameState = STATE_WAIT;
 					isWin = false;
 					count = 0;
+					for (auto e : enemy) delete e;
+					enemy.clear();
 				}
 			}
 			//負けの場合
@@ -104,22 +108,25 @@ void Battle::Update()
 					gameState = STATE_WAIT;
 					count = 0;
 					point = 0;
+					for (auto e : enemy) delete e;
+					enemy.clear();
 				}
 			}
 		}
 
 		//タイトルに戻る
 		if (KeyUtility::CheckTrigger(KEY_INPUT_T)) {
+			for (auto e : enemy) delete e;
+			enemy.clear();
 			SceneManager::ChangeScene("TITLE");
 		}
 		if (point == 3) {
 			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
+				for (auto e : enemy) delete e;
+				enemy.clear();
 				SceneManager::ChangeScene("TITLE");
 			}
 		}
-
-		for (auto e : enemy) delete e;
-		enemy.clear();
 
 		break;
 	case STATE_FINISH:
@@ -150,6 +157,7 @@ void Battle::Draw()
 			DrawString(620, 400, "勝利!!", GetColor(255, 255, 255));
 			if (point != 3) {
 				DrawString(525, 430, "SPACE:次のステージ T:タイトル", GetColor(255, 255, 255));
+				DrawExtendGraph(0, 0, 512, 768, hImage, 1);
 			}
 			else {
 				DrawString(600, 430, "退職成功！！", GetColor(255, 255, 255));

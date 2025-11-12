@@ -18,8 +18,8 @@ PlayScene::PlayScene()
 	assert(SEHandle3 != -1);
 	PlaySoundMem(SEHandle3, DX_PLAYTYPE_BACK);
 
-	new Battle();
 	new Player();
+	new Battle();
 }
 
 PlayScene::~PlayScene()
