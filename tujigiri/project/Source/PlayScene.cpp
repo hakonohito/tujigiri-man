@@ -12,11 +12,11 @@ PlayScene::PlayScene()
 
 	SEHandle2 = LoadSoundMem("data/SE_BGM/playscene/オフィス電話.mp3");
 	assert(SEHandle2 != -1);
-	PlaySoundMem(SEHandle2, DX_PLAYTYPE_BACK);
+	//PlaySoundMem(SEHandle2, DX_PLAYTYPE_BACK);
 
 	SEHandle3 = LoadSoundMem("data/SE_BGM/playscene/キーボード_3.mp3");
 	assert(SEHandle3 != -1);
-	PlaySoundMem(SEHandle3, DX_PLAYTYPE_BACK);
+	//PlaySoundMem(SEHandle3, DX_PLAYTYPE_BACK);
 
 	new Player();
 	new Battle();

@@ -1,6 +1,7 @@
 #include "battle.h"
 #include "utility.h"
 #include "enemy.h"
+#include "player.h"
 #include <assert.h>
 #include <iostream>
 #include <random>
@@ -35,6 +36,8 @@ void Battle::Update()
 		//SPACEキーでスタート
 	case STATE_WAIT:
 
+		isAttack = false;
+
 		if (enemy.empty()) {
 			enemy.push_back(new Enemy(point));
 		}
@@ -64,6 +67,7 @@ void Battle::Update()
 			//SPACEキーで判定
 			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE) && !early) {
 				PlaySoundMem(SEHandle2, DX_PLAYTYPE_BACK);
+				isAttack = true;
 				//勝ち判定
 				if (count <= (randomtime + level[point]) && count >= randomtime) {
 					isWin = true;
@@ -157,7 +161,7 @@ void Battle::Draw()
 			DrawString(620, 400, "勝利!!", GetColor(255, 255, 255));
 			if (point != 3) {
 				DrawString(525, 430, "SPACE:次のステージ T:タイトル", GetColor(255, 255, 255));
-				DrawExtendGraph(410, 15, 460 + 410, 690 + 15, hImage, 1); //1024::1536  2::3
+				//DrawExtendGraph(410, 15, 460 + 410, 690 + 15, hImage, 1); //1024::1536  2::3
 			}
 			else {
 				DrawString(600, 430, "退職成功！！", GetColor(255, 255, 255));
