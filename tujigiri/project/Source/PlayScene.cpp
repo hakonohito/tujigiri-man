@@ -17,9 +17,9 @@ PlayScene::PlayScene()
 	SEHandle3 = LoadSoundMem("data/SE_BGM/playscene/キーボード_3.mp3");
 	assert(SEHandle3 != -1);
 	//PlaySoundMem(SEHandle3, DX_PLAYTYPE_BACK);
-
-	new Player();
+	
 	new Battle();
+	new Player();
 }
 
 PlayScene::~PlayScene()

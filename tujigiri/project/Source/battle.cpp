@@ -14,7 +14,7 @@ Battle::Battle()
 	SEHandle2 = LoadSoundMem("data/SE_BGM/playscene/シャキン！.mp3");
 	assert(SEHandle2 != -1);
 
-	hImage = LoadGraph("data/image/taisyoku.png");
+	hImage[0] = LoadGraph("data/image/playfield.png");
 
 	isWin = false;
 	gameState = STATE_WAIT;
@@ -141,6 +141,10 @@ void Battle::Update()
 
 void Battle::Draw()
 {
+	DrawExtendGraph(0, 0, 1280, 720, hImage[0], 1);
+
+
+
 	switch (gameState) {
 
 	case STATE_WAIT:
@@ -161,7 +165,7 @@ void Battle::Draw()
 			DrawString(620, 400, "勝利!!", GetColor(255, 255, 255));
 			if (point != 3) {
 				DrawString(525, 430, "SPACE:次のステージ T:タイトル", GetColor(255, 255, 255));
-				//DrawExtendGraph(410, 15, 460 + 410, 690 + 15, hImage, 1); //1024::1536  2::3
+				//DrawExtendGraph(410, 15, 460 + 410, 690 + 15, hImage[0], 1); //1024::1536  2::3
 			}
 			else {
 				DrawString(600, 430, "退職成功！！", GetColor(255, 255, 255));

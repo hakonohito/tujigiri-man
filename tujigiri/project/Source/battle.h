@@ -37,5 +37,5 @@ private:
 	int SEHandle = -1;
 	int SEHandle2 = -1;
 
-	int hImage;
+	int hImage[2];
 };
