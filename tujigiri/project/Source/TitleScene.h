@@ -15,4 +15,5 @@ public:
 	void Draw() override;
 private:
 	int BGMHandle = -1;
+	int hImage;
 };
