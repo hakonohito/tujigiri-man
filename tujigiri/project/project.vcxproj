@@ -159,6 +159,7 @@
     <ClInclude Include="Source\Screen.h" />
     <ClInclude Include="Source\PlayScene.h" />
     <ClInclude Include="Source\SceneFactory.h" />
+    <ClInclude Include="Source\taishoku.h" />
     <ClInclude Include="Source\TitleScene.h" />
     <ClInclude Include="Source\utility.h" />
   </ItemGroup>
@@ -182,6 +183,7 @@
     <ClCompile Include="Source\player.cpp" />
     <ClCompile Include="Source\PlayScene.cpp" />
     <ClCompile Include="Source\SceneFactory.cpp" />
+    <ClCompile Include="Source\taishoku.cpp" />
     <ClCompile Include="Source\TitleScene.cpp" />
     <ClCompile Include="Source\utility.cpp" />
   </ItemGroup>

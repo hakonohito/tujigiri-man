@@ -38,7 +38,7 @@ void Enemy::Update()
 
 void Enemy::Draw()
 {
-	DrawRectGraph(x, y, 0, 0, 128, 128, hImage[Enum], 1);
+	DrawGraph(x, y, hImage[Enum], 1);
 	//352, 512
 }
 

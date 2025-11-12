@@ -97,7 +97,7 @@ void Battle::Update()
 			//勝ちの場合
 			if (isWin) {
 				//次のステージへ
-				if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
+				if (KeyUtility::CheckTrigger(KEY_INPUT_N)) {
 					gameState = STATE_WAIT;
 					isWin = false;
 					count = 0;
@@ -108,7 +108,7 @@ void Battle::Update()
 			//負けの場合
 			if (!isWin) {
 				//リトライ
-				if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
+				if (KeyUtility::CheckTrigger(KEY_INPUT_R)) {
 					gameState = STATE_WAIT;
 					count = 0;
 					point = 0;
@@ -143,8 +143,6 @@ void Battle::Draw()
 {
 	DrawExtendGraph(0, 0, 1280, 720, hImage[0], 1);
 
-
-
 	switch (gameState) {
 
 	case STATE_WAIT:
@@ -164,7 +162,7 @@ void Battle::Draw()
 		if (isWin) {
 			DrawString(620, 400, "勝利!!", GetColor(255, 255, 255));
 			if (point != 3) {
-				DrawString(525, 430, "SPACE:次のステージ T:タイトル", GetColor(255, 255, 255));
+				DrawString(525, 430, "N:次のステージ T:タイトル", GetColor(255, 255, 255));
 				//DrawExtendGraph(410, 15, 460 + 410, 690 + 15, hImage[0], 1); //1024::1536  2::3
 			}
 			else {
@@ -173,7 +171,7 @@ void Battle::Draw()
 		}
 		if (!isWin) {
 			DrawString(620, 400, "負け!!", GetColor(255, 255, 255));
-			DrawString(550, 430, "SPACE:リトライ T:タイトル", GetColor(255, 255, 255));
+			DrawString(550, 430, "R:リトライ T:タイトル", GetColor(255, 255, 255));
 		}
 			break;
 	}

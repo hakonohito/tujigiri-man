@@ -2,6 +2,7 @@
 #include "player.h"
 #include "enemy.h"
 #include "battle.h"
+#include "Taishoku.h"
 #include <assert.h>
 
 PlayScene::PlayScene()
@@ -20,6 +21,7 @@ PlayScene::PlayScene()
 	
 	new Battle();
 	new Player();
+	new Taishoku();
 }
 
 PlayScene::~PlayScene()
