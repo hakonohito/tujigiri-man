@@ -20,12 +20,13 @@ public:
 	void Update() override;
 	void Draw() override;
 	std::vector<Enemy*>enemy;
-
+	bool isAttack = false;
 private:
 
 	GameState gameState;
 	bool isWin;
 	bool early = false;
+	
 	int count;
 	int count2 = 0; //ƒtƒ‰ƒCƒ“ƒOŠÇ—
 	int randomtime = 0;
