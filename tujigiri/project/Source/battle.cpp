@@ -38,10 +38,6 @@ void Battle::Update()
 
 		isAttack = false;
 
-		if (enemy.empty()) {
-			enemy.push_back(new Enemy(point));
-		}
-
 		count += 1;
 		if (count == 60 * 5) {
 			PlaySoundMem(SEHandle, DX_PLAYTYPE_BACK);
@@ -101,8 +97,6 @@ void Battle::Update()
 					gameState = STATE_WAIT;
 					isWin = false;
 					count = 0;
-					for (auto e : enemy) delete e;
-					enemy.clear();
 				}
 			}
 			//ïâÇØÇÃèÍçá
@@ -112,22 +106,16 @@ void Battle::Update()
 					gameState = STATE_WAIT;
 					count = 0;
 					point = 0;
-					for (auto e : enemy) delete e;
-					enemy.clear();
 				}
 			}
 		}
 
 		//É^ÉCÉgÉãÇ…ñﬂÇÈ
 		if (KeyUtility::CheckTrigger(KEY_INPUT_T)) {
-			for (auto e : enemy) delete e;
-			enemy.clear();
 			SceneManager::ChangeScene("TITLE");
 		}
 		if (point == 3) {
 			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
-				for (auto e : enemy) delete e;
-				enemy.clear();
 				SceneManager::ChangeScene("TITLE");
 			}
 		}

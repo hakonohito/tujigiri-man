@@ -1,9 +1,9 @@
 #include "enemy.h"
 #include "Battle.h"
 
-Enemy::Enemy(int num)
+Enemy::Enemy()
 {
-	Enum = num;
+	Enum = 0;
 	hImage[0] = LoadGraph("data/image/enemy.png");
 	hImage[1] = LoadGraph("data/image/enemy2.png");
 	hImage[2] = LoadGraph("data/image/enemy3.png");
@@ -19,6 +19,10 @@ Enemy::~Enemy()
 void Enemy::Update() 
 {
 	Battle* battle = FindGameObject<Battle>();
+	if (set == false && battle->gameState == STATE_WAIT) {
+		Enum = battle->point;
+		set == true;
+	}
 	if (battle->isAttack == true && change == false) {
 		Change();
 		change = true;
@@ -32,6 +36,7 @@ void Enemy::Update()
 		x += 10;
 		Change();
 		change = false;
+		set == false;
 	}
 
 }
@@ -47,4 +52,9 @@ void Enemy::Change()
 	int num = x1;
 	x1 = x;
 	x = num;
+}
+
+void Enemy::CharaSet()
+{
+	Enum = 0;
 }

@@ -3,13 +3,15 @@
 
 class Enemy : public GameObject {
 public:
-	Enemy(int num);
+	Enemy();
 	~Enemy();
 	void Update() override;
 	void Draw() override;
 	void Change();
+	void CharaSet();
 private:
 	bool change = false;
+	bool set = false;
 	int hImage[3];
 	int Enum;
 	int x = 0;
