@@ -156,6 +156,7 @@
     <ClInclude Include="Source\BootScene.h" />
     <ClInclude Include="Source\Field.h" />
     <ClInclude Include="Source\fruit.h" />
+    <ClInclude Include="Source\RankingScene.h" />
     <ClInclude Include="Source\SceneManager.h" />
     <ClInclude Include="Source\Screen.h" />
     <ClInclude Include="Source\PlayScene.h" />
@@ -182,6 +183,7 @@
     <ClCompile Include="Source\Field.cpp" />
     <ClCompile Include="Source\fruit.cpp" />
     <ClCompile Include="Source\PlayScene.cpp" />
+    <ClCompile Include="Source\RankingScene.cpp" />
     <ClCompile Include="Source\SceneFactory.cpp" />
     <ClCompile Include="Source\TitleScene.cpp" />
   </ItemGroup>

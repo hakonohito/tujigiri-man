@@ -62,6 +62,7 @@
     <ClCompile Include="SceneManager.cpp">
       <Filter>PlayScene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\RankingScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -138,6 +139,7 @@
     <ClInclude Include="Source\SceneManager.h">
       <Filter>PlayScene</Filter>
     </ClInclude>
+    <ClInclude Include="Source\RankingScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
