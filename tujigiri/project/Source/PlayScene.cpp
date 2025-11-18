@@ -22,6 +22,7 @@ PlayScene::PlayScene()
 	new Battle();
 	new Player();
 	new Enemy();
+	new Taishoku();
 }
 
 PlayScene::~PlayScene()
