@@ -19,11 +19,12 @@ public:
 	void Draw() override;
 	bool isAttack = false;
 	int point;
+	bool isWin;
 	GameState gameState;
 	
 private:
 
-	bool isWin;
+	
 	bool early = false;
 	
 	int count;

@@ -9,5 +9,7 @@ public:
 	void Draw() override;
 private:
 	int hImage[3];
+	int SEHandle = -1;
 	int Enum = 0;
+	int count = 0;
 };
