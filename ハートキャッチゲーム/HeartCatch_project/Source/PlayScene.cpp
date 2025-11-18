@@ -5,9 +5,15 @@
 #include <cstdlib> // rand()
 #include <ctime>   // time()
 
+int backgroundHandle;
+
 // コンストラクタ：ゲーム開始時の初期化
 PlayScene::PlayScene()
 {
+    
+        backgroundHandle = LoadGraph("data/image/playfield.png"); // 画像パスは適宜変更
+        // 他の初期化処理
+    
 
     // 既存の初期化のあとに追加
     isReadyToStart = false; // 最初は待機状態
@@ -17,21 +23,22 @@ PlayScene::PlayScene()
     const int fruitCount = 3;
     int pict = LoadGraph("data/image/mob.png");
 
+    // コンストラクタ内
     for (int i = 0; i < fruitCount; ++i)
     {
         fruit f;
-        f.x = rand() % 640;           // 横位置ランダム
-        f.y = rand() % 480 - 480;     // 画面外の上からランダムにスタート
-        f.dptime = 1 + rand() % 2;    // 落下速度ランダム（1〜2）
-        f.type = rand() % 3;          // 果物の種類ランダム
+        f.x = 400 + rand() % 480;           // 中央枠に限定
+        f.y = rand() % 480 - 480;
+        f.dptime = 1 + rand() % 2;
+        f.type = rand() % 3;
 
-        // 画像ハンドル設定（同じ画像を使い分け）
         f.itigopict = pict;
         f.mikannpict = pict;
         f.budoupict = pict;
 
-        fruits.push_back(f);// リストに追加
+        fruits.push_back(f);
     }
+
 
     basket = Basket();
 
@@ -44,6 +51,7 @@ PlayScene::PlayScene()
 // デストラクタ：今は特に何もしない
 PlayScene::~PlayScene()
 {
+    DeleteGraph(backgroundHandle);
 }
 
 
@@ -108,6 +116,14 @@ void PlayScene::Update()
 // 描画処理：毎フレーム画面に描画
 void PlayScene::Draw()
 {
+
+    // 背景画像を画面全体に表示
+    DrawExtendGraph(0, 0, 1280, 720, backgroundHandle, TRUE);
+
+    // 以下、バスケット・フルーツ・スコアなどの描画
+
+    
+    SetFontSize(16);
     DrawString(0, 0, "PLAY SCENE", GetColor(255, 255, 255));
 
 
@@ -123,7 +139,6 @@ void PlayScene::Draw()
 
     basket.Draw();
 
-    field.Draw(); // 地面の描画（果物より下に表示）
 
 
     if (GameOver) {
@@ -136,6 +151,14 @@ void PlayScene::Draw()
     }
 
     // スコアや時間の表示（必要なら追加）
-    DrawFormatString(600, 30, GetColor(255, 255, 0), "Score: %d", score);
-    DrawFormatString(20, 30, GetColor(255, 255, 0), "Time: %d", timelimit / 60); //秒表示
+    SetFontSize(60); // ← ここで文字サイズを大きく設定
+    DrawFormatString(120, 260, GetColor(0, 0, 0), "Score \n%d", score);
+    DrawFormatString(120, 100, GetColor(0, 0, 0), " Time \n%d", timelimit / 60); //秒表示
+
+    //ハートごとの得点表示
+    SetFontSize(40); // ← ここで文字サイズを大きく設定
+    DrawFormatString(170, 440, GetColor(0, 0, 0), "+100点");
+    DrawFormatString(170, 535, GetColor(0, 0, 0), "-50点"); 
+    DrawFormatString(170, 630, GetColor(0, 0, 0), "+300点");
+
 }

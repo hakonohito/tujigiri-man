@@ -3,7 +3,7 @@
 
 fruit::fruit()
 {
-    x = rand() % 640;
+    x = 400 + rand() % 480; // 中央オレンジエリアに限定
     y = -64;
     dptime = 4;
     type = rand() % 3;
@@ -20,7 +20,7 @@ void fruit::Update()
     if (y > 480)
     {
         type = rand() % 3;
-        x = rand() % 640;
+        x = 400 + rand() % 480; // 再生成時も中央に限定
         y = -64;
     }
 }
