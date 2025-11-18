@@ -8,7 +8,6 @@ public:
 	void Update() override;
 	void Draw() override;
 	void Change();
-	void CharaSet();
 private:
 	bool change = false;
 	bool set = false;

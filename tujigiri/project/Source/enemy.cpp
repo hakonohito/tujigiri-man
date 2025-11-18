@@ -1,15 +1,18 @@
 #include "enemy.h"
-#include "Battle.h"
+#include "battle.h"
 
 Enemy::Enemy()
 {
 	Enum = 0;
-	hImage[0] = LoadGraph("data/image/enemy.png");
+	hImage[0] = LoadGraph("data/image/jousi.png");
 	hImage[1] = LoadGraph("data/image/enemy2.png");
 	hImage[2] = LoadGraph("data/image/enemy3.png");
-	x = 800; 
-	y = 512;
-	x1 = 352;
+	//x = 800; 
+	//y = 512;
+	//x1 = 352;
+	x = 725;
+	y = 280;
+	x1 = 300;
 }
 
 Enemy::~Enemy()
@@ -43,8 +46,9 @@ void Enemy::Update()
 
 void Enemy::Draw()
 {
-	DrawGraph(x, y, hImage[Enum], 1);
+	//DrawGraph(x, y, hImage[Enum], 1);
 	//352, 512
+	DrawExtendGraph(x, y, x + 300, y + 440, hImage[Enum], 1);
 }
 
 void Enemy::Change()
@@ -52,9 +56,4 @@ void Enemy::Change()
 	int num = x1;
 	x1 = x;
 	x = num;
-}
-
-void Enemy::CharaSet()
-{
-	Enum = 0;
 }
