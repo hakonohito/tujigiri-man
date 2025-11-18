@@ -35,12 +35,13 @@ void Taishoku::Update()
 
 void Taishoku::Draw()
 {
-	Battle* battle = FindGameObject<Battle>();
+	DrawExtendGraph(0 + 420, 0 + 35, 440 + 420, 650 + 35, hImage[0], 0);
+	/*Battle* battle = FindGameObject<Battle>();
 	if (count == 120 && battle->isWin == true) {
-		DrawGraph(0, 0, hImage[0], 1);
+		DrawExtendGraph(0, 0, 440, 650, hImage[0], 1);
 	}
 	if (count == 120 && battle->isWin == false) {
-		DrawGraph(0, 0, hImage[1], 1);
-	}
+		DrawExtendGraph(0, 0, hImage[1], 1);
+	}*/
 	
 }
