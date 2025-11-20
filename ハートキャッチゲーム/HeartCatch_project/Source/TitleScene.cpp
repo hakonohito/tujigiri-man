@@ -5,6 +5,7 @@
 #include "Screen.h"
 
 int logoHandle; // ロゴ画像のハンドル
+int titlebackgroundHandle; //背景画像のハンドル
 
 static const int WIDTH = 1280;
 static const int HEIGHT = 720;
@@ -12,6 +13,7 @@ static const int HEIGHT = 720;
 TitleScene::TitleScene()
 {
 	logoHandle = LoadGraph("data/image/gamelogo.png");
+	titlebackgroundHandle = LoadGraph("data/image/title_background.png");
 }
 
 TitleScene::~TitleScene()
@@ -38,6 +40,9 @@ void TitleScene::Update()
 
 void TitleScene::Draw()
 {
+	// タイトル画面背景表示する
+	DrawExtendGraph(0, 0, 1280, 720, titlebackgroundHandle, TRUE);
+
 	// ロゴ画像を読み込んだハンドルを logoHandle とする
 	int logoW = 1130;
 	int logoH = 408;
@@ -81,6 +86,8 @@ void TitleScene::Draw()
 	// キー案内（小さく、下に）
 	SetFontSize(16);
 	DrawString(rankX + 110, btnY + 60, "[Rキー]", GetColor(200, 200, 200));
+
+	
 	
 }
 
