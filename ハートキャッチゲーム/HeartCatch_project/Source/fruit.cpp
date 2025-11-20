@@ -29,14 +29,14 @@ void fruit::Draw()
 {
     switch (type)
     {
-    case 0: // ‚¢‚¿‚²
-        DrawRectGraph(x, y, 0, 0, 64, 64, itigopict, TRUE);
+    case 0: // Red
+        DrawGraph(x, y, redpict, TRUE);
         break;
-    case 1: // ‚Ý‚©‚ñ
-        DrawRectGraph(x, y, 0, 256, 64, 64, mikannpict, TRUE);
+    case 1: // Blue
+        DrawGraph(x, y, bluepict, TRUE);
         break;
-    case 2: // ‚Ô‚Ç‚¤
-        DrawRectGraph(x, y, 0, 384, 64, 64, budoupict, TRUE);
+    case 2: // Yellow
+        DrawGraph(x, y, yellowpict, TRUE);
         break;
     }
 }

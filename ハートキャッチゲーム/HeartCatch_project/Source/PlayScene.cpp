@@ -6,6 +6,7 @@
 #include <ctime>   // time()
 
 int backgroundHandle;
+int pict;
 
 // コンストラクタ：ゲーム開始時の初期化
 PlayScene::PlayScene()
@@ -21,9 +22,13 @@ PlayScene::PlayScene()
     srand((unsigned int)time(nullptr)); // 乱数初期化
 
     const int fruitCount = 3;
-    int pict = LoadGraph("data/image/mob.png");
 
-    // コンストラクタ内
+    //ハート画像をロード
+    int redpict = LoadGraph("data/image/heart_red.png");
+    int bluepict = LoadGraph("data/image/heart_blue.png");
+    int yellowpict = LoadGraph("data/image/heart_yellow.png");
+
+    // ハート生成
     for (int i = 0; i < fruitCount; ++i)
     {
         fruit f;
@@ -32,17 +37,16 @@ PlayScene::PlayScene()
         f.dptime = 1 + rand() % 2;
         f.type = rand() % 3;
 
-        f.itigopict = pict;
-        f.mikannpict = pict;
-        f.budoupict = pict;
+        //ここでロード済みハンドルを渡す
+        f.redpict = redpict;
+        f.bluepict = bluepict;
+        f.yellowpict = yellowpict;
 
         fruits.push_back(f);
     }
 
 
     basket = Basket();
-
-
     score = 0;
     timelimit = 60 * 60; // 60秒（60fps換算）
     GameOver = false;

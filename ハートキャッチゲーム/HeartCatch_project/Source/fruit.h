@@ -9,10 +9,10 @@ public:
     void Update();
     void Draw();
 
-    int itigopict;
+    int redpict;
     int active;
-    int mikannpict;
-    int budoupict;
+    int bluepict;
+    int yellowpict;
     int dptime; // 落下速度（1フレームあたりの移動量）
     float x, y;// 果物の位置（x座標とy座標）
     int type; // 果物の種類 ※例（0:いちご, 1:みかん, 2:ぶどう）
