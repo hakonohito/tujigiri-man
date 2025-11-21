@@ -11,7 +11,6 @@ Taishoku::Taishoku()
 	SEHandle = LoadSoundMem("data/SE_BGM/playscene/‚½‚¢‚Ö‚ñ‚æ‚­‚Å‚«‚Ü‚µ‚½B.mp3");
 	assert(SEHandle != -1);
 
-	
 }
 
 Taishoku::~Taishoku()
@@ -31,8 +30,8 @@ void Taishoku::Update()
 		count += 1;
 		point = battle->point;
 	}
-	if (count >= 240) {
-		count = 240;
+	if (count == 240 && isWin) {
+		PlaySoundMem(SEHandle, DX_PLAYTYPE_BACK);
 	}
 }
 
