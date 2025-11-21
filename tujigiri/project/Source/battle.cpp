@@ -20,6 +20,8 @@ Battle::Battle()
 	
 
 	hImage[0] = LoadGraph("data/image/playfield.png");
+	hImage[1] = LoadGraph("data/image/ready.png");
+	hImage[2] = LoadGraph("data/image/go.png");
 
 	isWin = false;
 	gameState = STATE_WAIT;
@@ -31,8 +33,6 @@ Battle::~Battle()
 {
 	DeleteSoundMem(SEHandle);
 	DeleteSoundMem(SEHandle2);
-	
-
 }
 
 void Battle::Update()
@@ -151,7 +151,7 @@ void Battle::Update()
 void Battle::Draw()
 {
 	DrawExtendGraph(0, 0, 1280, 720, hImage[0], 1);
-
+	
 	switch (gameState) {
 
 	case STATE_WAIT:
@@ -159,10 +159,12 @@ void Battle::Draw()
 
 	case STATE_START:
 		if (count < 180 && !early) {
-			DrawString(580, 400, "この会社...", GetColor(255, 255, 255));
+			//DrawString(580, 400, "この会社...", GetColor(255, 255, 255));
+			DrawExtendGraph(315 -250, 50, 640 + 325 - 250, 50 + 190, hImage[1], 1);
 		}
 		if (count >= randomtime && randomtime != 0 && !early) {
-			DrawString(580, 400, "やめます！！", GetColor(255, 255, 255));
+			//DrawString(580, 400, "やめます！！", GetColor(255, 255, 255));
+			DrawExtendGraph(315 - 250, 50, 640 + 325 - 250, 50 + 190, hImage[2], 1);
 		}
 		break;
 
