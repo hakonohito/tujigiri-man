@@ -3,10 +3,13 @@
 
 Player::Player()
 {
-	hImage = LoadGraph("data/image/chara.png");
-	x = 352; 
-	y = 512;
-	x1 = 800;
+	hImage = LoadGraph("data/image/player.png");
+	//x = 352; 
+	//y = 512;
+	//x1 = 800;
+	x = 215;
+	y = 280;
+	x1 = 765;
 }
 
 Player::~Player()
@@ -35,7 +38,7 @@ void Player::Update()
 
 void Player::Draw()
 {
-	DrawRectGraph(x, y, 0, 0, 128, 128, hImage, 1);
+	DrawExtendGraph(x, y, x + 300, y + 440 + 30, hImage, 1);
 	//800, 512
 }
 

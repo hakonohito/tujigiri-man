@@ -12,4 +12,6 @@ private:
 	int SEHandle = -1;
 	int Enum = 0;
 	int count = 0;
+	int point = 0;
+	bool isWin = false;
 };
