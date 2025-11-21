@@ -13,6 +13,4 @@ public:
 	void Draw() override;
 private:
 	int SEHandle = -1;
-	int SEHandle2 = -1;
-	int SEHandle3 = -1;
 };

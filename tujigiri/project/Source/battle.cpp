@@ -13,6 +13,11 @@ Battle::Battle()
 	assert(SEHandle != -1);
 	SEHandle2 = LoadSoundMem("data/SE_BGM/playscene/シャキン！.mp3");
 	assert(SEHandle2 != -1);
+	SEHandle3 = LoadSoundMem("data/SE_BGM/playscene/オフィス電話.mp3");
+	assert(SEHandle3 != -1);
+	PlaySoundMem(SEHandle3, DX_PLAYTYPE_BACK);
+	
+	
 
 	hImage[0] = LoadGraph("data/image/playfield.png");
 
@@ -26,6 +31,8 @@ Battle::~Battle()
 {
 	DeleteSoundMem(SEHandle);
 	DeleteSoundMem(SEHandle2);
+	
+
 }
 
 void Battle::Update()
@@ -33,15 +40,24 @@ void Battle::Update()
 
 	switch (gameState) {
 
-		//SPACEキーでスタート
 	case STATE_WAIT:
 
 		isAttack = false;
+		if (count == 0) {
+			SEHandle4 = LoadSoundMem("data/SE_BGM/playscene/キーボード_3.mp3");
+			assert(SEHandle4 != -1);
+			PlaySoundMem(SEHandle4, DX_PLAYTYPE_BACK);
+		}
 
 		count += 1;
+		if (count == 60 * 3) {
+			DeleteSoundMem(SEHandle3);
+		}
+		if (count == 60 * 3.5) {
+			DeleteSoundMem(SEHandle4);
+		}
 		if (count == 60 * 5) {
 			PlaySoundMem(SEHandle, DX_PLAYTYPE_BACK);
-			
 		}
 		if (count == 60 * 6) {
 			count = 0;
@@ -139,7 +155,6 @@ void Battle::Draw()
 	switch (gameState) {
 
 	case STATE_WAIT:
-		//DrawString(525, 400, "Push [SPACE]Key To Start", GetColor(255, 255, 255));
 		break;
 
 	case STATE_START:
