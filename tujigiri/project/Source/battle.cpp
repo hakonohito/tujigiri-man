@@ -56,9 +56,9 @@ void Battle::Update()
 	case STATE_START:
 			count += 1;
 			//SPACEキーの入力が間に合わなかった時の負け判定
-			if (count > (randomtime + level[point])) {
-				gameState = STATE_RESULT;
+			if (count > (randomtime + level[point]) && !early) {
 				isWin = false;
+				gameState = STATE_RESULT;
 			}
 			//SPACEキーで判定
 			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE) && !early) {
@@ -73,21 +73,26 @@ void Battle::Update()
 				//合図が出る前にキーを押した場合の負け判定
 				if (count < randomtime) {
 					early = true;
+					isWin = false;
 					count2 = count;
+					gameState = STATE_RESULT;
 				}
 				
 			}
-			//上記の続き
-			if (early && count >= (count2 + 120)) {
-				count2 = 0;
-				gameState = STATE_RESULT;
-				early = false;
-			}
+			
 			break;
 
 
 	case STATE_RESULT:
 		
+		//上記の続き
+		if (early) {
+			count += 1;
+			if (early && count >= (count2 + 120)) {
+				count2 = 0;
+				early = false;
+			}
+		}
 		
 		if (point != 3) {
 			//勝ちの場合
@@ -157,16 +162,17 @@ void Battle::Draw()
 				DrawString(600, 430, "退職成功！！", GetColor(255, 255, 255));
 			}
 		}
-		if (!isWin) {
+		if (!isWin && !early) {
 			DrawString(620, 400, "負け!!", GetColor(255, 255, 255));
 			DrawString(550, 430, "R:リトライ T:タイトル", GetColor(255, 255, 255));
+		}
+		if (early) {
+			DrawString(580, 400, "お手付き！！", GetColor(255, 255, 255));
 		}
 			break;
 	}
 
-	if (early) {
-		DrawString(580, 400, "お手付き！！", GetColor(255, 255, 255));
-	}
+	
 	
 		
 	
