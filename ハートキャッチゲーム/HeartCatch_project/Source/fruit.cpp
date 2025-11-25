@@ -30,13 +30,13 @@ void fruit::Draw()
     switch (type)
     {
     case 0: // Red
-        DrawGraph(x, y, redpict, TRUE);
+        DrawRotaGraph(x, y, 1.5, 0.0, redpict, TRUE);   // 1.5Ф{В…КgСе
         break;
     case 1: // Blue
-        DrawGraph(x, y, bluepict, TRUE);
+        DrawRotaGraph(x, y, 1.5, 0.0, bluepict, TRUE);
         break;
     case 2: // Yellow
-        DrawGraph(x, y, yellowpict, TRUE);
+        DrawRotaGraph(x, y, 1.5, 0.0, yellowpict, TRUE);
         break;
     }
 }
