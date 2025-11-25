@@ -1,9 +1,10 @@
 #pragma once
 #include "DxLib.h"
 
-class Basket {
+class Basket 
+{
 public:
-    Basket();
+    Basket(int imageHandle); // 画像ハンドルを受け取るコンストラクタ
     ~Basket();
 
     void Update(); // キー入力で移動
@@ -13,4 +14,7 @@ public:
     int x, y;      // カゴの位置
     int width;     // カゴの幅
     int height;    // カゴの高さ
+
+private:
+    int basketImage; // バスケット画像のハンドル（外から直接触れない）
 };

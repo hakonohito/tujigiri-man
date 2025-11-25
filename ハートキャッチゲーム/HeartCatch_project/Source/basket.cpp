@@ -1,12 +1,14 @@
 #include "Basket.h"
 
-Basket::Basket()
+Basket::Basket(int imageHandle)
 {
-    x = 320;       // ‰æ–Ê’†‰›
-    y = 400;       // ‰º‚Ì•û
+    x = 320;
+    y = 400;
     width = 80;
     height = 80;
+    basketImage = imageHandle;
 }
+
 
 Basket::~Basket() {}
 
@@ -26,7 +28,7 @@ void Basket::Update()
 
 void Basket::Draw()
 {
-    DrawBox(x, y, x + width, y + height, GetColor(200, 100, 50), TRUE);
+    DrawGraph(x, y, basketImage, TRUE); // © Box‚Å‚Í‚È‚­‰æ‘œ‚ğ•`‰æ
 }
 
 bool Basket::CheckCatch(float fx, float fy)

@@ -48,8 +48,12 @@ PlayScene::PlayScene()
         fruits.push_back(f);
     }
 
+    //バスケット画像をロード
+    int basketImage = LoadGraph("data/image/loveletter.jpg");
+    //Basket に画像ハンドルを渡す
+    basket = Basket(basketImage);
 
-    basket = Basket();
+
     score = 0;
     timelimit = 40 * 60; // 40秒（60fps換算）
     GameOver = false;
@@ -161,9 +165,21 @@ void PlayScene::Draw()
     }
 
     // スコアや時間の表示（必要なら追加）
-    SetFontSize(60); // ← ここで文字サイズを大きく設定
-    DrawFormatString(120, 260, GetColor(0, 0, 0), "Score \n%d", score);
-    DrawFormatString(120, 100, GetColor(0, 0, 0), " Time \n%d", timelimit / 60); //秒表示
+
+    SetFontSize(60); // フォントサイズは共通で設定
+
+    // ① Time文字表示
+    DrawString(155, 100, "Time", GetColor(0, 0, 0));
+
+    // ② TimeLimit表示（秒数）
+    DrawFormatString(220, 160, GetColor(0, 0, 0), "%d", timelimit / 60);
+
+    // ③ Score文字表示
+    DrawString(120, 260, "Score", GetColor(0, 0, 0));
+
+    // ④ Scorenumber表示（得点）
+    DrawFormatString(240, 320, GetColor(0, 0, 0), "%d", score);
+
 
     //ハートごとの得点表示
     SetFontSize(40); // ← ここで文字サイズを大きく設定
