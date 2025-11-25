@@ -51,7 +51,7 @@ PlayScene::PlayScene()
 
     basket = Basket();
     score = 0;
-    timelimit = 60 * 60; // 60秒（60fps換算）
+    timelimit = 40 * 60; // 40秒（60fps換算）
     GameOver = false;
 }
 
@@ -103,7 +103,10 @@ void PlayScene::Update()
             score += 10;
 
             // 果物を再出現させる
-            f.x = rand() % 640;
+            const int dropAreaLeft = 320-96;
+            const int dropAreaRight = 960-96;
+
+            f.x = dropAreaLeft + rand() % (dropAreaRight - dropAreaLeft);
             f.y = rand() % 480 - 480;
             f.dptime = 1 + rand() % 2;
             f.spwandelay = rand() % 60;
