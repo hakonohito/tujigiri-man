@@ -1,13 +1,16 @@
 #include "taishoku.h"
 #include "battle.h"
 #include <assert.h>
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 Taishoku::Taishoku()
 {
 	hImage[0] = LoadGraph("data/image/Victory.png");
 	hImage[1] = LoadGraph("data/image/Lose.png");
 	hImage[2] = LoadGraph("data/image/hanko.png");
-
+	hImage[3] = LoadGraph("data/image/huka.png");
+	angle = 10.0f * (M_PI / 180.0f);
 	SEHandle = LoadSoundMem("data/SE_BGM/playscene/‚½‚¢‚Ö‚ñ‚æ‚­‚Å‚«‚Ü‚µ‚½B.mp3");
 	assert(SEHandle != -1);
 
@@ -44,6 +47,9 @@ void Taishoku::Draw()
 		case 0:
 			if (count >= 120) {
 				DrawExtendGraph(0 + 420, 0 + 35, 440 + 420, 650 + 35, hImage[1], 0);
+			}
+			if (count >= 240) {
+				DrawRotaGraph3(420 - 2, 230, 0, 0, 3.72, 1.1, angle, hImage[3], 1);
 			}
 			break;
 
