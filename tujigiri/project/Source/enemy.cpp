@@ -24,7 +24,12 @@ void Enemy::Update()
 	Battle* battle = FindGameObject<Battle>();
 	if (set == false && battle->gameState == STATE_WAIT) {
 		Enum = battle->point;
-		set == true;
+		set = true;
+		if (change == true) {
+			x += 10;
+			Change();
+			change = false;
+		}
 	}
 	if (battle->isAttack == true && change == false) {
 		Change();
@@ -36,10 +41,7 @@ void Enemy::Update()
 		x -= 1;
 	}
 	if (battle->isAttack == false && change == true) {
-		x += 10;
-		Change();
-		change = false;
-		set == false;
+		set = false;
 	}
 
 }

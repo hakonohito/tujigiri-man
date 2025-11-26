@@ -20,6 +20,13 @@ Player::~Player()
 void Player::Update()
 {
 	Battle* battle = FindGameObject<Battle>();
+	if (battle->gameState == STATE_WAIT) {
+		if (change == true) {
+			x -= 10;
+			Change();
+			change = false;
+		}
+	}
 	if (battle->isAttack == true && change == false) {
 		Change();
 		change = true;
@@ -28,11 +35,6 @@ void Player::Update()
 	if (change) {
 		if (x < (move + 10))
 			x += 1;
-	}
-	if (battle->isAttack == false && change == true) {
-		x -= 10;
-		Change();
-		change = false;
 	}
 }
 

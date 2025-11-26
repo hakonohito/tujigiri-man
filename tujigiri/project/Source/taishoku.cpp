@@ -42,34 +42,19 @@ void Taishoku::Draw()
 {
 
 	if (!isWin) {
-		switch (point) {
-
-		case 0:
-			if (count >= 120) {
+		if (count >= 120) {
+			if (point >= 0) {
 				DrawExtendGraph(0 + 420, 0 + 35, 440 + 420, 650 + 35, hImage[1], 0);
+				if (point >= 1) {
+					DrawExtendGraph(0 + 427, 0 + 288, 115 + 427, 115 + 288, hImage[2], 0);
+					if (point >= 2) {
+						DrawExtendGraph(0 + 583, 0 + 288, 115 + 583, 115 + 288, hImage[2], 0);
+					}
+				}
 			}
-			if (count >= 240) {
-				DrawRotaGraph3(420 - 2, 230, 0, 0, 3.72, 1.1, angle, hImage[3], 1);
-			}
-			break;
-
-		case 1:
-			if (count >= 120) {
-				DrawExtendGraph(0 + 420, 0 + 35, 440 + 420, 650 + 35, hImage[1], 0);
-				DrawExtendGraph(0 + 427, 0 + 288, 115 + 427, 115 + 288, hImage[2], 0);
-			}
-			break;
-
-		case 2:
-			if (count >= 120) {
-				DrawExtendGraph(0 + 420, 0 + 35, 440 + 420, 650 + 35, hImage[1], 0);
-				DrawExtendGraph(0 + 427, 0 + 288, 115 + 427, 115 + 288, hImage[2], 0);
-				DrawExtendGraph(0 + 583, 0 + 288, 115 + 583, 115 + 288, hImage[2], 0);
-			}
-			break;
-
-		default:
-			break;
+		}
+		if (count >= 240) {
+			DrawRotaGraph3(420 - 2, 230, 0, 0, 3.72, 1.1, angle, hImage[3], 1);
 		}
 	}
 

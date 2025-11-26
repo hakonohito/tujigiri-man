@@ -159,11 +159,9 @@ void Battle::Draw()
 
 	case STATE_START:
 		if (count < 180 && !early) {
-			//DrawString(580, 400, "この会社...", GetColor(255, 255, 255));
 			DrawExtendGraph(315 -250, 50, 640 + 325 - 250, 50 + 190, hImage[1], 1);
 		}
 		if (count >= randomtime && randomtime != 0 && !early) {
-			//DrawString(580, 400, "やめます！！", GetColor(255, 255, 255));
 			DrawExtendGraph(315 - 250, 50, 640 + 325 - 250, 50 + 190, hImage[2], 1);
 		}
 		break;
@@ -173,7 +171,6 @@ void Battle::Draw()
 			DrawString(620, 400, "勝利!!", GetColor(255, 255, 255));
 			if (point != 3) {
 				DrawString(525, 430, "N:次のステージ T:タイトル", GetColor(255, 255, 255));
-				//DrawExtendGraph(410, 15, 460 + 410, 690 + 15, hImage[0], 1); //1024::1536  2::3
 			}
 			else {
 				DrawString(600, 430, "退職成功！！", GetColor(255, 255, 255));
