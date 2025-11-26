@@ -167,14 +167,8 @@ void Battle::Draw()
 		break;
 
 	case STATE_RESULT:
-		if (isWin) {
-			DrawString(620, 400, "勝利!!", GetColor(255, 255, 255));
-			if (point != 3) {
-				DrawString(525, 430, "N:次のステージ T:タイトル", GetColor(255, 255, 255));
-			}
-			else {
-				DrawString(600, 430, "退職成功！！", GetColor(255, 255, 255));
-			}
+		if (isWin && point == 3) {
+			DrawString(600, 430, "退職成功！！", GetColor(255, 255, 255));
 		}
 		if (!isWin && !early) {
 			DrawString(620, 400, "負け!!", GetColor(255, 255, 255));
