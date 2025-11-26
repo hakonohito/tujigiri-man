@@ -1,9 +1,11 @@
 #include "fruit.h"
 #include "DxLib.h"
 
+
 fruit::fruit()
 {
-    x = 400 + rand() % 480; // 中央オレンジエリアに限定
+    // dropLeft, dropRight は setDropArea() で設定される前提
+    x = dropLeft + rand() % (dropRight - dropLeft);
     y = -64;
     dptime = 4;
     type = rand() % 3;
@@ -20,7 +22,7 @@ void fruit::Update()
     if (y > 480)
     {
         type = rand() % 3;
-        x = 400 + rand() % 480; // 再生成時も中央に限定
+        x = dropLeft + rand() % (dropRight - dropLeft); // 範囲を使う
         y = -64;
     }
 }
@@ -39,4 +41,10 @@ void fruit::Draw()
         DrawRotaGraph(x, y, 1.5, 0.0, yellowpict, TRUE);
         break;
     }
+}
+
+void fruit::setDropArea(int left, int right)
+{
+    dropLeft = left;
+    dropRight = right;
 }

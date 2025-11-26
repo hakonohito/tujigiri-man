@@ -36,6 +36,9 @@ PlayScene::PlayScene()
     for (int i = 0; i < fruitCount; ++i)
     {
         fruit f;
+        // 🌟 ここで範囲を渡す！
+        f.setDropArea(dropAreaLeft, dropAreaRight);
+
         f.x = dropAreaLeft + rand() % (dropAreaRight - dropAreaLeft);// 中央枠に限定
         f.y = rand() % 480 - 480;
         f.dptime = 1 + rand() % 2;
@@ -110,6 +113,8 @@ void PlayScene::Update()
             // ハートの生成を中央エリアに限定
             const int dropAreaLeft = 320 + 96;
             const int dropAreaRight = 960 - 96;
+
+            f.setDropArea(dropAreaLeft, dropAreaRight); //ここでも渡す！
 
             f.x = dropAreaLeft + rand() % (dropAreaRight - dropAreaLeft);
             f.y = rand() % 480 - 480;
