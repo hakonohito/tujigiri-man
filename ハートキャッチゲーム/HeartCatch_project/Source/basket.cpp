@@ -21,9 +21,12 @@ void Basket::Update()
         x += 5;
     }
 
-    // 画面外に出ないように制限
-    if (x < 0) x = 0;
-    if (x > 640 - width) x = 640 - width;
+    // loveletterが画面外に出ないように制限
+    const int leftLimit = 320+25;
+    const int rightLimit = 960-58;
+
+    if (x < leftLimit) x = leftLimit;
+    if (x > rightLimit - width) x = rightLimit - width;
 }
 
 void Basket::Draw()

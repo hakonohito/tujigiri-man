@@ -10,6 +10,7 @@ int pict;
 
 // コンストラクタ：ゲーム開始時の初期化
 PlayScene::PlayScene()
+    : basket(LoadGraph("data/image/loveletter.jpg")) // ← ここで初期化！
 {
     
         backgroundHandle = LoadGraph("data/image/playfield.png"); // 画像パスは適宜変更
@@ -106,9 +107,9 @@ void PlayScene::Update()
         if (basket.CheckCatch(f.x, f.y)) {
             score += 10;
 
-            // 果物を再出現させる
-            const int dropAreaLeft = 320-96;
-            const int dropAreaRight = 960-96;
+            // ハートの生成を中央エリアに限定
+            const int dropAreaLeft = 320 + 96;
+            const int dropAreaRight = 960 - 96;
 
             f.x = dropAreaLeft + rand() % (dropAreaRight - dropAreaLeft);
             f.y = rand() % 480 - 480;
@@ -186,5 +187,13 @@ void PlayScene::Draw()
     DrawFormatString(170, 440, GetColor(0, 0, 0), "+100点");
     DrawFormatString(170, 535, GetColor(0, 0, 0), "-50点"); 
     DrawFormatString(170, 630, GetColor(0, 0, 0), "+300点");
+
+    // ハート生成範囲を赤線で表示
+    const int dropAreaLeft = 320 + 96;
+    const int dropAreaRight = 960 - 96;
+
+    // 上下の位置は画面全体に合わせて線を引く
+    DrawLine(dropAreaLeft, 0, dropAreaLeft, 720, GetColor(255, 0, 0));   // 左の赤線
+    DrawLine(dropAreaRight, 0, dropAreaRight, 720, GetColor(255, 0, 0)); // 右の赤線
 
 }
