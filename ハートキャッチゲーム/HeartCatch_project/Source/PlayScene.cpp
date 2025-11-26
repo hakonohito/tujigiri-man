@@ -99,9 +99,6 @@ void PlayScene::Update()
         f.Update(); // 果物の位置を更新
     }
 
-   
-    field.Draw(); // 地面の描画（果物より下に表示）
-
     basket.Update(); // カゴの移動
 
     for (auto& f : fruits)
