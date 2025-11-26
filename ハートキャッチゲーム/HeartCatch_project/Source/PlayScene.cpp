@@ -7,6 +7,7 @@
 
 int backgroundHandle;
 int pict;
+int playerHandle;
 
 // コンストラクタ：ゲーム開始時の初期化
 PlayScene::PlayScene()
@@ -14,7 +15,8 @@ PlayScene::PlayScene()
 {
     
         backgroundHandle = LoadGraph("data/image/playfield.png"); // 画像パスは適宜変更
-        // 他の初期化処理
+        
+        playerHandle = LoadGraph("data/image/woman_1.png"); //女の子の画像ロード
     
 
     // 既存の初期化のあとに追加
@@ -139,6 +141,9 @@ void PlayScene::Draw()
 
     // 背景画像を画面全体に表示
     DrawExtendGraph(0, 0, 1280, 720, backgroundHandle, TRUE);
+
+    //女の子を表示
+    DrawGraph(950, 220, playerHandle, TRUE);
 
     // 以下、バスケット・フルーツ・スコアなどの描画
 
