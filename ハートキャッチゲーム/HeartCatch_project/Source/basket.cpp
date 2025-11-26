@@ -22,8 +22,8 @@ void Basket::Update()
     }
 
     // loveletter‚ª‰æ–ÊŠO‚Éo‚È‚¢‚æ‚¤‚É§ŒÀ
-    const int leftLimit = 320+25;
-    const int rightLimit = 960-58;
+    const int leftLimit = 320+110;
+    const int rightLimit = 960-32;
 
     if (x < leftLimit) x = leftLimit;
     if (x > rightLimit - width) x = rightLimit - width;
@@ -31,7 +31,7 @@ void Basket::Update()
 
 void Basket::Draw()
 {
-    DrawGraph(x, y, basketImage, TRUE); // © Box‚Å‚Í‚È‚­‰æ‘œ‚ğ•`‰æ
+    DrawRotaGraph(x, y, 1.5, 0.0, basketImage, TRUE); // love letter ‰æ‘œ@1.5”{Šg‘å
 }
 
 bool Basket::CheckCatch(float fx, float fy)
