@@ -6,11 +6,11 @@
 /// 
 /// タイトルを表示して、キーを押したらプレイシーンに移行する。
 /// </summary>
-class TitleScene : public SceneBase
+class TujigiriTitleScene : public SceneBase
 {
 public:
-	TitleScene();
-	~TitleScene();
+	TujigiriTitleScene();
+	~TujigiriTitleScene();
 	void Update() override;
 	void Draw() override;
 private:

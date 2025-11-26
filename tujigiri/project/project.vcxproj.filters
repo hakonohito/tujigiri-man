@@ -11,8 +11,8 @@
     <ClCompile Include="Source\BootScene.cpp">
       <Filter>BootScene</Filter>
     </ClCompile>
-    <ClCompile Include="Source\TitleScene.cpp">
-      <Filter>TitleScene</Filter>
+    <ClCompile Include="Source\TujigiriTitleScene.cpp">
+      <Filter>TujigiriTitleScene</Filter>
     </ClCompile>
     <ClCompile Include="Source\PlayScene.cpp">
       <Filter>PlayScene</Filter>
@@ -57,6 +57,7 @@
     <ClCompile Include="Source\battle.cpp" />
     <ClCompile Include="Source\utility.cpp" />
     <ClCompile Include="Source\taishoku.cpp" />
+    <ClCompile Include="Source\SelectScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -73,8 +74,8 @@
     <ClInclude Include="Source\BootScene.h">
       <Filter>BootScene</Filter>
     </ClInclude>
-    <ClInclude Include="Source\TitleScene.h">
-      <Filter>TitleScene</Filter>
+    <ClInclude Include="Source\TujigiriTitleScene.h">
+      <Filter>TujigiriTitleScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\PlayScene.h">
       <Filter>PlayScene</Filter>
@@ -136,6 +137,9 @@
     <ClInclude Include="Source\taishoku.h">
       <Filter>PlayScene</Filter>
     </ClInclude>
+    <ClInclude Include="Source\SelectScene.h">
+      <Filter>SelectScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
@@ -144,14 +148,17 @@
     <Filter Include="BootScene">
       <UniqueIdentifier>{4e7a122b-01b5-4a1f-bdd8-381c4cb2403d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TitleScene">
-      <UniqueIdentifier>{a52f9c67-9c6c-4376-8f4c-07a10ecbc3db}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PlayScene">
       <UniqueIdentifier>{8123ada4-16d1-40da-a8f3-3f9e93aafb30}</UniqueIdentifier>
     </Filter>
     <Filter Include="ImGui">
       <UniqueIdentifier>{a717257b-67b3-4bfa-834c-1e34032b33b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TujigiriTitleScene">
+      <UniqueIdentifier>{a52f9c67-9c6c-4376-8f4c-07a10ecbc3db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SelectScene">
+      <UniqueIdentifier>{37201c52-f5e4-49db-b3f6-edac9e1cf9d0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

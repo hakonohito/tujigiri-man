@@ -1,8 +1,8 @@
-#include "TitleScene.h"
+#include "TujigiriTitleScene.h"
 #include <assert.h>
 #include "utility.h"
 
-TitleScene::TitleScene()
+TujigiriTitleScene::TujigiriTitleScene()
 {
 	BGMHandle = LoadSoundMem("data/SE_BGM/titlescene/Driving_Wheel.mp3");
 	assert(BGMHandle != -1);
@@ -12,13 +12,13 @@ TitleScene::TitleScene()
 	
 }
 
-TitleScene::~TitleScene()
+TujigiriTitleScene::~TujigiriTitleScene()
 {
 	DeleteSoundMem(BGMHandle);
 	
 }
 
-void TitleScene::Update()
+void TujigiriTitleScene::Update()
 {
 	
 	if (CheckHitKey(KEY_INPUT_P)) {
@@ -31,7 +31,7 @@ void TitleScene::Update()
 }
 
 
-void TitleScene::Draw()
+void TujigiriTitleScene::Draw()
 {
 	extern const char* Version();
 	DrawGraph(0, 0, hImage[0], 1);
