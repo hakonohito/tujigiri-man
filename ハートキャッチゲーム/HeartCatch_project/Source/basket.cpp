@@ -3,7 +3,7 @@
 Basket::Basket(int imageHandle)
 {
     x = 320;
-    y = 400;
+    y = 580;
     width = 80;
     height = 80;
     basketImage = imageHandle;
@@ -36,7 +36,7 @@ void Basket::Draw()
 
 bool Basket::CheckCatch(float fx, float fy)
 {
-    const int fruitSize = 64; // 例：果物の半径やサイズ
+    const int fruitSize = 96; // 例：果物の半径やサイズ
 
     return (fx + fruitSize > x && fx - fruitSize < x + width &&
         fy + fruitSize > y && fy - fruitSize < y + height);
