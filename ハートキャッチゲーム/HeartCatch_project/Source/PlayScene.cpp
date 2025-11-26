@@ -36,7 +36,7 @@ PlayScene::PlayScene()
     for (int i = 0; i < fruitCount; ++i)
     {
         fruit f;
-        // 🌟 ここで範囲を渡す！
+        // ここで範囲を渡す！
         f.setDropArea(dropAreaLeft, dropAreaRight);
 
         f.x = dropAreaLeft + rand() % (dropAreaRight - dropAreaLeft);// 中央枠に限定
@@ -182,7 +182,7 @@ void PlayScene::Draw()
 
     // ③ Score文字表示
     DrawString(120, 260, "Score", GetColor(0, 0, 0));
-
+     
     // ④ Scorenumber表示（得点）
     DrawFormatString(240, 320, GetColor(0, 0, 0), "%d", score);
 
