@@ -19,7 +19,7 @@ void fruit::Update()
 {
     y += dptime;
 
-    if (y > 480)
+    if (y > 720) //‰æ–Ê‰º‚Ü‚Å—ˆ‚½‚çÄ¶¬
     {
         type = rand() % 3;
         x = dropLeft + rand() % (dropRight - dropLeft); // ”ÍˆÍ‚ğg‚¤

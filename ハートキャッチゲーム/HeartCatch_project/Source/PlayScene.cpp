@@ -32,8 +32,8 @@ PlayScene::PlayScene()
     int yellowpict = LoadGraph("data/image/heart_yellow.png");
 
     // ハート生成
-    const int dropAreaLeft = 320;
-    const int dropAreaRight = 960;
+    const int dropAreaLeft = 320 + 96;
+    const int dropAreaRight = 960 - 96;
 
     for (int i = 0; i < fruitCount; ++i)
     {
