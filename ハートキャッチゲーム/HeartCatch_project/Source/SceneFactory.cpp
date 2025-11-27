@@ -4,6 +4,7 @@
 #include "BootScene.h"
 #include "TitleScene.h"
 #include "PlayScene.h"
+#include "HeartScene.h"
 #include "RankingScene.h"
 
 SceneBase* SceneFactory::CreateFirst()
@@ -21,7 +22,11 @@ SceneBase * SceneFactory::Create(const std::string & name)
 	{
 		return new PlayScene();
 	}
-	if (name == "RANKING") 
+	if (name == "HEART")
+	{
+		return new HeartScene();
+	}
+	if (name == "RANKING")
 	{
 		return new RankingScene();
 	}

@@ -26,6 +26,9 @@ void TitleScene::Update()
 	if (CheckHitKey(KEY_INPUT_P)) {
 		SceneManager::ChangeScene("PLAY"); //ゲーム開始！
 	}
+	if (CheckHitKey(KEY_INPUT_H)) {
+		SceneManager::ChangeScene("HEART"); //ゲーム開始！
+	}
 
 	if (CheckHitKey(KEY_INPUT_R)) {
 		SceneManager::ChangeScene("RANKING"); //ゲーム開始！

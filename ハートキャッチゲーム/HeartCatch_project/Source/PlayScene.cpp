@@ -174,19 +174,20 @@ void PlayScene::Draw()
 
     // スコアや時間の表示（必要なら追加）
 
-    SetFontSize(60); // フォントサイズは共通で設定
+    SetFontSize(50); // フォントサイズ設定
 
-    // ① Time文字表示
-    DrawString(155, 100, "Time", GetColor(0, 0, 0));
+    //  Time文字表示
+    DrawString(155, 90, "Time", GetColor(0, 0, 0));
 
-    // ② TimeLimit表示（秒数）
-    DrawFormatString(220, 160, GetColor(0, 0, 0), "%d", timelimit / 60);
+    //  Score文字表示  
+    DrawString(130, 240, "Score", GetColor(0, 0, 0));
 
-    // ③ Score文字表示
-    DrawString(120, 260, "Score", GetColor(0, 0, 0));
+    SetFontSize(70); // フォントサイズ設定
+    //  TimeLimit表示（秒数）
+    DrawFormatString(190, 160, GetColor(0, 0, 0), "%d", timelimit / 60);
      
-    // ④ Scorenumber表示（得点）
-    DrawFormatString(240, 320, GetColor(0, 0, 0), "%d", score);
+    //  Scorenumber表示（得点）  スコアを5桁ゼロ埋めで表示
+    DrawFormatString(80, 300, GetColor(0, 0, 0), "%05d", score);
 
 
     //ハートごとの得点表示

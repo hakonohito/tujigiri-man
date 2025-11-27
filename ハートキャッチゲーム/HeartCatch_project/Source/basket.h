@@ -4,6 +4,7 @@
 class Basket 
 {
 public:
+    Basket() {}
     Basket(int imageHandle); // 画像ハンドルを受け取るコンストラクタ
     ~Basket();
 
