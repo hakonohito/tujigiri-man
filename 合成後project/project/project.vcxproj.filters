@@ -58,12 +58,24 @@
     <ClCompile Include="Source\utility.cpp" />
     <ClCompile Include="Source\taishoku.cpp" />
     <ClCompile Include="Source\SelectScene.cpp" />
-    <ClCompile Include="Source\HeartScene.cpp" />
-    <ClCompile Include="Source\basket.cpp" />
-    <ClCompile Include="Source\Field.cpp" />
-    <ClCompile Include="Source\fruit.cpp" />
-    <ClCompile Include="Source\RankingScene.cpp" />
-    <ClCompile Include="Source\TitleScene.cpp" />
+    <ClCompile Include="Source\TitleScene.cpp">
+      <Filter>HeartTitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HeartScene.cpp">
+      <Filter>HeartPlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fruit.cpp">
+      <Filter>HeartPlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Field.cpp">
+      <Filter>HeartPlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\basket.cpp">
+      <Filter>HeartPlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RankingScene.cpp">
+      <Filter>HeartRankingScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -147,22 +159,22 @@
       <Filter>SelectScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\HeartScene.h">
-      <Filter>HeartScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\RankingScene.h">
-      <Filter>RankingScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\basket.h">
-      <Filter>HeartScene</Filter>
+      <Filter>HeartPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\fruit.h">
-      <Filter>HeartScene</Filter>
+      <Filter>HeartPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\Field.h">
-      <Filter>HeartScene</Filter>
+      <Filter>HeartPlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\basket.h">
+      <Filter>HeartPlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RankingScene.h">
+      <Filter>HeartRankingScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\TitleScene.h">
-      <Filter>TitleScene</Filter>
+      <Filter>HeartTitleScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -187,11 +199,14 @@
     <Filter Include="tujigiriPlayScene">
       <UniqueIdentifier>{8123ada4-16d1-40da-a8f3-3f9e93aafb30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="RankingScene">
-      <UniqueIdentifier>{366064dd-7799-4bbe-83aa-2c900b105637}</UniqueIdentifier>
+    <Filter Include="HeartTitleScene">
+      <UniqueIdentifier>{22f8fbed-214d-4da1-9831-afc06a9ad08b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TitleScene">
-      <UniqueIdentifier>{47e9f9a1-b17f-4a61-808a-b33972df93df}</UniqueIdentifier>
+    <Filter Include="HeartPlayScene">
+      <UniqueIdentifier>{53476052-de13-4d24-b246-83b8cd78f1c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeartRankingScene">
+      <UniqueIdentifier>{62b2fc10-7db2-4f1e-afd3-0c7a5763637e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

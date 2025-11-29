@@ -46,6 +46,10 @@ void RankingScene::Draw()
 
     DrawString(460, 550, "４位：", GetColor(0, 0, 0));
 
+    //タイトルへ誘導
+    SetFontSize(50); // フォントサイズ
+    DrawString(60, 520, "タイトルへ", GetColor(0, 0, 0));
+    DrawString(120, 600, "Tキー", GetColor(0, 0, 0));
 
 
 }
