@@ -66,7 +66,7 @@ HeartScene::HeartScene()
     GameOver = false;
 }
 
-// デストラクタ：今は特に何もしない
+// デストラクタ
 HeartScene::~HeartScene()
 {
     DeleteGraph(backgroundHandle);
