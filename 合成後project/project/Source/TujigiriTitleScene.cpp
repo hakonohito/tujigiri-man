@@ -25,11 +25,12 @@ void TujigiriTitleScene::Update()
 		
 		SceneManager::ChangeScene("TUJIGIRIPLAY");
 	}
-	if (CheckHitKey(KEY_INPUT_ESCAPE)) {
-		SceneManager::Exit();
-	}
 	if (CheckHitKey(KEY_INPUT_S)) {
 		SceneManager::ChangeScene("SELECT");
+	}
+	//‰¼
+	if (CheckHitKey(KEY_INPUT_ESCAPE)) {
+		SceneManager::Exit();
 	}
 }
 
@@ -41,4 +42,6 @@ void TujigiriTitleScene::Draw()
 	DrawExtendGraph(95, 60, 1112 + 95, 261 + 60, hImage[1], 1);
 	//DrawString(0, 0, "TITLE SCENE", GetColor(255,255,255));
 	DrawString(100, 400, "Push [P]Key To Play", GetColor(255, 255, 255));
+	//‰¼
+	DrawString(0, 0, "[S]Key ‘I‘ð‰æ–Ê‚É–ß‚é", GetColor(255, 255, 255));
 }

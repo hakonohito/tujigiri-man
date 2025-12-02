@@ -22,6 +22,10 @@ void SelectScene::Update()
 	if (CheckHitKey(KEY_INPUT_H)) {
 		SceneManager::ChangeScene("TITLE");
 	}
+	//‰¼
+	if (CheckHitKey(KEY_INPUT_ESCAPE)) {
+		SceneManager::Exit();
+	}
 }
 
 void SelectScene::Draw()
