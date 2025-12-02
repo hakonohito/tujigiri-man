@@ -8,4 +8,7 @@ public:
 	~SelectScene();
 	void Update() override;
 	void Draw() override;
+private:
+	int hImage;
+	int SEHandle;
 };

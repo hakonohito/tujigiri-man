@@ -28,6 +28,9 @@ void TujigiriTitleScene::Update()
 	if (CheckHitKey(KEY_INPUT_ESCAPE)) {
 		SceneManager::Exit();
 	}
+	if (CheckHitKey(KEY_INPUT_S)) {
+		SceneManager::ChangeScene("SELECT");
+	}
 }
 
 
