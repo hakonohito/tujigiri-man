@@ -15,7 +15,7 @@
       <Filter>TujigiriTitleScene</Filter>
     </ClCompile>
     <ClCompile Include="Source\tujigiriPlayScene.cpp">
-      <Filter>tujigiriPlayScene</Filter>
+      <Filter>TujigiriPlayScene</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui.cpp">
       <Filter>ImGui</Filter>
@@ -51,13 +51,8 @@
       <Filter>Library</Filter>
     </ClCompile>
     <ClCompile Include="Source\player.cpp">
-      <Filter>tujigiriPlayScene</Filter>
+      <Filter>TujigiriPlayScene</Filter>
     </ClCompile>
-    <ClCompile Include="Source\enemy.cpp" />
-    <ClCompile Include="Source\battle.cpp" />
-    <ClCompile Include="Source\utility.cpp" />
-    <ClCompile Include="Source\taishoku.cpp" />
-    <ClCompile Include="Source\SelectScene.cpp" />
     <ClCompile Include="Source\TitleScene.cpp">
       <Filter>HeartTitleScene</Filter>
     </ClCompile>
@@ -75,6 +70,21 @@
     </ClCompile>
     <ClCompile Include="Source\RankingScene.cpp">
       <Filter>HeartRankingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\battle.cpp">
+      <Filter>TujigiriPlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\enemy.cpp">
+      <Filter>TujigiriPlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SelectScene.cpp">
+      <Filter>SelectScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\taishoku.cpp">
+      <Filter>TujigiriPlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\utility.cpp">
+      <Filter>TujigiriPlayScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -96,7 +106,7 @@
       <Filter>TujigiriTitleScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\tujigiriPlayScene.h">
-      <Filter>tujigiriPlayScene</Filter>
+      <Filter>TujigiriPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imconfig.h">
       <Filter>ImGui</Filter>
@@ -141,19 +151,19 @@
       <Filter>Library</Filter>
     </ClInclude>
     <ClInclude Include="Source\player.h">
-      <Filter>tujigiriPlayScene</Filter>
+      <Filter>TujigiriPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\enemy.h">
-      <Filter>tujigiriPlayScene</Filter>
+      <Filter>TujigiriPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\battle.h">
-      <Filter>tujigiriPlayScene</Filter>
+      <Filter>TujigiriPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\utility.h">
-      <Filter>tujigiriPlayScene</Filter>
+      <Filter>TujigiriPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\taishoku.h">
-      <Filter>tujigiriPlayScene</Filter>
+      <Filter>TujigiriPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\SelectScene.h">
       <Filter>SelectScene</Filter>
@@ -196,9 +206,6 @@
     <Filter Include="HeartScene">
       <UniqueIdentifier>{9b16a346-3e6b-47e7-abbe-4cca66ab2418}</UniqueIdentifier>
     </Filter>
-    <Filter Include="tujigiriPlayScene">
-      <UniqueIdentifier>{8123ada4-16d1-40da-a8f3-3f9e93aafb30}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HeartTitleScene">
       <UniqueIdentifier>{22f8fbed-214d-4da1-9831-afc06a9ad08b}</UniqueIdentifier>
     </Filter>
@@ -207,6 +214,9 @@
     </Filter>
     <Filter Include="HeartRankingScene">
       <UniqueIdentifier>{62b2fc10-7db2-4f1e-afd3-0c7a5763637e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TujigiriPlayScene">
+      <UniqueIdentifier>{8123ada4-16d1-40da-a8f3-3f9e93aafb30}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
