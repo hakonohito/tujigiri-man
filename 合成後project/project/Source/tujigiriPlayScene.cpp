@@ -1,11 +1,11 @@
-#include "tujigiriPlayScene.h"
+#include "TujigiriPlayScene.h"
 #include "player.h"
 #include "enemy.h"
 #include "battle.h"
 #include "Taishoku.h"
 #include <assert.h>
 
-tujigiriPlayScene::tujigiriPlayScene()
+TujigiriPlayScene::TujigiriPlayScene()
 {
 	SEHandle = LoadSoundMem("data/SE_BGM/titlescene/ÉQÅ[ÉÄÇÃÉ{É^Éìâπ.mp3");
 	assert(SEHandle != -1);
@@ -17,12 +17,12 @@ tujigiriPlayScene::tujigiriPlayScene()
 	new Taishoku();
 }
 
-tujigiriPlayScene::~tujigiriPlayScene()
+TujigiriPlayScene::~TujigiriPlayScene()
 {
 	DeleteSoundMem(SEHandle);
 }
 
-void tujigiriPlayScene::Update()
+void TujigiriPlayScene::Update()
 {
 	//âº
 	if (CheckHitKey(KEY_INPUT_ESCAPE)) {
@@ -31,7 +31,7 @@ void tujigiriPlayScene::Update()
 	
 }
 
-void tujigiriPlayScene::Draw()
+void TujigiriPlayScene::Draw()
 {
 	//DrawString(0, 0, "PLAY SCENE", GetColor(255, 255, 255));
 }

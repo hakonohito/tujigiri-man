@@ -14,7 +14,7 @@
     <ClCompile Include="Source\TujigiriTitleScene.cpp">
       <Filter>TujigiriTitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="Source\tujigiriPlayScene.cpp">
+    <ClCompile Include="Source\TujigiriPlayScene.cpp">
       <Filter>TujigiriPlayScene</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui.cpp">
@@ -105,7 +105,7 @@
     <ClInclude Include="Source\TujigiriTitleScene.h">
       <Filter>TujigiriTitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="Source\tujigiriPlayScene.h">
+    <ClInclude Include="Source\TujigiriPlayScene.h">
       <Filter>TujigiriPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imconfig.h">

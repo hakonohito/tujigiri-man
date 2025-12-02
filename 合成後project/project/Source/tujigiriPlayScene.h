@@ -4,11 +4,11 @@
 /// <summary>
 /// ゲームプレイのシーンを制御する
 /// </summary>
-class tujigiriPlayScene : public SceneBase
+class TujigiriPlayScene : public SceneBase
 {
 public:
-	tujigiriPlayScene();
-	~tujigiriPlayScene();
+	TujigiriPlayScene();
+	~TujigiriPlayScene();
 	void Update() override;
 	void Draw() override;
 private:

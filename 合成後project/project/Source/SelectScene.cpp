@@ -17,7 +17,7 @@ SelectScene::~SelectScene()
 void SelectScene::Update()
 {
 	if (CheckHitKey(KEY_INPUT_T)) {
-		SceneManager::ChangeScene("TujigiriTITLE");
+		SceneManager::ChangeScene("TUJIGIRITITLE");
 	}
 	if (CheckHitKey(KEY_INPUT_H)) {
 		SceneManager::ChangeScene("TITLE");

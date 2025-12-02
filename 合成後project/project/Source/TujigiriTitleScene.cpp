@@ -23,7 +23,7 @@ void TujigiriTitleScene::Update()
 	
 	if (CheckHitKey(KEY_INPUT_P)) {
 		
-		SceneManager::ChangeScene("tujigiriPLAY");
+		SceneManager::ChangeScene("TUJIGIRIPLAY");
 	}
 	if (CheckHitKey(KEY_INPUT_ESCAPE)) {
 		SceneManager::Exit();

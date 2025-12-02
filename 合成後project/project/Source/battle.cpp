@@ -133,11 +133,11 @@ void Battle::Update()
 
 		//ƒ^ƒCƒgƒ‹‚É–ß‚é
 		if (KeyUtility::CheckTrigger(KEY_INPUT_T)) {
-			SceneManager::ChangeScene("TujigiriTITLE");
+			SceneManager::ChangeScene("TUJIGIRITITLE");
 		}
 		if (point == 3) {
 			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
-				SceneManager::ChangeScene("TujigiriTITLE");
+				SceneManager::ChangeScene("TUJIGIRITITLE");
 			}
 		}
 

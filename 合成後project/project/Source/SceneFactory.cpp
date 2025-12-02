@@ -3,7 +3,7 @@
 #include <assert.h>
 #include "BootScene.h"
 #include "TujigiriTitleScene.h"
-#include "tujigiriPlayScene.h"
+#include "TujigiriPlayScene.h"
 #include "SelectScene.h"
 #include "HeartScene.h"
 #include "RankingScene.h"
@@ -16,13 +16,13 @@ SceneBase* SceneFactory::CreateFirst()
 
 SceneBase * SceneFactory::Create(const std::string & name)
 {
-	if (name == "TujigiriTITLE")
+	if (name == "TUJIGIRITITLE")
 	{
 		return new TujigiriTitleScene();
 	}
-	if (name == "tujigiriPLAY")
+	if (name == "TUJIGIRIPLAY")
 	{
-		return new tujigiriPlayScene();
+		return new TujigiriPlayScene();
 	}
 	if (name == "SELECT") {
 		return new SelectScene();

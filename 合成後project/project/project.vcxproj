@@ -163,7 +163,7 @@
     <ClInclude Include="Source\RankingScene.h" />
     <ClInclude Include="Source\Screen.h" />
     <ClInclude Include="Source\TitleScene.h" />
-    <ClInclude Include="Source\tujigiriPlayScene.h" />
+    <ClInclude Include="Source\TujigiriPlayScene.h" />
     <ClInclude Include="Source\SceneFactory.h" />
     <ClInclude Include="Source\SelectScene.h" />
     <ClInclude Include="Source\taishoku.h" />
@@ -194,7 +194,7 @@
     <ClCompile Include="Source\player.cpp" />
     <ClCompile Include="Source\RankingScene.cpp" />
     <ClCompile Include="Source\TitleScene.cpp" />
-    <ClCompile Include="Source\tujigiriPlayScene.cpp" />
+    <ClCompile Include="Source\TujigiriPlayScene.cpp" />
     <ClCompile Include="Source\SceneFactory.cpp" />
     <ClCompile Include="Source\SelectScene.cpp" />
     <ClCompile Include="Source\taishoku.cpp" />
