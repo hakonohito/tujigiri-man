@@ -31,7 +31,7 @@ private:
 	int count2 = 0; //フライング管理
 	int randomtime = 0;
 	
-	int level[3] = {180, 60, 50};//[GO]が出てから負け判定が出るまでの時間
+	int level[3] = {180, 60, 30};//[GO]が出てから負け判定が出るまでの時間
 	void Random();
 
 	int SEHandle = -1;

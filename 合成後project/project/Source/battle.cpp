@@ -127,7 +127,16 @@ void Battle::Update()
 					gameState = STATE_WAIT;
 					count = 0;
 					point = 0;
+					count2 = 0;
+					early = false;
 				}
+			}
+		}
+
+		//‰¼
+		if (point == 3) {
+			if (KeyUtility::CheckTrigger(KEY_INPUT_N)) {
+				SceneManager::ChangeScene("TUJIGIRITITLE");
 			}
 		}
 
@@ -135,13 +144,10 @@ void Battle::Update()
 		if (KeyUtility::CheckTrigger(KEY_INPUT_T)) {
 			SceneManager::ChangeScene("TUJIGIRITITLE");
 		}
-		if (point == 3) {
-			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
-				SceneManager::ChangeScene("TUJIGIRITITLE");
-			}
-		}
 
 		break;
+
+
 	case STATE_FINISH:
 		break;
 	}
