@@ -10,6 +10,7 @@ Taishoku::Taishoku()
 	hImage[1] = LoadGraph("data/image/Lose.png");
 	hImage[2] = LoadGraph("data/image/approval.png");
 	hImage[3] = LoadGraph("data/image/No.png");
+	hImage[4] = LoadGraph("data/image/clear.png");
 	angle = 10.0f * (M_PI / 180.0f);
 	SEHandle = LoadSoundMem("data/SE_BGM/playscene/‚½‚¢‚Ö‚ñ‚æ‚­‚Å‚«‚Ü‚µ‚½B.mp3");
 	assert(SEHandle != -1);
@@ -40,6 +41,7 @@ void Taishoku::Update()
 
 void Taishoku::Draw()
 {
+	//DrawExtendGraph(0 + 455, 0 + 195, 383 + 455, 303 + 195, hImage[4], 1);
 
 	if (!isWin) {
 		if (count >= 120) {
@@ -87,6 +89,9 @@ void Taishoku::Draw()
 				DrawExtendGraph(0 + 590, 0 + 312, 100 + 590, 100 + 312, hImage[2], 1);
 				if (count >= 240) {
 					DrawExtendGraph(0 + 735, 0 + 312, 100 + 735, 100 + 312, hImage[2], 1);
+					if (count >= 420) {
+						DrawExtendGraph(-30 + 455, 0 + 195, 413 + 455, 303 + 195, hImage[4], 1);
+					}
 				}
 			}
 			break;

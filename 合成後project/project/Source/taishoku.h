@@ -8,7 +8,7 @@ public:
 	void Update() override;
 	void Draw() override;
 private:
-	int hImage[4];
+	int hImage[5];
 	int SEHandle = -1;
 	int Enum = 0;
 	int count = 0;
