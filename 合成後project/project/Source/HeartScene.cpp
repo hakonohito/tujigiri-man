@@ -8,7 +8,9 @@
 namespace {
     int backgroundHandle;
     int pict;
-    int playerHandle;
+    int woman_1; // woman_1.png（スコア2000未満）
+    int woman_2;    // woman_2.png（スコア2000以上5000未満）
+    int woman_3;    // woman_3.png（スコア5000以上）
 };
 // コンストラクタ：ゲーム開始時の初期化
 HeartScene::HeartScene()
@@ -17,7 +19,9 @@ HeartScene::HeartScene()
 
     backgroundHandle = LoadGraph("data/image/playfield.png"); // 画像パスは適宜変更
 
-    playerHandle = LoadGraph("data/image/woman_1.png"); //女の子の画像ロード
+    woman_1 = LoadGraph("data/image/woman_1.png"); //女の子の画像ロード
+    woman_2 = LoadGraph("data/image/woman_2.png");
+    woman_3 = LoadGraph("data/image/woman_3.png");
 
 
     // 既存の初期化のあとに追加
@@ -108,7 +112,17 @@ void HeartScene::Update()
 
         // カゴに当たった瞬間に消える＆得点加算
         if (basket.CheckCatch(f.x, f.y)) {
-            score += 10;
+            
+            // ハートの種類ごとに得点を変える
+            if (f.type == 0) {        // 赤ハート
+                score += 100;
+            }
+            else if (f.type == 1) { // 青ハート
+                score -= 50;
+            }
+            else if (f.type == 2) { // 黄色ハート
+                score += 300;
+            }
 
             // ハートの生成を中央エリアに限定
             const int dropAreaLeft = 320 + 96;
@@ -141,12 +155,24 @@ void HeartScene::Draw()
     // 背景画像を画面全体に表示
     DrawExtendGraph(0, 0, 1280, 720, backgroundHandle, TRUE);
 
-    //女の子を表示
-    DrawGraph(950, 220, playerHandle, TRUE);
+    //女の子を表示 
+    DrawGraph(950, 220, woman_1, TRUE);
+    //表情変化
+    int girlImage;
+
+    if (score < 2000) {
+        girlImage = woman_1;
+    }
+    else if (score < 5000) {
+        girlImage = woman_2;
+    }
+    else {
+        girlImage = woman_3;
+    }
+
+    DrawGraph(950, 220, girlImage, TRUE); // ← 表示位置はそのまま
 
     // 以下、バスケット・フルーツ・スコアなどの描画
-
-
     SetFontSize(16);
     DrawString(0, 0, "PLAY SCENE", GetColor(255, 255, 255));
 

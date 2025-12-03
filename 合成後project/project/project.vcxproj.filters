@@ -203,9 +203,6 @@
     <Filter Include="SelectScene">
       <UniqueIdentifier>{37201c52-f5e4-49db-b3f6-edac9e1cf9d0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="HeartScene">
-      <UniqueIdentifier>{9b16a346-3e6b-47e7-abbe-4cca66ab2418}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HeartTitleScene">
       <UniqueIdentifier>{22f8fbed-214d-4da1-9831-afc06a9ad08b}</UniqueIdentifier>
     </Filter>
