@@ -48,8 +48,17 @@ HeartScene::HeartScene()
 
         f.x = dropAreaLeft + rand() % (dropAreaRight - dropAreaLeft);// 中央枠に限定
         f.y = rand() % 480 - 480;
-        f.dptime = 1 + rand() % 2;
         f.type = rand() % 3;
+
+        if (f.type == 0) {        // 赤ハート 120px/秒
+            f.dptime = 2;
+        }
+        else if (f.type == 1) { // 青ハート 120px/秒
+            f.dptime = 2;
+        }
+        else if (f.type == 2) { // 黄色ハート（赤の2倍速）240px/秒
+            f.dptime = 4;
+        }
 
         //ここでロード済みハンドルを渡す
         f.redpict = redpict;
@@ -132,9 +141,19 @@ void HeartScene::Update()
 
             f.x = dropAreaLeft + rand() % (dropAreaRight - dropAreaLeft);
             f.y = rand() % 480 - 480;
-            f.dptime = 1 + rand() % 2;
-            f.spwandelay = rand() % 60;
             f.type = rand() % 3;
+
+            if (f.type == 0) {        // 赤ハート 120px/秒
+                f.dptime = 2;
+            }
+            else if (f.type == 1) { // 青ハート 120px/秒
+                f.dptime = 2;
+            }
+            else if (f.type == 2) { // 黄色ハート（赤の2倍速） 240px/秒
+                f.dptime = 4;
+            }
+
+            f.spwandelay = rand() % 60;
             f.active = false;
         }
     }

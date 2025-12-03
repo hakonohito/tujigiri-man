@@ -4,8 +4,8 @@ Basket::Basket(int imageHandle)
 {
     x = 320;
     y = 580;
-    width = 80;
-    height = 80;
+    width = 116;
+    height = 71;
     basketImage = imageHandle;
 }
 
@@ -23,7 +23,7 @@ void Basket::Update()
 
     // loveletterが画面外に出ないように制限
     const int leftLimit = 320 + 110;
-    const int rightLimit = 960 - 32;
+    const int rightLimit = 960 + 4;
 
     if (x < leftLimit) x = leftLimit;
     if (x > rightLimit - width) x = rightLimit - width;
@@ -32,6 +32,9 @@ void Basket::Update()
 void Basket::Draw()
 {
     DrawRotaGraph(x, y, 1.5, 0.0, basketImage, TRUE); // love letter 画像　1.5倍拡大
+
+    // 判定枠を可視化（デバッグ用）
+    DrawBox(x, y, x + width, y + height, GetColor(255, 0, 0), FALSE);
 }
 
 bool Basket::CheckCatch(float fx, float fy)
