@@ -26,6 +26,7 @@ HeartScene::HeartScene()
 
     // 既存の初期化のあとに追加
     isReadyToStart = false; // 最初は待機状態
+    startTime = GetNowCount(); // ← PlaySceneに入った瞬間の時刻を記録
 
     srand((unsigned int)time(nullptr)); // 乱数初期化
 
@@ -50,14 +51,14 @@ HeartScene::HeartScene()
         f.y = rand() % 480 - 480;
         f.type = rand() % 3;
 
-        if (f.type == 0) {        // 赤ハート 120px/秒
-            f.dptime = 2;
+        if (f.type == 0) {        // 赤ハート 60px/秒
+            f.dptime = 1;
         }
-        else if (f.type == 1) { // 青ハート 120px/秒
-            f.dptime = 2;
+        else if (f.type == 1) { // 青ハート 60px/秒
+            f.dptime = 1;
         }
-        else if (f.type == 2) { // 黄色ハート（赤の2倍速）240px/秒
-            f.dptime = 4;
+        else if (f.type == 2) { // 黄色ハート（赤の2倍速）120px/秒
+            f.dptime = 2;
         }
 
         //ここでロード済みハンドルを渡す
@@ -101,8 +102,8 @@ void HeartScene::Update()
 
      // Spaceキー待ち状態
     if (!isReadyToStart) {
-        if (CheckHitKey(KEY_INPUT_SPACE))
-        {
+        int elapsed = GetNowCount() - startTime; // 経過時間を計算
+        if (elapsed >= 3000) { // 3000ミリ秒 = 3秒
             isReadyToStart = true; // ゲーム開始！
         }
         return; // まだゲーム開始してないので処理しない
@@ -110,16 +111,16 @@ void HeartScene::Update()
 
     for (auto& f : fruits)
     {
-        f.Update(); // 果物の位置を更新
+        f.Update(); // ハートの位置を更新
     }
 
-    basket.Update(); // カゴの移動
+    basket.Update(); // ラブレターの移動
 
     for (auto& f : fruits)
     {
-        f.Update(); // 果物の移動
+        f.Update(); // ハートの移動
 
-        // カゴに当たった瞬間に消える＆得点加算
+        // ラブレターに当たった瞬間に消える＆得点加算
         if (basket.CheckCatch(f.x, f.y)) {
             
             // ハートの種類ごとに得点を変える
@@ -143,14 +144,14 @@ void HeartScene::Update()
             f.y = rand() % 480 - 480;
             f.type = rand() % 3;
 
-            if (f.type == 0) {        // 赤ハート 120px/秒
-                f.dptime = 2;
+            if (f.type == 0) {        // 赤ハート 60px/秒
+                f.dptime = 1;
             }
-            else if (f.type == 1) { // 青ハート 120px/秒
-                f.dptime = 2;
+            else if (f.type == 1) { // 青ハート 60px/秒
+                f.dptime = 1;
             }
-            else if (f.type == 2) { // 黄色ハート（赤の2倍速） 240px/秒
-                f.dptime = 4;
+            else if (f.type == 2) { // 黄色ハート（赤の2倍速） 120px/秒
+                f.dptime = 2;
             }
 
             f.spwandelay = rand() % 60;
@@ -174,9 +175,7 @@ void HeartScene::Draw()
     // 背景画像を画面全体に表示
     DrawExtendGraph(0, 0, 1280, 720, backgroundHandle, TRUE);
 
-    //女の子を表示 
-    DrawGraph(950, 220, woman_1, TRUE);
-    //表情変化
+    //女の子の表情変化
     int girlImage;
 
     if (score < 2000) {
@@ -197,13 +196,13 @@ void HeartScene::Draw()
 
 
     if (!isReadyToStart) {
-        DrawString(270, 300, "Press [Space] to Start", GetColor(255, 255, 255));
+        DrawString(640, 300, "Ready... 3秒後にスタート！", GetColor(255, 255, 255));
     }
 
 
     for (auto& f : fruits)
     {
-        f.Draw(); // 果物を描画
+        f.Draw(); // ハートを描画
     }
 
     basket.Draw();
@@ -229,10 +228,10 @@ void HeartScene::Draw()
     //  Score文字表示  
     DrawString(130, 240, "Score", GetColor(0, 0, 0));
 
-    SetFontSize(70); // フォントサイズ設定
+    SetFontSize(72); // フォントサイズ設定
     //  TimeLimit表示（秒数）
     DrawFormatString(190, 160, GetColor(0, 0, 0), "%d", timelimit / 60);
-
+    SetFontSize(70); // フォントサイズ設定
     //  Scorenumber表示（得点）  スコアを5桁ゼロ埋めで表示
     DrawFormatString(80, 300, GetColor(0, 0, 0), "%05d", score);
 

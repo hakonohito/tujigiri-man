@@ -4,8 +4,8 @@ Basket::Basket(int imageHandle)
 {
     x = 320;
     y = 580;
-    width = 116;
-    height = 71;
+    width = 116*1.5;
+    height = 71*1.5;
     basketImage = imageHandle;
 }
 
@@ -15,15 +15,15 @@ Basket::~Basket() {}
 void Basket::Update()
 {
     if (CheckHitKey(KEY_INPUT_A)) {
-        x -= 5;
+        x -= 78;// ← Aキーで左に78ピクセル移動 (赤ハートの1.3倍)
     }
     if (CheckHitKey(KEY_INPUT_D)) {
-        x += 5;
+        x += 78;// ← Dキーで左に78ピクセル移動
     }
 
     // loveletterが画面外に出ないように制限
     const int leftLimit = 320 + 110;
-    const int rightLimit = 960 + 4;
+    const int rightLimit = 960 + 60;
 
     if (x < leftLimit) x = leftLimit;
     if (x > rightLimit - width) x = rightLimit - width;
