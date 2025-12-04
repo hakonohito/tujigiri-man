@@ -5,8 +5,8 @@ Enemy::Enemy()
 {
 	Enum = 0;
 	hImage[0] = LoadGraph("data/image/jousi.png");
-	hImage[1] = LoadGraph("data/image/enemy2.png");
-	hImage[2] = LoadGraph("data/image/enemy3.png");
+	hImage[1] = LoadGraph("data/image/kyokutyou.png");
+	hImage[2] = LoadGraph("data/image/syatyou.png");
 	//x = 800; 
 	//y = 512;
 	//x1 = 352;
