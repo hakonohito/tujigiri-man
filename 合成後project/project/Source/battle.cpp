@@ -74,6 +74,7 @@ void Battle::Update()
 			//SPACEキーの入力が間に合わなかった時の負け判定
 			if (count > (randomtime + level[point]) && !early) {
 				isWin = false;
+				isAttack = true;
 				gameState = STATE_RESULT;
 			}
 			//SPACEキーで判定
