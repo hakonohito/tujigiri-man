@@ -32,15 +32,25 @@ void Basket::Update()
 void Basket::Draw()
 {
     DrawRotaGraph(x, y, 1.5, 0.0, basketImage, TRUE); // love letter ‰æ‘œ@1.5”{Šg‘å
-
+    // ”»’è˜g‚ð’†SŠî€‚Å•`‰æ
+    int left = x - width / 2;
+    int right = x + width / 2;
+    int top = y - height / 2;
+    int bottom = y + height / 2;
     // ”»’è˜g‚ð‰ÂŽ‹‰»iƒfƒoƒbƒO—pj
-    DrawBox(x, y, x + width, y + height, GetColor(255, 0, 0), FALSE);
+    DrawBox(left, top, right, bottom, GetColor(255, 0, 0), FALSE); // Ô˜g
 }
 
 bool Basket::CheckCatch(float fx, float fy)
 {
-    const int fruitSize = 96; // —áF‰Ê•¨‚Ì”¼Œa‚âƒTƒCƒY
+    const int fruitSize = 48; // —áFƒn[ƒg‚Ì”¼Œa
 
-    return (fx + fruitSize > x && fx - fruitSize < x + width &&
-        fy + fruitSize > y && fy - fruitSize < y + height);
+    // ”»’è˜g‚ð’†SŠî€‚ÉC³
+    int left = x - width / 2;
+    int right = x + width / 2;
+    int top = y - height / 2;
+    int bottom = y + height / 2;
+
+    return (fx + fruitSize > left && fx - fruitSize < right &&
+        fy + fruitSize > top && fy - fruitSize < bottom);
 }
