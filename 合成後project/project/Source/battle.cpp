@@ -22,9 +22,10 @@ Battle::Battle()
 	hImage[0] = LoadGraph("data/image/tujigiriplayfield.png");
 	hImage[1] = LoadGraph("data/image/ready.png");
 	hImage[2] = LoadGraph("data/image/go.png");
+	hImage[3] = LoadGraph("data/image/play.png");
 
 	isWin = false;
-	gameState = STATE_WAIT;
+	gameState = STATE_TUTORIAL;
 	count = 0; //é¿ç€ÇÃéûä‘
 	point = 0;
 }
@@ -39,6 +40,12 @@ void Battle::Update()
 {
 
 	switch (gameState) {
+
+	case STATE_TUTORIAL:
+		if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
+			gameState = STATE_WAIT;
+		}
+		break;
 
 	case STATE_WAIT:
 
@@ -160,6 +167,10 @@ void Battle::Draw()
 	DrawExtendGraph(0, 0, 1280, 720, hImage[0], 1);
 	
 	switch (gameState) {
+
+	case STATE_TUTORIAL:
+		DrawExtendGraph(0, 0, 1280, 720, hImage[3], 1);
+		break;
 
 	case STATE_WAIT:
 		break;

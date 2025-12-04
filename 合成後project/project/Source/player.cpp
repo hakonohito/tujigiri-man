@@ -40,8 +40,12 @@ void Player::Update()
 
 void Player::Draw()
 {
-	DrawExtendGraph(x, y, x + 300, y + 440 + 30, hImage, 1);
-	//800, 512
+	Battle* battle = FindGameObject<Battle>();
+	if (battle->gameState != STATE_TUTORIAL) {
+		DrawExtendGraph(x, y, x + 300, y + 440 + 30, hImage, 1);
+		//800, 512
+	}
+	
 }
 
 void Player::Change()

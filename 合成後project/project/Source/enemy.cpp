@@ -51,19 +51,22 @@ void Enemy::Draw()
 	//DrawGraph(x, y, hImage[Enum], 1);
 	//DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440 + 10, hImage[1], 1);
 	//352, 512
-	switch (Enum) {
-	case 0:
-		DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum], 1);
-		break;
+	Battle* battle = FindGameObject<Battle>();
+	if (battle->gameState != STATE_TUTORIAL) {
+		switch (Enum) {
+		case 0:
+			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum], 1);
+			break;
 
-	case 1:
-		DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440 + 10, hImage[Enum], 1);
-		break;
+		case 1:
+			DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440 + 10, hImage[Enum], 1);
+			break;
 
-	case 2:
-		DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum], 1);
-		break;
+		case 2:
+			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum], 1);
+			break;
 
+		}
 	}
 	//DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440, hImage[Enum], 1);
 }
