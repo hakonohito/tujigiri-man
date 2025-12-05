@@ -25,6 +25,8 @@ public:
 	
 private:
 
+	int Bcount;
+	bool blink;
 	
 	bool early = false;
 	

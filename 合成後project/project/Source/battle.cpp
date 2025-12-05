@@ -9,6 +9,7 @@
 
 Battle::Battle()
 {
+
 	SEHandle = LoadSoundMem("data/SE_BGM/playscene/和太鼓・尺八・和な場面転換.mp3");
 	assert(SEHandle != -1);
 	SEHandle2 = LoadSoundMem("data/SE_BGM/playscene/シャキン！.mp3");
@@ -23,6 +24,9 @@ Battle::Battle()
 	hImage[1] = LoadGraph("data/image/ready.png");
 	hImage[2] = LoadGraph("data/image/go.png");
 	hImage[3] = LoadGraph("data/image/play.png");
+
+	Bcount = 0;
+	blink = false;
 
 	isWin = false;
 	gameState = STATE_TUTORIAL;
@@ -42,7 +46,15 @@ void Battle::Update()
 	switch (gameState) {
 
 	case STATE_TUTORIAL:
-		if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE)) {
+
+		count += 1;
+
+		if (count % 180 == 0) {
+			count = 0;
+			blink = !blink;
+		}
+
+		if (KeyUtility::CheckTrigger(KEY_INPUT_P)) {
 			gameState = STATE_WAIT;
 		}
 		break;
@@ -170,6 +182,9 @@ void Battle::Draw()
 
 	case STATE_TUTORIAL:
 		DrawExtendGraph(0, 0, 1280, 720, hImage[3], 1);
+		if (!blink) {
+			DrawString(600, 600, "[P]を押してゲーム開始", GetColor(255, 255, 255));
+		}
 		break;
 
 	case STATE_WAIT:
