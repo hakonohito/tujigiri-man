@@ -51,8 +51,8 @@ void TitleScene::Draw()
 	int logoH = 408;
 
 	// 表示したいサイズを決める（例：幅800、高さ300）
-	int dispW = 800;
-	int dispH = 300;
+	int dispW = 800/1.2;
+	int dispH = 300/1.2;
 
 	// 中央に配置する座標を計算
 	int logoX = (WIDTH - dispW) / 2;
