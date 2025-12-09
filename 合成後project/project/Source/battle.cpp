@@ -49,15 +49,17 @@ void Battle::Update()
 
 	case STATE_TUTORIAL:
 
-		count += 1;
+		Bcount += 1;
 
-		if (count % 180 == 0) {
-			count = 0;
+		if (Bcount == 180) {
+			Bcount = 0;
 			blink = !blink;
 		}
 
 		if (KeyUtility::CheckTrigger(KEY_INPUT_P)) {
 			gameState = STATE_WAIT;
+			Bcount = 0;
+			blink = false;
 		}
 		break;
 

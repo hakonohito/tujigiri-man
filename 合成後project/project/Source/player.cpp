@@ -9,7 +9,7 @@ Player::Player()
 	//x1 = 800;
 	x = 215;
 	y = 280;
-	x1 = 765;
+	x1 = 765 + 125; //Changeˆ—Œã‚ÌˆÊ’u@+125•t‚¯‘«‚µ
 }
 
 Player::~Player()

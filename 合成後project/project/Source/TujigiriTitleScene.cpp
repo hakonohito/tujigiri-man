@@ -24,7 +24,7 @@ void TujigiriTitleScene::Update()
 {
 		Bcount += 1;
 
-	if (Bcount % 180 == 0) {
+	if (Bcount == 180) {
 		Bcount = 0;
 		blink = !blink;
 	}
