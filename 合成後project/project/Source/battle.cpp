@@ -9,6 +9,8 @@
 
 Battle::Battle()
 {
+	//仮
+	SetFontSize(20);
 
 	SEHandle = LoadSoundMem("data/SE_BGM/playscene/和太鼓・尺八・和な場面転換.mp3");
 	assert(SEHandle != -1);
@@ -183,7 +185,7 @@ void Battle::Draw()
 	case STATE_TUTORIAL:
 		DrawExtendGraph(0, 0, 1280, 720, hImage[3], 1);
 		if (!blink) {
-			DrawString(600, 600, "[P]を押してゲーム開始", GetColor(255, 255, 255));
+			DrawString(555, 600, "[P]を押してゲーム開始", GetColor(255, 255, 255));
 		}
 		break;
 

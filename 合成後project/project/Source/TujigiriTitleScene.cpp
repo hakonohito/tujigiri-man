@@ -4,6 +4,7 @@
 
 TujigiriTitleScene::TujigiriTitleScene()
 {
+	SetFontSize(20);
 	BGMHandle = LoadSoundMem("data/SE_BGM/titlescene/Driving_Wheel.mp3");
 	assert(BGMHandle != -1);
 	PlaySoundMem(BGMHandle, DX_PLAYTYPE_LOOP);
@@ -52,8 +53,7 @@ void TujigiriTitleScene::Draw()
 	DrawExtendGraph(95, 60, 1112 + 95, 261 + 60, hImage[1], 1);
 	//DrawString(0, 0, "TITLE SCENE", GetColor(255,255,255));
 	if (!blink) {
-		DrawString(100, 400, "[P]を押してゲーム開始", GetColor(255, 255, 255));
+		DrawString(170, 330, "[P]を押してゲーム開始", GetColor(255, 255, 255));
 	}
-	//仮
-	DrawString(0, 0, "[S]Key 選択画面に戻る", GetColor(255, 255, 255));
+	DrawString(0, 0, "仮 [S]Key 選択画面に戻る", GetColor(255, 255, 255));
 }
