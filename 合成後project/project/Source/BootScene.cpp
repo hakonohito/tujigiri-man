@@ -10,7 +10,7 @@ BootScene::~BootScene()
 
 void BootScene::Update()
 {
-	SceneManager::ChangeScene("SELECT"); // 起動が終わったらTitleを表示
+	SceneManager::ChangeScene("SELECT"); // 起動が終わったらSelectSceneを表示
 }
 
 void BootScene::Draw()
