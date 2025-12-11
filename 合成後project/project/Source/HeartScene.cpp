@@ -188,7 +188,7 @@ void HeartScene::Draw()
         girlImage = woman_3;
     }
 
-    DrawGraph(950, 220, girlImage, TRUE); // ← 表示位置はそのまま
+    DrawGraph(950, 260, girlImage, TRUE); // ← 表示位置はそのまま
 
     // 以下、バスケット・フルーツ・スコアなどの描画
     SetFontSize(16);

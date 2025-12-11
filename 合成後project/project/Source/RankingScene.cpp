@@ -32,7 +32,7 @@ void RankingScene::Draw()
     DrawExtendGraph(0, 0, 1280, 720, RankingbackgroundHandle, TRUE);
 
     //女の子を表示
-    DrawGraph(950, 60, RankingplayerHandle, TRUE);
+    DrawGraph(950, 260, RankingplayerHandle, TRUE);
 
     SetFontSize(80); // フォントサイズ
     DrawString(90, 60, "ランキング", GetColor(0, 0, 0));
