@@ -1,6 +1,7 @@
 #include "TujigiriTitleScene.h"
 #include <assert.h>
 #include "utility.h"
+#include "Screen.h"
 
 TujigiriTitleScene::TujigiriTitleScene()
 {
@@ -50,6 +51,7 @@ void TujigiriTitleScene::Draw()
 {
 	extern const char* Version();
 	DrawGraph(0, 0, hImage[0], 1);
+	DrawExtendGraph(0, 0, Screen::WIDTH, Screen::HEIGHT, hImage[0], 1);
 	DrawExtendGraph(95, 60, 1112 + 95, 261 + 60, hImage[1], 1);
 	//DrawString(0, 0, "TITLE SCENE", GetColor(255,255,255));
 	if (!blink) {

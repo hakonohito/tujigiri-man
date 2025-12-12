@@ -6,6 +6,7 @@
 #include <iostream>
 #include <random>
 #include <vector>
+#include "Screen.h"
 
 Battle::Battle()
 {
@@ -180,12 +181,12 @@ void Battle::Update()
 
 void Battle::Draw()
 {
-	DrawExtendGraph(0, 0, 1280, 720, hImage[0], 1);
+	DrawExtendGraph(0, 0, Screen::WIDTH, Screen::HEIGHT, hImage[0], 1);
 	
 	switch (gameState) {
 
 	case STATE_TUTORIAL:
-		DrawExtendGraph(0, 0, 1280, 720, hImage[3], 1);
+		DrawExtendGraph(0, 0, Screen::WIDTH, Screen::HEIGHT, hImage[3], 1);
 		if (!blink) {
 			DrawString(555, 600, "[P]ÇâüÇµÇƒÉQÅ[ÉÄäJén", GetColor(255, 255, 255));
 		}
