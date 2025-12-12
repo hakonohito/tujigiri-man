@@ -13,6 +13,5 @@ private:
 	int Enum = 0;
 	int count = 0;
 	int point = 0;
-	float angle = 0.0f;
 	bool isWin = false;
 };

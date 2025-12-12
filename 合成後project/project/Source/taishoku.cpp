@@ -1,8 +1,6 @@
 #include "taishoku.h"
 #include "battle.h"
 #include <assert.h>
-#define _USE_MATH_DEFINES
-#include <math.h>
 
 Taishoku::Taishoku()
 {
@@ -11,7 +9,6 @@ Taishoku::Taishoku()
 	hImage[2] = LoadGraph("data/image/approval.png");
 	hImage[3] = LoadGraph("data/image/No.png");
 	hImage[4] = LoadGraph("data/image/clear.png");
-	angle = 10.0f * (M_PI / 180.0f);
 	SEHandle = LoadSoundMem("data/SE_BGM/playscene/ÇΩÇ¢Ç÷ÇÒÇÊÇ≠Ç≈Ç´Ç‹ÇµÇΩÅB.mp3");
 	assert(SEHandle != -1);
 
