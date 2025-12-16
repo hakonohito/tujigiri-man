@@ -4,6 +4,7 @@
 #include "fruit.h"
 #include <cstdlib> // rand()
 #include <ctime>   // time()
+#include "ScoreManager.h"
 
 namespace {
     int backgroundHandle;
@@ -163,6 +164,7 @@ void HeartScene::Update()
 
     if (timelimit <= 0) {
         GameOver = true;
+        ScoreManager::AddScore(score); // ← スコア保存！
         SceneManager::ChangeScene("RANKING"); // ← ここでランキング画面へ切り替え！
     }
 
@@ -188,7 +190,7 @@ void HeartScene::Draw()
         girlImage = woman_3;
     }
 
-    DrawGraph(950, 260, girlImage, TRUE); // ← 表示位置はそのまま
+    DrawRotaGraph(1110, 442, 1.2, 0.0, girlImage, TRUE);
 
     // 以下、バスケット・フルーツ・スコアなどの描画
     SetFontSize(16);

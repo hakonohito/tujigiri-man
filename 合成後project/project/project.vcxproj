@@ -161,6 +161,7 @@
     <ClInclude Include="Source\HeartScene.h" />
     <ClInclude Include="Source\player.h" />
     <ClInclude Include="Source\RankingScene.h" />
+    <ClInclude Include="Source\ScoreManager.h" />
     <ClInclude Include="Source\Screen.h" />
     <ClInclude Include="Source\TitleScene.h" />
     <ClInclude Include="Source\TujigiriPlayScene.h" />
@@ -193,6 +194,7 @@
     <ClCompile Include="Source\HeartScene.cpp" />
     <ClCompile Include="Source\player.cpp" />
     <ClCompile Include="Source\RankingScene.cpp" />
+    <ClCompile Include="Source\ScoreManager.cpp" />
     <ClCompile Include="Source\TitleScene.cpp" />
     <ClCompile Include="Source\TujigiriPlayScene.cpp" />
     <ClCompile Include="Source\SceneFactory.cpp" />

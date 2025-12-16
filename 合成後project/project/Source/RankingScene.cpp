@@ -1,6 +1,7 @@
 #include "RankingScene.h"
 #include "DxLib.h"
 #include "../Library/SceneManager.h"
+#include "ScoreManager.h"
 
 int RankingbackgroundHandle;
 
@@ -32,19 +33,18 @@ void RankingScene::Draw()
     DrawExtendGraph(0, 0, 1280, 720, RankingbackgroundHandle, TRUE);
 
     //女の子を表示
-    DrawGraph(950, 260, RankingplayerHandle, TRUE);
+    DrawRotaGraph(1110, 442, 1.2, 0.0, RankingplayerHandle, TRUE);
 
     SetFontSize(80); // フォントサイズ
     DrawString(90, 60, "ランキング", GetColor(0, 0, 0));
 
+    const auto& scores = ScoreManager::GetScores(); 
     SetFontSize(60); // フォントサイズ
-    DrawString(150, 220, "１位：", GetColor(0, 0, 0));
 
-    DrawString(250, 330, "２位：", GetColor(0, 0, 0));
-
-    DrawString(350, 440, "３位：", GetColor(0, 0, 0));
-
-    DrawString(460, 550, "４位：", GetColor(0, 0, 0));
+    DrawFormatString(150, 220, GetColor(0, 0, 0), "１位：%05d", scores.size() > 0 ? scores[0] : 0);
+    DrawFormatString(250, 330, GetColor(0, 0, 0), "２位：%05d", scores.size() > 1 ? scores[1] : 0);
+    DrawFormatString(350, 440, GetColor(0, 0, 0), "３位：%05d", scores.size() > 2 ? scores[2] : 0);
+    DrawFormatString(460, 550, GetColor(0, 0, 0), "４位：%05d", scores.size() > 3 ? scores[3] : 0);
 
     //タイトルへ誘導
     SetFontSize(50); // フォントサイズ

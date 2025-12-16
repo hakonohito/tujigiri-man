@@ -86,6 +86,9 @@
     <ClCompile Include="Source\utility.cpp">
       <Filter>TujigiriPlayScene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ScoreManager.cpp">
+      <Filter>HeartRankingScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -185,6 +188,9 @@
     </ClInclude>
     <ClInclude Include="Source\TitleScene.h">
       <Filter>HeartTitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ScoreManager.h">
+      <Filter>HeartRankingScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
