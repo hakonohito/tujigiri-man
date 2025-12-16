@@ -204,7 +204,8 @@ void HeartScene::Draw()
         girlImage = woman_3;
     }
 
-    DrawRotaGraph(1110, 442, 1.2, 0.0, girlImage, TRUE);
+    DrawGraph(950, 260, girlImage, TRUE); // ← 表示位置はそのまま
+    //DrawRotaGraph(1110, 442, 1.2, 0.0, girlImage, TRUE);
 
     // 以下、バスケット・フルーツ・スコアなどの描画
     SetFontSize(16);
