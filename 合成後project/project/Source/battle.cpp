@@ -100,6 +100,7 @@ void Battle::Update()
 				isWin = false;
 				isAttack = true;
 				gameState = STATE_RESULT;
+				break;
 			}
 			//SPACEÉLÅ[Ç≈îªíË
 			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE) && !early) {

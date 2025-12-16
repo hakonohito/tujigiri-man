@@ -5,8 +5,11 @@ Enemy::Enemy()
 {
 	Enum = 0;
 	hImage[0] = LoadGraph("data/image/jousi.png");
-	hImage[1] = LoadGraph("data/image/kyokutyou.png");
+	hImage[1] = LoadGraph("data/image/kyokutyou2.png");
 	hImage[2] = LoadGraph("data/image/syatyou.png");
+	hImage[3] = LoadGraph("data/image/enemy.png");
+	hImage[4] = LoadGraph("data/image/kyokutyou_2.jpg");
+	hImage[5] = LoadGraph("data/image/syatyou_2.png");
 	//x = 800; 
 	//y = 512;
 	//x1 = 352;
@@ -52,7 +55,7 @@ void Enemy::Draw()
 	//DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440 + 10, hImage[1], 1);
 	//352, 512
 	Battle* battle = FindGameObject<Battle>();
-	if (battle->gameState != STATE_TUTORIAL) {
+	if (battle->gameState != STATE_TUTORIAL && !change) {
 		switch (Enum) {
 		case 0:
 			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum], 1);
@@ -64,6 +67,23 @@ void Enemy::Draw()
 
 		case 2:
 			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum], 1);
+			break;
+
+		}
+	}
+
+	if (battle->gameState != STATE_TUTORIAL && change) {
+		switch (Enum) {
+		case 0:
+			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum + 3], 1);
+			break;
+
+		case 1:
+			DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440 + 10, hImage[Enum + 3], 1);
+			break;
+
+		case 2:
+			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum + 3], 1);
 			break;
 
 		}

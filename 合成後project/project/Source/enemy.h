@@ -11,7 +11,7 @@ public:
 private:
 	bool change = false;
 	bool set = false;
-	int hImage[3];
+	int hImage[6];
 	int Enum;
 	int x = 0;
 	int y = 0;
