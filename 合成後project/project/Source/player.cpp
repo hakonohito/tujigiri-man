@@ -21,13 +21,13 @@ void Player::Update()
 {
 	Battle* battle = FindGameObject<Battle>();
 	if (battle->gameState == STATE_WAIT) {
-		if (change == true) {
+		if (change) {
 			x -= 10;
 			Change();
 			change = false;
 		}
 	}
-	if (battle->isAttack == true && change == false) {
+	if (battle->isAttack && !change) {
 		Change();
 		change = true;
 		move = x;

@@ -25,16 +25,16 @@ Enemy::~Enemy()
 void Enemy::Update() 
 {
 	Battle* battle = FindGameObject<Battle>();
-	if (set == false && battle->gameState == STATE_WAIT) {
+	if (!set && battle->gameState == STATE_WAIT) {
 		Enum = battle->point;
 		set = true;
-		if (change == true) {
+		if (change) {
 			x += 10;
 			Change();
 			change = false;
 		}
 	}
-	if (battle->isAttack == true && change == false) {
+	if (battle->isAttack && !change) {
 		Change();
 		change = true;
 		move = x;
@@ -43,7 +43,7 @@ void Enemy::Update()
 		if (x > (move - 10))
 		x -= 1;
 	}
-	if (battle->isAttack == false && change == true) {
+	if (!battle->isAttack && change) {
 		set = false;
 	}
 
@@ -72,18 +72,37 @@ void Enemy::Draw()
 		}
 	}
 
-	if (battle->gameState != STATE_TUTORIAL && change) {
+
+	//‰¼
+	if (battle->gameState != STATE_TUTORIAL && change && !battle->isWin) {
+		switch (Enum) {
+		case 0:
+			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum], 1);
+			break;
+
+		case 1:
+			DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440 + 10, hImage[Enum], 1);
+			break;
+
+		case 2:
+			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum], 1);
+			break;
+
+		}
+	}
+
+	if (battle->gameState != STATE_TUTORIAL && change && battle->isWin) {
 		switch (Enum) {
 		case 0:
 			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum + 3], 1);
 			break;
 
 		case 1:
-			DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440 + 10, hImage[Enum + 3], 1);
+			DrawExtendGraph(x - 20, y + 50, x + 300 - 50 + 20, y + 440 + 10, hImage[Enum + 3], 1);
 			break;
 
 		case 2:
-			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum + 3], 1);
+			DrawExtendGraph(x - 50, y + 215, x + 320, y + 455, hImage[Enum + 3], 1);
 			break;
 
 		}
