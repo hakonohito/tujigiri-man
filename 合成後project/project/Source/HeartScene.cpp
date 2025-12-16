@@ -13,10 +13,21 @@ namespace {
     int woman_2;    // woman_2.png（スコア2000以上5000未満）
     int woman_3;    // woman_3.png（スコア5000以上）
 };
+// 効果音ハンドル
+int bgmHandle;
+int selectSE;
+int catchSE;
+int beepSE;
+
 // コンストラクタ：ゲーム開始時の初期化
 HeartScene::HeartScene()
     : basket(LoadGraph("data/image/loveletter.jpg")) // ← ここで初期化！
 {
+	//サウンドロード
+    bgmHandle = LoadSoundMem("document/sound/BGM.mp3");
+    selectSE = LoadSoundMem("document/sound/select.mp3");
+    catchSE = LoadSoundMem("document/sound/catchsound.mp3");
+    beepSE = LoadSoundMem("document/sound/ビープ音4.mp3");
 
     backgroundHandle = LoadGraph("data/image/playfield.png"); // 画像パスは適宜変更
 
@@ -94,6 +105,7 @@ void HeartScene::Update()
     {
         if (CheckHitKey(KEY_INPUT_RETURN))
         {
+            PlaySoundMem(selectSE, DX_PLAYTYPE_BACK); // ← ここで音を鳴らす
             SceneManager::ChangeScene("TITLE");
         }
 
@@ -127,12 +139,15 @@ void HeartScene::Update()
             // ハートの種類ごとに得点を変える
             if (f.type == 0) {        // 赤ハート
                 score += 100;
+                PlaySoundMem(catchSE, DX_PLAYTYPE_BACK); // ← 赤ハート音
             }
             else if (f.type == 1) { // 青ハート
                 score -= 50;
+                PlaySoundMem(catchSE, DX_PLAYTYPE_BACK); // ← 赤ハート音
             }
             else if (f.type == 2) { // 黄色ハート
                 score += 300;
+                PlaySoundMem(catchSE, DX_PLAYTYPE_BACK); // ← 黄色ハート音
             }
 
             // ハートの生成を中央エリアに限定
