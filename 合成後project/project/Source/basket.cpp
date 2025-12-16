@@ -38,7 +38,7 @@ void Basket::Draw()
     int top = y - height / 2;
     int bottom = y + height / 2;
     // 判定枠を可視化（デバッグ用）
-    DrawBox(left, top, right, bottom, GetColor(255, 0, 0), FALSE); // 赤枠
+    //DrawBox(left, top, right, bottom, GetColor(255, 0, 0), FALSE); // 赤枠
 }
 
 bool Basket::CheckCatch(float fx, float fy)
