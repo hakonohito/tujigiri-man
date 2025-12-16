@@ -89,6 +89,9 @@
     <ClCompile Include="Source\ScoreManager.cpp">
       <Filter>HeartRankingScene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SoundManager.cpp">
+      <Filter>HeartPlayScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -191,6 +194,9 @@
     </ClInclude>
     <ClInclude Include="Source\ScoreManager.h">
       <Filter>HeartRankingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SoundManager.h">
+      <Filter>HeartPlayScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

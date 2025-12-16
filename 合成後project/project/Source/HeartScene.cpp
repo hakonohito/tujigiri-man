@@ -6,6 +6,7 @@
 #include <ctime>   // time()
 #include "ScoreManager.h"
 
+
 namespace {
     int backgroundHandle;
     int pict;
@@ -24,10 +25,9 @@ HeartScene::HeartScene()
     : basket(LoadGraph("data/image/loveletter.jpg")) // ← ここで初期化！
 {
 	//サウンドロード
-    bgmHandle = LoadSoundMem("document/sound/BGM.mp3");
-    selectSE = LoadSoundMem("document/sound/select.mp3");
-    catchSE = LoadSoundMem("document/sound/catchsound.mp3");
-    beepSE = LoadSoundMem("document/sound/ビープ音4.mp3");
+    selectSE = LoadSoundMem("data/SE_BGM/heartgamescene/select.mp3");
+    catchSE = LoadSoundMem("data/SE_BGM/heartgamescene/catchsound.mp3");
+    beepSE = LoadSoundMem("data/SE_BGM/heartgamescene/ビープ音4.mp3");
 
     backgroundHandle = LoadGraph("data/image/playfield.png"); // 画像パスは適宜変更
 
@@ -105,7 +105,6 @@ void HeartScene::Update()
     {
         if (CheckHitKey(KEY_INPUT_RETURN))
         {
-            PlaySoundMem(selectSE, DX_PLAYTYPE_BACK); // ← ここで音を鳴らす
             SceneManager::ChangeScene("TITLE");
         }
 
@@ -143,7 +142,7 @@ void HeartScene::Update()
             }
             else if (f.type == 1) { // 青ハート
                 score -= 50;
-                PlaySoundMem(catchSE, DX_PLAYTYPE_BACK); // ← 赤ハート音
+                PlaySoundMem(beepSE, DX_PLAYTYPE_BACK); // ← 赤ハート音
             }
             else if (f.type == 2) { // 黄色ハート
                 score += 300;

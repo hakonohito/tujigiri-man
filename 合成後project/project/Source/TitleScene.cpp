@@ -3,6 +3,7 @@
 #include "../Library/SceneManager.h"
 #include "HeartScene.h"
 #include "Screen.h"
+#include "SoundManager.h"
 
 int logoHandle; // ロゴ画像のハンドル
 int titlebackgroundHandle; //背景画像のハンドル
@@ -14,6 +15,10 @@ TitleScene::TitleScene()
 {
 	logoHandle = LoadGraph("data/image/gamelogo.png");
 	titlebackgroundHandle = LoadGraph("data/image/title_background.png");
+	
+	//ここでBGMを初期化＆再生
+	SoundManager::Init();     // BGMロード（最初のシーンで一度だけ）
+	SoundManager::PlayBGM();  // ループ再生開始
 }
 
 TitleScene::~TitleScene()
