@@ -1,4 +1,4 @@
-#include "RankingScene.h"
+ï»¿#include "RankingScene.h"
 #include "DxLib.h"
 #include "../Library/SceneManager.h"
 #include "ScoreManager.h"
@@ -10,9 +10,9 @@ int RankingplayerHandle;
 RankingScene::RankingScene()
 {
 
-    RankingbackgroundHandle = LoadGraph("data/image/ranking.png");
+    RankingbackgroundHandle = LoadGraph("data/image/ranking_background.png");
 
-    RankingplayerHandle = LoadGraph("data/image/woman_3.png");
+    RankingplayerHandle = LoadGraph("data/image/woman_1.png");
 
 
 }
@@ -20,7 +20,7 @@ RankingScene::~RankingScene() {}
 
 void RankingScene::Update()
 {
-    // TƒL[‚Åƒ^ƒCƒgƒ‹‚É–ß‚é
+    // Tã‚­ãƒ¼ã§ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚‹
     if (CheckHitKey(KEY_INPUT_T)) {
         SceneManager::ChangeScene("TITLE");
     }
@@ -29,27 +29,42 @@ void RankingScene::Update()
 void RankingScene::Draw()
 {
 
-    // ”wŒi‰æ‘œ‚ğ‰æ–Ê‘S‘Ì‚É•\¦
+    // èƒŒæ™¯ç”»åƒã‚’ç”»é¢å…¨ä½“ã«è¡¨ç¤º
     DrawExtendGraph(0, 0, 1280, 720, RankingbackgroundHandle, TRUE);
 
-    //—‚Ìq‚ğ•\¦
-    DrawGraph(950, 260, RankingplayerHandle, TRUE); // © •\¦ˆÊ’u‚Í‚»‚Ì‚Ü‚Ü
+    //å¥³ã®å­ã‚’è¡¨ç¤º
+    DrawGraph(980, 280, RankingplayerHandle, TRUE); // â† è¡¨ç¤ºä½ç½®ã¯ãã®ã¾ã¾
 
-    SetFontSize(80); // ƒtƒHƒ“ƒgƒTƒCƒY
-    DrawString(90, 60, "ƒ‰ƒ“ƒLƒ“ƒO", GetColor(0, 0, 0));
+    SetFontSize(80); // ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º
+    DrawString(95, 70, "ãƒ©ãƒ³ã‚­ãƒ³ã‚°", GetColor(0, 0, 0));
 
     const auto& scores = ScoreManager::GetScores(); 
-    SetFontSize(60); // ƒtƒHƒ“ƒgƒTƒCƒY
+    SetFontSize(60); // ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º
 
-    DrawFormatString(150, 220, GetColor(0, 0, 0), "‚PˆÊF%05d", scores.size() > 0 ? scores[0] : 0);
-    DrawFormatString(250, 330, GetColor(0, 0, 0), "‚QˆÊF%05d", scores.size() > 1 ? scores[1] : 0);
-    DrawFormatString(350, 440, GetColor(0, 0, 0), "‚RˆÊF%05d", scores.size() > 2 ? scores[2] : 0);
-    DrawFormatString(460, 550, GetColor(0, 0, 0), "‚SˆÊF%05d", scores.size() > 3 ? scores[3] : 0);
+    int lastScore = ScoreManager::GetLastScore();
+    int rank = ScoreManager::GetRankOfLastScore(); // æœ€æ–°ã‚¹ã‚³ã‚¢ã®é †ä½ï¼ˆ0ã€œ2ï¼‰
+    bool blink = (GetNowCount() / 300) % 2 == 0;   // 300msã”ã¨ã«ON/OFF
 
-    //ƒ^ƒCƒgƒ‹‚Ö—U“±
-    SetFontSize(50); // ƒtƒHƒ“ƒgƒTƒCƒY
-    DrawString(60, 520, "ƒ^ƒCƒgƒ‹‚Ö", GetColor(0, 0, 0));
-    DrawString(120, 600, "TƒL[", GetColor(0, 0, 0));
+    int color1 = (rank == 0 && blink) ? GetColor(255, 0, 0) : GetColor(0, 0, 0);
+    int color2 = (rank == 1 && blink) ? GetColor(255, 0, 0) : GetColor(0, 0, 0);
+    int color3 = (rank == 2 && blink) ? GetColor(255, 0, 0) : GetColor(0, 0, 0);
+
+    DrawFormatString(150, 240, color1, "ï¼‘ä½ï¼š%05d", scores.size() > 0 ? scores[0] : 0);
+    DrawFormatString(250, 400, color2, "ï¼’ä½ï¼š%05d", scores.size() > 1 ? scores[1] : 0);
+    DrawFormatString(350, 560, color3, "ï¼“ä½ï¼š%05d", scores.size() > 2 ? scores[2] : 0);
+
+    // ã€Œã‚ãªãŸã®ã‚¹ã‚³ã‚¢ã€ã‚’è¡¨ç¤º
+    SetFontSize(50); 
+    DrawString(800, 100, "ã‚ãªãŸã®ã‚¹ã‚³ã‚¢ã¯", GetColor(0, 0, 0));
+    
+    SetFontSize(60);
+    DrawFormatString(880, 100, GetColor(0, 0, 255),"\n %05d ", lastScore);
+
+    //ã‚¿ã‚¤ãƒˆãƒ«ã¸èª˜å°
+    SetFontSize(50); 
+    DrawString(40, 540, "ã‚¿ã‚¤ãƒˆãƒ«ã¸", GetColor(0, 0, 0));
+    SetFontSize(40); 
+    DrawString(100, 620, "Tã‚­ãƒ¼", GetColor(0, 0, 0));
 
 
 }
