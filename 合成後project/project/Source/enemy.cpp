@@ -69,7 +69,7 @@ void Enemy::Draw()
 			break;
 
 		case 2:
-			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum], 1);
+			DrawExtendGraph(x, y - 50 + 10, x + 300, y + 440 + 10, hImage[Enum], 1);
 			break;
 
 		}
@@ -87,7 +87,7 @@ void Enemy::Draw()
 			break;
 
 		case 2:
-			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum + 6], 1);
+			DrawExtendGraph(x, y - 50 + 10, x + 300, y + 440 + 10, hImage[Enum + 6], 1);
 			break;
 
 		}
