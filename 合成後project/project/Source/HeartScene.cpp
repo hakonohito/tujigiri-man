@@ -14,6 +14,21 @@ namespace {
     int woman_2;    // woman_2.png（スコア2000以上5000未満）
     int woman_3;    // woman_3.png（スコア5000以上）
 };
+
+// ハートの種類に応じて速度を返す関数
+int GetSpeedByType(int type) {
+    switch (type) {
+    case 0: 
+        return 2; // 基準速度
+    case 1: 
+        return 2; 
+    case 2: // 黄
+        return 4; // 赤青の2倍
+    default:
+        return 2; // 安全策
+    }
+}
+
 // 効果音ハンドル
 int bgmHandle;
 int selectSE;
@@ -42,7 +57,7 @@ HeartScene::HeartScene()
 
     srand((unsigned int)time(nullptr)); // 乱数初期化
 
-    const int fruitCount = 3;
+    const int fruitCount = 6; //ハート落下個数　調整場所
 
     //ハート画像をロード
     int redpict = LoadGraph("data/image/heart_red.png");
@@ -56,24 +71,16 @@ HeartScene::HeartScene()
     for (int i = 0; i < fruitCount; ++i)
     {
         fruit f;
-        // ここで範囲を渡す！
         f.setDropArea(dropAreaLeft, dropAreaRight);
 
-        f.x = dropAreaLeft + rand() % (dropAreaRight - dropAreaLeft);// 中央枠に限定
+        f.x = dropAreaLeft + rand() % (dropAreaRight - dropAreaLeft); // 中央枠に限定
         f.y = rand() % 480 - 480;
         f.type = rand() % 3;
 
-        if (f.type == 0) {        // 赤ハート 60px/秒
-            f.dptime = 1;
-        }
-        else if (f.type == 1) { // 青ハート 60px/秒
-            f.dptime = 1;
-        }
-        else if (f.type == 2) { // 黄色ハート（赤の2倍速）120px/秒
-            f.dptime = 2;
-        }
+        //ここを関数呼び出しに変更
+        f.dptime = GetSpeedByType(f.type);
 
-        //ここでロード済みハンドルを渡す
+        // 画像ハンドルを渡す
         f.redpict = redpict;
         f.bluepict = bluepict;
         f.yellowpict = yellowpict;
@@ -153,24 +160,18 @@ void HeartScene::Update()
             const int dropAreaLeft = 320 + 96;
             const int dropAreaRight = 960 - 96;
 
-            f.setDropArea(dropAreaLeft, dropAreaRight); //ここでも渡す！
+            f.setDropArea(dropAreaLeft, dropAreaRight);
 
             f.x = dropAreaLeft + rand() % (dropAreaRight - dropAreaLeft);
             f.y = rand() % 480 - 480;
             f.type = rand() % 3;
 
-            if (f.type == 0) {        // 赤ハート 60px/秒
-                f.dptime = 1;
-            }
-            else if (f.type == 1) { // 青ハート 60px/秒
-                f.dptime = 1;
-            }
-            else if (f.type == 2) { // 黄色ハート（赤の2倍速） 120px/秒
-                f.dptime = 2;
-            }
+            //ここを関数呼び出しに変更
+            f.dptime = GetSpeedByType(f.type);
 
             f.spwandelay = rand() % 60;
             f.active = false;
+
         }
     }
 

@@ -4,11 +4,10 @@
 
 fruit::fruit()
 {
-    // dropLeft, dropRight は setDropArea() で設定される前提
     x = dropLeft + rand() % (dropRight - dropLeft);
     y = -64;
-    dptime = 4;
     type = rand() % 3;
+    dptime = GetSpeedByType(type); // ← 関数で速度を決定
 }
 
 fruit::~fruit()
@@ -19,11 +18,11 @@ void fruit::Update()
 {
     y += dptime;
 
-    if (y > 720) //画面下まで来たら再生成
-    {
+    if (y > 720) {
         type = rand() % 3;
-        x = dropLeft + rand() % (dropRight - dropLeft); // 範囲を使う
+        x = dropLeft + rand() % (dropRight - dropLeft);
         y = -64;
+        dptime = GetSpeedByType(type); // ← 再生成時も速度を更新
     }
 }
 

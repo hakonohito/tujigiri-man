@@ -16,12 +16,16 @@ public:
     int bluepict;
     int yellowpict;
     int dptime; // 落下速度（1フレームあたりの移動量）
-    float x, y;// 果物の位置（x座標とy座標）
-    int type; // 果物の種類 ※例（0:いちご, 1:みかん, 2:ぶどう）
+    float x, y;// ハートの位置（x座標とy座標）
+    int type; // ハートの種類 ※（0:赤, 1:青, 2:黄色）
     int spwandelay;// 出現までの待ち時間（未使用なら今後の拡張用）
 private:
     //追加：中央エリアの範囲を保持する変数
     int dropLeft = 0;
     int dropRight = 640;
+   
 };
+
+
+int GetSpeedByType(int type);//ハート速度関数の呼び出し　　　HeartScene.cppから
 

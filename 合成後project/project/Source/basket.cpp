@@ -2,10 +2,10 @@
 
 Basket::Basket(int imageHandle)
 {
-    x = 320;
+    x = 1280/2; //ラブレター初期位置
     y = 580;
-    width = 116*1.5;
-    height = 71*1.5;
+    width = 90; 
+    height = 30; 
     basketImage = imageHandle;
 }
 
@@ -15,15 +15,15 @@ Basket::~Basket() {}
 void Basket::Update()
 {
     if (CheckHitKey(KEY_INPUT_A)) {
-        x -= 78;// ← Aキーで左に78ピクセル移動 (赤ハートの1.3倍)
+        x -= 6;// ← Aキーで左に6ピクセル移動 (赤ハートの倍)
     }
     if (CheckHitKey(KEY_INPUT_D)) {
-        x += 78;// ← Dキーで左に78ピクセル移動
+        x += 6;// ← Dキー
     }
 
     // loveletterが画面外に出ないように制限
-    const int leftLimit = 320 + 110;
-    const int rightLimit = 960 + 60;
+    const int leftLimit = 400;
+    const int rightLimit = 970;
 
     if (x < leftLimit) x = leftLimit;
     if (x > rightLimit - width) x = rightLimit - width;
@@ -31,7 +31,7 @@ void Basket::Update()
 
 void Basket::Draw()
 {
-    DrawRotaGraph(x, y, 1.5, 0.0, basketImage, TRUE); // love letter 画像　1.5倍拡大
+    DrawRotaGraph(x, y, 1.0, 0.0, basketImage, TRUE); // love letter 画像サイズ　116＊71
     // 判定枠を中心基準で描画
     int left = x - width / 2;
     int right = x + width / 2;
