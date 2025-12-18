@@ -53,6 +53,7 @@ void TujigiriTitleScene::Draw()
 	DrawExtendGraph(0, 0, Screen::WIDTH, Screen::HEIGHT, hImage[0], 1);
 	DrawExtendGraph(95, 60, 1112 + 95, 261 + 60, hImage[1], 1);
 	//DrawString(0, 0, "TITLE SCENE", GetColor(255,255,255));
+	SetFontSize(20);
 	if (!blink) {
 		DrawString(170, 330, "[P]‚ğ‰Ÿ‚µ‚ÄƒQ[ƒ€ŠJn", GetColor(255, 255, 255));
 	}
