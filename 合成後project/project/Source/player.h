@@ -11,7 +11,7 @@ public:
 	void Change();
 private:
 	bool change = false;
-	int hImage;
+	int hImage[3];
 	int x = 0;
 	int y = 0;
 	int x1 = 0;

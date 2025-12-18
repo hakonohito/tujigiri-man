@@ -3,7 +3,9 @@
 
 Player::Player()
 {
-	hImage = LoadGraph("data/image/player.png");
+	hImage[0] = LoadGraph("data/image/player.png");
+	hImage[1] = LoadGraph("data/image/player_win.png");
+	hImage[2] = LoadGraph("data/image/player_lose.png");
 	//x = 352; 
 	//y = 512;
 	//x1 = 800;
@@ -41,9 +43,17 @@ void Player::Update()
 void Player::Draw()
 {
 	Battle* battle = FindGameObject<Battle>();
-	if (battle->gameState != STATE_TUTORIAL) {
-		DrawExtendGraph(x, y, x + 300, y + 440 + 30, hImage, 1);
+	if (battle->gameState != STATE_TUTORIAL && !change) {
+		DrawExtendGraph(x, y, x + 300, y + 440 + 30, hImage[0], 1);
 		//800, 512
+	}
+
+	if (battle->gameState != STATE_TUTORIAL && change && battle->isWin) {
+		DrawExtendGraph(x, y - 32, x + 300, y + 440 + 30 - 32, hImage[1], 1);
+	}
+
+	if (battle->gameState != STATE_TUTORIAL && change && !battle->isWin) {
+		DrawExtendGraph(x, y + 75, x + 300, y + 440 + 10, hImage[2], 1);
 	}
 	
 }
