@@ -58,7 +58,7 @@ void RankingScene::Draw()
     DrawString(800, 100, "あなたのスコアは", GetColor(0, 0, 0));
     
     SetFontSize(60);
-    DrawFormatString(880, 100, GetColor(0, 0, 255),"\n %05d ", lastScore);
+    DrawFormatString(880, 100, GetColor(0, 0, 0),"\n %05d ", lastScore);
 
     //タイトルへ誘導
     SetFontSize(50); 
