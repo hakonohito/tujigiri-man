@@ -5,14 +5,12 @@
 
 int RankingbackgroundHandle;
 
-int RankingplayerHandle;
 
 RankingScene::RankingScene()
 {
 
     RankingbackgroundHandle = LoadGraph("data/image/ranking_background.png");
 
-    RankingplayerHandle = LoadGraph("data/image/woman_1.png");
 
 
 }
@@ -31,9 +29,7 @@ void RankingScene::Draw()
 
     // 背景画像を画面全体に表示
     DrawExtendGraph(0, 0, 1280, 720, RankingbackgroundHandle, TRUE);
-
-    //女の子を表示
-    DrawGraph(980, 280, RankingplayerHandle, TRUE); // ← 表示位置はそのまま
+   
 
     SetFontSize(80); // フォントサイズ
     DrawString(95, 70, "ランキング", GetColor(0, 0, 0));
@@ -45,6 +41,20 @@ void RankingScene::Draw()
     int rank = ScoreManager::GetRankOfLastScore(); // 最新スコアの順位（0〜2）
     bool blink = (GetNowCount() / 300) % 2 == 0;   // 300msごとにON/OFF
 
+    // 女の子の画像をスコアに応じて選ぶ
+    int girlHandle = 0;
+    if (lastScore < 2000) {
+        girlHandle = LoadGraph("data/image/woman_1.png");
+    }
+    else if (lastScore < 5000) {
+        girlHandle = LoadGraph("data/image/woman_2.png");
+    }
+    else {
+        girlHandle = LoadGraph("data/image/woman_3.png");
+    }
+
+    // 表示
+    DrawGraph(980, 280, girlHandle, TRUE);
     int color1 = (rank == 0 && blink) ? GetColor(255, 0, 0) : GetColor(0, 0, 0);
     int color2 = (rank == 1 && blink) ? GetColor(255, 0, 0) : GetColor(0, 0, 0);
     int color3 = (rank == 2 && blink) ? GetColor(255, 0, 0) : GetColor(0, 0, 0);
