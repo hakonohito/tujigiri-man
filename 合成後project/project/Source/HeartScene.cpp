@@ -261,11 +261,11 @@ void HeartScene::Draw()
     DrawFormatString(170, 630, GetColor(0, 0, 0), "+300点");
 
     // ハート生成範囲を赤線で表示
-    const int dropAreaLeft = 320 + 96;
-    const int dropAreaRight = 960 - 96;
+    //const int dropAreaLeft = 320 + 96;
+    //const int dropAreaRight = 960 - 96;
 
     // 上下の位置は画面全体に合わせて線を引く
-    DrawLine(dropAreaLeft, 0, dropAreaLeft, 720, GetColor(255, 0, 0));   // 左の赤線
-    DrawLine(dropAreaRight, 0, dropAreaRight, 720, GetColor(255, 0, 0)); // 右の赤線
+    //DrawLine(dropAreaLeft, 0, dropAreaLeft, 720, GetColor(255, 0, 0));   // 左の赤線
+    //DrawLine(dropAreaRight, 0, dropAreaRight, 720, GetColor(255, 0, 0)); // 右の赤線
 
 }
