@@ -31,6 +31,12 @@ void TitleScene::Update()
 	/*if (CheckHitKey(KEY_INPUT_P)) {
 		SceneManager::ChangeScene("PLAY"); //ゲーム開始！
 	}*/ // コメントしました　齊藤
+
+	// Sキーでセレクトシーンへ
+	if (CheckHitKey(KEY_INPUT_S)) {
+		SceneManager::ChangeScene("SELECT");
+	}
+
 	if (CheckHitKey(KEY_INPUT_P)) {
 		SceneManager::ChangeScene("HEART"); //ゲーム開始！
 	}
@@ -94,6 +100,8 @@ void TitleScene::Draw()
 	// キー案内（小さく、下に）
 	SetFontSize(16);
 	DrawString(rankX + 110, btnY + 60, "[Rキー]", GetColor(200, 200, 200));
+
+	DrawString(0, 0, "仮 [S]Key 選択画面に戻る", GetColor(255, 255, 255));
 
 
 
