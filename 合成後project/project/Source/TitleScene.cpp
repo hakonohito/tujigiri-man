@@ -12,6 +12,7 @@ static const int WIDTH = 1280;
 static const int HEIGHT = 720;
 
 //効果音ハンドル
+static int titleBGM;
 static int selectSE;
 
 TitleScene::TitleScene()
@@ -19,14 +20,17 @@ TitleScene::TitleScene()
 	logoHandle = LoadGraph("data/image/gamelogo.png");
 	titlebackgroundHandle = LoadGraph("data/image/title_background.png");
 	
-	//ここでBGMを初期化＆再生
-	SoundManager::Init();     // BGMロード（最初のシーンで一度だけ）
+	//BGMロード
+	titleBGM = LoadSoundMem("data/SE_BGM/heartgamescene/BGM.mp3");
+	PlaySoundMem(titleBGM, DX_PLAYTYPE_LOOP);
+
 
 	selectSE = LoadSoundMem("data/SE_BGM/heartgamescene/select.mp3");
 }
 
 TitleScene::~TitleScene()
 {
+	StopSoundMem(titleBGM);
 	DeleteGraph(logoHandle);
 }
 

@@ -32,7 +32,7 @@ int GetSpeedByType(int type) {
 }
 
 // 効果音ハンドル
-
+static int playBGM;
 int catchSE;
 int beepSE;
 
@@ -40,6 +40,10 @@ int beepSE;
 HeartScene::HeartScene()
     : basket(LoadGraph("data/image/loveletter.jpg")) // ← ここで初期化！
 {
+    //BGMロード
+    playBGM = LoadSoundMem("data/SE_BGM/heartgamescene/BGM.mp3");
+    PlaySoundMem(playBGM, DX_PLAYTYPE_LOOP);
+
     //チュートリアル画像ロード
     tutorialHandle = LoadGraph("data/image/heart_Tutorial.png");
     showTutorial = true;
@@ -106,6 +110,7 @@ HeartScene::HeartScene()
 // デストラクタ
 HeartScene::~HeartScene()
 {
+    StopSoundMem(playBGM); //シーン終了時にBGMを止める
     DeleteGraph(backgroundHandle);
 }
 

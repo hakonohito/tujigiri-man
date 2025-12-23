@@ -7,6 +7,7 @@
 int RankingbackgroundHandle;
 
 //効果音ハンドル
+static int rankingBGM;
 int RselectSE;
 
 
@@ -15,8 +16,16 @@ RankingScene::RankingScene()
     RankingbackgroundHandle = LoadGraph("data/image/ranking_background.png");
 
     RselectSE = LoadSoundMem("data/SE_BGM/heartgamescene/select.mp3");
+
+    //BGMロード
+    rankingBGM = LoadSoundMem("data/SE_BGM/heartgamescene/BGM.mp3");
+    PlaySoundMem(rankingBGM, DX_PLAYTYPE_LOOP);
+
 }
-RankingScene::~RankingScene() {}
+RankingScene::~RankingScene() 
+{
+    StopSoundMem(rankingBGM);
+}
 
 void RankingScene::Update()
 {
