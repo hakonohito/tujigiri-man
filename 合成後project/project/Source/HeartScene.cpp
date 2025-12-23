@@ -271,11 +271,21 @@ void HeartScene::Draw()
 
     //  Score文字表示  
     DrawString(130, 240, "Score", GetColor(0, 0, 0));
+    SetFontSize(72);
+    //  TimeLimit表示（秒数）残り10秒以下で点滅
+    int timeSec = timelimit / 60;
+    int timeColor;
+    if (timeSec <= 10) {
+        bool blink = (GetNowCount() / 300) % 2 == 0;  // 300msごとに点滅
+        timeColor = blink ? GetColor(255, 0, 0) : GetColor(0, 0, 0);
+    }
+    else {
+        timeColor = GetColor(0, 0, 0); // 通常は黒
+    }
 
-    SetFontSize(72); // フォントサイズ設定
-    //  TimeLimit表示（秒数）
-    DrawFormatString(190, 160, GetColor(0, 0, 0), "%d", timelimit / 60);
-    SetFontSize(70); // フォントサイズ設定
+    DrawFormatString(190, 160, timeColor, "%d", timeSec);
+    SetFontSize(70); 
+
     //  Scorenumber表示（得点）  スコアを5桁ゼロ埋めで表示
     DrawFormatString(80, 300, GetColor(0, 0, 0), "%05d", score);
 
