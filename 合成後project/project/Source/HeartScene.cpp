@@ -9,6 +9,7 @@
 
 
 namespace {
+    int tutorialHandle;
     int backgroundHandle;
     int pict;
     int woman_1; // woman_1.png（スコア2000未満）
@@ -39,6 +40,9 @@ int beepSE;
 HeartScene::HeartScene()
     : basket(LoadGraph("data/image/loveletter.jpg")) // ← ここで初期化！
 {
+    //チュートリアル画像ロード
+    tutorialHandle = LoadGraph("data/image/heart_Tutorial.png");
+    showTutorial = true;
 
 	//サウンドロード
     catchSE = LoadSoundMem("data/SE_BGM/heartgamescene/catchsound.mp3");
@@ -108,6 +112,17 @@ HeartScene::~HeartScene()
 
 void HeartScene::Update()
 {
+    if (showTutorial) {
+        if (CheckHitKey(KEY_INPUT_P)) {
+            showTutorial = false;
+
+            //チュートリアル終了時にゲーム開始タイマーをリセット
+            startTime = GetNowCount();
+            isReadyToStart = false;
+        }
+        return;
+    }
+
     if (GameOver)
     {
         if (CheckHitKey(KEY_INPUT_RETURN))
@@ -188,6 +203,12 @@ void HeartScene::Update()
 // 描画処理：毎フレーム画面に描画
 void HeartScene::Draw()
 {
+    //チュートリアル画像を表示
+    if (showTutorial) {
+        DrawExtendGraph(0, 0, 1280, 720, tutorialHandle, TRUE);
+        return; // ← チュートリアル中は他の描画をしない
+    }
+
 
     // 背景画像を画面全体に表示
     DrawExtendGraph(0, 0, 1280, 720, backgroundHandle, TRUE);

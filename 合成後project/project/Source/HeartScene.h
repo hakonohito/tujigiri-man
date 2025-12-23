@@ -24,7 +24,7 @@ private:
 	bool GameOver;
 	bool isReadyToStart; // Spaceキー待ち状態
 	int startTime; // PlaySceneに入った時刻（ミリ秒）
-
+	bool showTutorial = true;
 
 
 	std::vector<fruit> fruits;
