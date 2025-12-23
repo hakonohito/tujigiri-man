@@ -2,17 +2,19 @@
 #include "DxLib.h"
 #include "../Library/SceneManager.h"
 #include "ScoreManager.h"
+#include "SoundManager.h"
 
 int RankingbackgroundHandle;
+
+//効果音ハンドル
+int RselectSE;
 
 
 RankingScene::RankingScene()
 {
-
     RankingbackgroundHandle = LoadGraph("data/image/ranking_background.png");
 
-
-
+    RselectSE = LoadSoundMem("data/SE_BGM/heartgamescene/select.mp3");
 }
 RankingScene::~RankingScene() {}
 
@@ -20,6 +22,7 @@ void RankingScene::Update()
 {
     // Tキーでタイトルに戻る
     if (CheckHitKey(KEY_INPUT_T)) {
+        PlaySoundMem(RselectSE, DX_PLAYTYPE_BACK);
         SceneManager::ChangeScene("TITLE");
     }
 }

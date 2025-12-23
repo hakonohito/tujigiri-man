@@ -8,8 +8,14 @@ void SoundManager::Init() {
 }
 
 void SoundManager::PlayBGM() {
+    //‚·‚Å‚ÉÄ¶’†‚È‚ç‰½‚à‚µ‚È‚¢
+    if (CheckSoundMem(bgmHandle) == 1) {
+        return;
+    }
+
     PlaySoundMem(bgmHandle, DX_PLAYTYPE_LOOP);
 }
+
 
 void SoundManager::StopBGM() {
     StopSoundMem(bgmHandle);

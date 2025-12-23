@@ -11,6 +11,9 @@ int titlebackgroundHandle; //背景画像のハンドル
 static const int WIDTH = 1280;
 static const int HEIGHT = 720;
 
+//効果音ハンドル
+static int selectSE;
+
 TitleScene::TitleScene()
 {
 	logoHandle = LoadGraph("data/image/gamelogo.png");
@@ -18,7 +21,8 @@ TitleScene::TitleScene()
 	
 	//ここでBGMを初期化＆再生
 	SoundManager::Init();     // BGMロード（最初のシーンで一度だけ）
-	SoundManager::PlayBGM();  // ループ再生開始
+
+	selectSE = LoadSoundMem("data/SE_BGM/heartgamescene/select.mp3");
 }
 
 TitleScene::~TitleScene()
@@ -34,15 +38,18 @@ void TitleScene::Update()
 
 	// Sキーでセレクトシーンへ
 	if (CheckHitKey(KEY_INPUT_S)) {
+		PlaySoundMem(selectSE, DX_PLAYTYPE_BACK);
 		SceneManager::ChangeScene("SELECT");
 	}
 
 	if (CheckHitKey(KEY_INPUT_P)) {
+		PlaySoundMem(selectSE, DX_PLAYTYPE_BACK);
 		SceneManager::ChangeScene("HEART"); //ゲーム開始！
 	}
 
 	if (CheckHitKey(KEY_INPUT_R)) {
-		SceneManager::ChangeScene("RANKING"); //ゲーム開始！
+		PlaySoundMem(selectSE, DX_PLAYTYPE_BACK);
+		SceneManager::ChangeScene("RANKING"); //ランキングシーンに移動
 	}
 
 	if (CheckHitKey(KEY_INPUT_ESCAPE))

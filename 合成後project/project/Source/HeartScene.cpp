@@ -5,6 +5,7 @@
 #include <cstdlib> // rand()
 #include <ctime>   // time()
 #include "ScoreManager.h"
+#include "SoundManager.h"
 
 
 namespace {
@@ -30,8 +31,7 @@ int GetSpeedByType(int type) {
 }
 
 // 効果音ハンドル
-int bgmHandle;
-int selectSE;
+
 int catchSE;
 int beepSE;
 
@@ -39,8 +39,8 @@ int beepSE;
 HeartScene::HeartScene()
     : basket(LoadGraph("data/image/loveletter.jpg")) // ← ここで初期化！
 {
+
 	//サウンドロード
-    selectSE = LoadSoundMem("data/SE_BGM/heartgamescene/select.mp3");
     catchSE = LoadSoundMem("data/SE_BGM/heartgamescene/catchsound.mp3");
     beepSE = LoadSoundMem("data/SE_BGM/heartgamescene/ビープ音4.mp3");
 
