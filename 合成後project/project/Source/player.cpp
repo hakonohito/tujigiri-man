@@ -48,11 +48,11 @@ void Player::Draw()
 		//800, 512
 	}
 
-	if (battle->gameState != STATE_TUTORIAL && change && battle->isWin) {
+	if (battle->gameState != STATE_TUTORIAL && battle->gameState != STATE_WAIT && change && battle->isWin) {
 		DrawExtendGraph(x, y - 32, x + 300, y + 440 + 30 - 32, hImage[1], 1);
 	}
 
-	if (battle->gameState != STATE_TUTORIAL && change && !battle->isWin) {
+	if (battle->gameState != STATE_TUTORIAL && battle->gameState != STATE_WAIT && change && !battle->isWin) {
 		DrawExtendGraph(x, y + 75, x + 300, y + 440 + 10, hImage[2], 1);
 	}
 	

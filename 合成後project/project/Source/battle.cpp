@@ -98,14 +98,14 @@ void Battle::Update()
 			//SPACEキーの入力が間に合わなかった時の負け判定
 			if (count > (randomtime + level[point]) && !early) {
 				isWin = false;
-				isAttack = true;
+				//isAttack = true;
 				gameState = STATE_RESULT;
 				break;
 			}
 			//SPACEキーで判定
 			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE) && !early) {
 				PlaySoundMem(SEHandle2, DX_PLAYTYPE_BACK);
-				isAttack = true;
+				//isAttack = true;
 				//勝ち判定
 				if (count <= (randomtime + level[point]) && count >= randomtime) {
 					isWin = true;
@@ -127,6 +127,8 @@ void Battle::Update()
 
 	case STATE_RESULT:
 		
+		isAttack = true;
+
 		//上記の続き
 		if (early) {
 			count += 1;

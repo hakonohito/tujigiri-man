@@ -76,7 +76,7 @@ void Enemy::Draw()
 	}
 
 
-	if (battle->gameState != STATE_TUTORIAL && change && !battle->isWin) {
+	if (battle->gameState != STATE_TUTORIAL && battle->gameState != STATE_WAIT && change && !battle->isWin) {
 		switch (Enum) {
 		case 0:
 			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum + 6], 1);
@@ -93,7 +93,7 @@ void Enemy::Draw()
 		}
 	}
 
-	if (battle->gameState != STATE_TUTORIAL && change && battle->isWin) {
+	if (battle->gameState != STATE_TUTORIAL && battle->gameState != STATE_WAIT && change && battle->isWin) {
 		switch (Enum) {
 		case 0:
 			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum + 3], 1);
