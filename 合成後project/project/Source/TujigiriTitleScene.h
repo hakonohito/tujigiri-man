@@ -18,4 +18,5 @@ private:
 	int hImage[2];
 	int Bcount;
 	bool blink;
+
 };

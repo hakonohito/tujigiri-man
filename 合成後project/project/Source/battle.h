@@ -29,7 +29,11 @@ private:
 	int Bcount;
 	bool blink;
 
-	bool Vcount; //STATE_VSì‡Ç≈ä«óù
+	//STATE_VSì‡Ç≈ä«óù
+	float Vx1 = 125;
+	float Vx2 = 595;
+	float Vy1 = 720;
+	float Vy2 = -840;
 	
 	bool early = false;
 	

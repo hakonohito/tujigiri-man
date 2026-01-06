@@ -165,6 +165,7 @@
     <ClInclude Include="Source\Screen.h" />
     <ClInclude Include="Source\SoundManager.h" />
     <ClInclude Include="Source\TitleScene.h" />
+    <ClInclude Include="Source\TujigiriFader.h" />
     <ClInclude Include="Source\TujigiriPlayScene.h" />
     <ClInclude Include="Source\SceneFactory.h" />
     <ClInclude Include="Source\SelectScene.h" />
@@ -198,6 +199,7 @@
     <ClCompile Include="Source\ScoreManager.cpp" />
     <ClCompile Include="Source\SoundManager.cpp" />
     <ClCompile Include="Source\TitleScene.cpp" />
+    <ClCompile Include="Source\TujigiriFader.cpp" />
     <ClCompile Include="Source\TujigiriPlayScene.cpp" />
     <ClCompile Include="Source\SceneFactory.cpp" />
     <ClCompile Include="Source\SelectScene.cpp" />

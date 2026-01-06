@@ -92,6 +92,9 @@
     <ClCompile Include="Source\SoundManager.cpp">
       <Filter>HeartPlayScene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\TujigiriFader.cpp">
+      <Filter>TujigiriPlayScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -197,6 +200,9 @@
     </ClInclude>
     <ClInclude Include="Source\SoundManager.h">
       <Filter>HeartPlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TujigiriFader.h">
+      <Filter>TujigiriPlayScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

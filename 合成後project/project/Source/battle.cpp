@@ -2,6 +2,7 @@
 #include "utility.h"
 #include "enemy.h"
 #include "player.h"
+#include "TujigiriFader.h"
 #include <assert.h>
 #include <iostream>
 #include <random>
@@ -34,8 +35,6 @@ Battle::Battle()
 	hImage[8] = LoadGraph("data/image/VS1.png");
 	hImage[9] = LoadGraph("data/image/background.png");
 
-	Vcount = 0;
-
 	Bcount = 0;
 	blink = false;
 
@@ -54,6 +53,8 @@ Battle::~Battle()
 void Battle::Update()
 {
 
+	Fader* fader = FindGameObject<Fader>();
+
 	switch (gameState) {
 
 	case STATE_TUTORIAL:
@@ -66,15 +67,36 @@ void Battle::Update()
 		}
 
 		if (KeyUtility::CheckTrigger(KEY_INPUT_P)) {
+			fader->isChange = true;
+		}
+
+		if (fader->fader) {
 			gameState = STATE_VS;
 			Bcount = 0;
 			blink = false;
+			fader->isChange = true;
 		}
+
 		break;
 
 	case STATE_VS:
 
-		Vcount += 1;
+		if (Vy1 > -50) {
+			Vy1 -= 5;
+		}
+
+		if (Vy2 < -50) {
+			Vy2 += 5;
+		}
+		
+		if (Vy1 <= -50 && Vy2 >= -50) {
+			count += 1;
+		}
+
+		if (count == 180) {
+			gameState = STATE_WAIT;
+			count = 0;
+		}
 
 		break;
 
@@ -191,7 +213,6 @@ void Battle::Update()
 	case STATE_FINISH:
 		break;
 	}
-
 }
 
 void Battle::Draw()
@@ -210,9 +231,15 @@ void Battle::Draw()
 	case STATE_VS:
 		DrawExtendGraph(0, 0, Screen::WIDTH, Screen::HEIGHT, hImage[9], 1);
 		
-		DrawExtendGraph(100, -50, 560 + 100, 840 - 50, hImage[4], 1);
+		//DrawExtendGraph(125, -50, 560 + 125, 840 - 50, hImage[4], 1);
 
-		DrawExtendGraph(660, -50, 560 + 660, 840 - 50, hImage[5], 1);
+		//DrawExtendGraph(595, -50, 560 + 595, 840 - 50, hImage[5], 1);
+
+		//比率2.5
+
+		DrawExtendGraph(Vx1, Vy1, 560 + Vx1, 840 + Vy1, hImage[4], 1);
+
+		DrawExtendGraph(Vx2, Vy2, 560 + Vx2, 840 + Vy2, hImage[5], 1);
 
 		DrawExtendGraph(490, 135, 300 + 490, 450 + 135, hImage[8], 1); //描写優先順位は最後
 
@@ -242,10 +269,6 @@ void Battle::Draw()
 		}
 			break;
 	}
-
-	
-	
-		
 	
 }
 
@@ -256,3 +279,11 @@ void Battle::Random() //[GO]が出るまでの時間をランダムに生成
 	std::uniform_int_distribution<> dist(180, 540);  //ランダムに生成される[GO]が出るまでの最低時間と最大時間
 	randomtime = dist(gen);
 }
+
+/*
+
+SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
+DrawBox(0, 0, Screen::WIDTH, Screen::HEIGHT, GetColor(0, 0, 0), TRUE);
+SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+*/
