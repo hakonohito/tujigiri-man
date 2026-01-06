@@ -28,6 +28,8 @@ private:
 
 	int Bcount;
 	bool blink;
+
+	bool Vcount; //STATE_VSì‡Ç≈ä«óù
 	
 	bool early = false;
 	
@@ -43,5 +45,5 @@ private:
 	int SEHandle3 = -1;
 	int SEHandle4 = -1;
 
-	int hImage[9];
+	int hImage[10];
 };
