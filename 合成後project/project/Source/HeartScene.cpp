@@ -130,13 +130,25 @@ void HeartScene::Update()
 
     if (GameOver)
     {
-        if (CheckHitKey(KEY_INPUT_RETURN))
+        if (CheckHitKey(KEY_INPUT_RETURN) && !isWiping)
         {
-            SceneManager::ChangeScene("TITLE");
+            isWiping = true;
+            wipeFrame = 0;
         }
 
-        return;
+        // ワイプ中は進行させる
+        if (isWiping) {
+            wipeFrame++;
+            wipeAlpha = (int)(255.0 * wipeFrame / 60);
+
+            if (wipeFrame >= 60) {
+                SceneManager::ChangeScene("TITLE");
+            }
+        }
+
+        return;  // ← ここで抜けてOK
     }
+
     // 終了状態なら何もしない
 
      // Spaceキー待ち状態
@@ -201,6 +213,15 @@ void HeartScene::Update()
         GameOver = true;
         ScoreManager::AddScore(score); // ← スコア保存！
         SceneManager::ChangeScene("RANKING"); // ← ここでランキング画面へ切り替え！
+    }
+
+    if (isWiping) {
+        wipeFrame++;
+        wipeAlpha = (int)(255.0 * wipeFrame / 60); // 60フレームで255まで
+
+        if (wipeFrame >= 60) {
+            SceneManager::ChangeScene("TITLE"); // ← 遷移先に合わせて変更
+        }
     }
 
 }
@@ -295,6 +316,15 @@ void HeartScene::Draw()
     DrawFormatString(170, 440, GetColor(0, 0, 0), "+100点");
     DrawFormatString(170, 535, GetColor(0, 0, 0), "-50点");
     DrawFormatString(170, 630, GetColor(0, 0, 0), "+300点");
+
+
+    // 画面ワイプ処理
+    if (isWiping) {
+        SetDrawBlendMode(DX_BLENDMODE_ALPHA, wipeAlpha);
+        DrawBox(0, 0, 1280, 720, GetColor(0, 0, 0), TRUE);
+        SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0); // 元に戻す
+    }
+
 
     // ハート生成範囲を赤線で表示
     //const int dropAreaLeft = 320 + 96;

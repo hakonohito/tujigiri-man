@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "../Library/SceneBase.h"
 #include <vector>
 #include "fruit.h"
@@ -22,9 +22,14 @@ private:
 	int score;
 	int timelimit;
 	bool GameOver;
-	bool isReadyToStart; // SpaceƒL[‘Ò‚¿ó‘Ô
-	int startTime; // PlayScene‚É“ü‚Á‚½iƒ~ƒŠ•bj
+	bool isReadyToStart; // Spaceã‚­ãƒ¼å¾…ã¡çŠ¶æ…‹
+	int startTime; // PlaySceneã«å…¥ã£ãŸæ™‚åˆ»ï¼ˆãƒŸãƒªç§’ï¼‰
 	bool showTutorial = true;
+
+	bool isWiping = false;     // ãƒ¯ã‚¤ãƒ—ä¸­ã‹ã©ã†ã‹
+	int wipeAlpha = 0;         // é»’æ¿ã®é€æ˜åº¦ï¼ˆ0ã€œ255ï¼‰
+	int wipeFrame = 0;         // çµŒéãƒ•ãƒ¬ãƒ¼ãƒ æ•°
+
 
 
 	std::vector<fruit> fruits;
