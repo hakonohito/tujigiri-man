@@ -40,26 +40,53 @@ void TitleScene::Update()
 		SceneManager::ChangeScene("PLAY"); //ゲーム開始！
 	}*/ // コメントしました　齊藤
 
-	// Sキーでセレクトシーンへ
-	if (CheckHitKey(KEY_INPUT_S)) {
+	// Pキー → プレイ
+	if (CheckHitKey(KEY_INPUT_P) && !isWiping) {
 		PlaySoundMem(selectSE, DX_PLAYTYPE_BACK);
-		SceneManager::ChangeScene("SELECT");
+		isWiping = true;
+		wipeFrame = 0;
+		nextScene = 0;
 	}
 
-	if (CheckHitKey(KEY_INPUT_P)) {
+	// Sキー → セレクト
+	if (CheckHitKey(KEY_INPUT_S) && !isWiping) {
 		PlaySoundMem(selectSE, DX_PLAYTYPE_BACK);
-		SceneManager::ChangeScene("HEART"); //ゲーム開始！
+		isWiping = true;
+		wipeFrame = 0;
+		nextScene = 1;
 	}
 
-	if (CheckHitKey(KEY_INPUT_R)) {
+	// Rキー → ランキング
+	if (CheckHitKey(KEY_INPUT_R) && !isWiping) {
 		PlaySoundMem(selectSE, DX_PLAYTYPE_BACK);
-		SceneManager::ChangeScene("RANKING"); //ランキングシーンに移動
+		isWiping = true;
+		wipeFrame = 0;
+		nextScene = 2;
 	}
 
-	if (CheckHitKey(KEY_INPUT_ESCAPE))
-	{
-		SceneManager::Exit();
+	// ESCキー → 終了
+	if (CheckHitKey(KEY_INPUT_ESCAPE) && !isWiping) {
+		isWiping = true;
+		wipeFrame = 0;
+		nextScene = 3;
 	}
+
+	// ワイプ進行処理（Update の一番最後に追加）
+	if (isWiping) {
+		wipeFrame++;
+		wipeAlpha = (int)(255.0 * wipeFrame / 60);
+
+		if (wipeFrame >= 60) {
+			switch (nextScene) {
+			case 0: SceneManager::ChangeScene("HEART"); break;
+			case 1: SceneManager::ChangeScene("SELECT"); break;
+			case 2: SceneManager::ChangeScene("RANKING"); break;
+			case 3: SceneManager::Exit(); break;
+			}
+		}
+	}
+
+
 }
 
 
@@ -114,6 +141,13 @@ void TitleScene::Draw()
 
 	DrawString(0, 0, "仮 [S]Key 選択画面に戻る", GetColor(255, 255, 255));
 
+	// 画面ワイプ描画（Draw の一番最後）
+	if (isWiping) 
+	{
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, wipeAlpha);
+		DrawBox(0, 0, 1280, 720, GetColor(0, 0, 0), TRUE);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	}
 
 
 }
