@@ -27,6 +27,12 @@ Battle::Battle()
 	hImage[1] = LoadGraph("data/image/ready.png");
 	hImage[2] = LoadGraph("data/image/go.png");
 	hImage[3] = LoadGraph("data/image/play.png");
+	hImage[4] = LoadGraph("data/image/player_window.png");
+	hImage[5] = LoadGraph("data/image/jousi_window.png");
+	hImage[6] = LoadGraph("data/image/kyokutyou_window.png");
+	hImage[7] = LoadGraph("data/image/syatyou_window.png");
+	hImage[8] = LoadGraph("data/image/VS1.png");
+
 
 	Bcount = 0;
 	blink = false;
@@ -64,6 +70,10 @@ void Battle::Update()
 		}
 		break;
 
+	case STATE_VS:
+
+		break;
+
 	case STATE_WAIT:
 
 		isAttack = false;
@@ -91,8 +101,6 @@ void Battle::Update()
 
 		break;
 
-
-		//Ÿ”s‚Ì”»’è
 	case STATE_START:
 			count += 1;
 			//SPACEƒL[‚Ì“ü—Í‚ªŠÔ‚É‡‚í‚È‚©‚Á‚½‚Ì•‰‚¯”»’è

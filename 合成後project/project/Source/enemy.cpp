@@ -58,57 +58,67 @@ void Enemy::Draw()
 	//DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440 + 10, hImage[1], 1);
 	//352, 512
 	Battle* battle = FindGameObject<Battle>();
-	if (battle->gameState != STATE_TUTORIAL && !change) {
-		switch (Enum) {
-		case 0:
-			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum], 1);
-			break;
 
-		case 1:
-			DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440 + 10, hImage[Enum], 1);
-			break;
+	if (battle->gameState != STATE_TUTORIAL && battle->gameState != STATE_VS) {
+		if (!change) {
+			switch (Enum) {
+			case 0:
+				DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum], 1);
+				break;
 
-		case 2:
-			DrawExtendGraph(x, y - 50 + 10, x + 300, y + 440 + 10, hImage[Enum], 1);
-			break;
+			case 1:
+				DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440 + 10, hImage[Enum], 1);
+				break;
+
+			case 2:
+				DrawExtendGraph(x, y - 50 + 10, x + 300, y + 440 + 10, hImage[Enum], 1);
+				break;
+
+			}
+		}
+
+		if (battle->gameState != STATE_WAIT && change) {
+
+			if (!battle->isWin) {
+				switch (Enum) {
+				case 0:
+					DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum + 6], 1);
+					break;
+
+				case 1:
+					DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440 + 10, hImage[Enum + 6], 1);
+					break;
+
+				case 2:
+					DrawExtendGraph(x, y - 50 + 10, x + 300, y + 440 + 10, hImage[Enum + 6], 1);
+					break;
+
+				}
+			}
+
+			if (battle->isWin) {
+				switch (Enum) {
+				case 0:
+					DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum + 3], 1);
+					break;
+
+				case 1:
+					DrawExtendGraph(x - 20, y + 50, x + 300 - 50 + 20, y + 440 + 10, hImage[Enum + 3], 1);
+					break;
+
+				case 2:
+					DrawExtendGraph(x - 50, y + 215, x + 320, y + 455, hImage[Enum + 3], 1);
+					break;
+
+				}
+			}
 
 		}
+
+		
 	}
 
-
-	if (battle->gameState != STATE_TUTORIAL && battle->gameState != STATE_WAIT && change && !battle->isWin) {
-		switch (Enum) {
-		case 0:
-			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum + 6], 1);
-			break;
-
-		case 1:
-			DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440 + 10, hImage[Enum + 6], 1);
-			break;
-
-		case 2:
-			DrawExtendGraph(x, y - 50 + 10, x + 300, y + 440 + 10, hImage[Enum + 6], 1);
-			break;
-
-		}
-	}
-
-	if (battle->gameState != STATE_TUTORIAL && battle->gameState != STATE_WAIT && change && battle->isWin) {
-		switch (Enum) {
-		case 0:
-			DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum + 3], 1);
-			break;
-
-		case 1:
-			DrawExtendGraph(x - 20, y + 50, x + 300 - 50 + 20, y + 440 + 10, hImage[Enum + 3], 1);
-			break;
-
-		case 2:
-			DrawExtendGraph(x - 50, y + 215, x + 320, y + 455, hImage[Enum + 3], 1);
-			break;
-
-		}
-	}
+	
 	//DrawExtendGraph(x, y - 50, x + 300 - 50, y + 440, hImage[Enum], 1);
 }
 

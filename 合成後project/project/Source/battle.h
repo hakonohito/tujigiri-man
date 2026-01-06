@@ -4,7 +4,8 @@
 #include <vector>
 
 enum GameState {
-	STATE_TUTORIAL,
+	STATE_TUTORIAL, //1‰ñ‚Ì‚Ý
+	STATE_VS, //wait‚Ì‘O
 	STATE_WAIT,
 	STATE_START,
 	STATE_RESULT,
@@ -42,5 +43,5 @@ private:
 	int SEHandle3 = -1;
 	int SEHandle4 = -1;
 
-	int hImage[4];
+	int hImage[9];
 };
