@@ -65,7 +65,7 @@ HeartScene::HeartScene()
 
     srand((unsigned int)time(nullptr)); // 乱数初期化
 
-    const int fruitCount = 6; //ハート落下個数　調整場所
+    const int fruitCount = 5; //ハート落下個数　調整場所
 
     //ハート画像をロード
     int redpict = LoadGraph("data/image/heart_red.png");
