@@ -24,7 +24,7 @@ void Fader::Update() {
 		switch (fader) {
 
 		case false:
-			alpha += (255 / 60);
+			alpha += (255 / 30);
 			if (alpha >= 255) {
 				alpha = 255;
 				fader = true;
@@ -33,7 +33,7 @@ void Fader::Update() {
 			break;
 
 		case true:
-			alpha -= (255 / 60);
+			alpha -= (255 / 30);
 			if (alpha <= 0) {
 				alpha = 0;
 				fader = false;
