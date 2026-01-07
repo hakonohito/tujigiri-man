@@ -16,7 +16,5 @@ public:
 private:
 	int BGMHandle = -1;
 	int hImage[2];
-	int Bcount;
-	bool blink;
-
+	bool faderCheck = false; //‰¼
 };

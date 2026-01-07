@@ -95,6 +95,7 @@
     <ClCompile Include="Source\TujigiriFader.cpp">
       <Filter>TujigiriPlayScene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Back.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -203,6 +204,9 @@
     </ClInclude>
     <ClInclude Include="Source\TujigiriFader.h">
       <Filter>TujigiriPlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Back.h">
+      <Filter>TujigiriTitleScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

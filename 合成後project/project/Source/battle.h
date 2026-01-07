@@ -29,10 +29,13 @@ private:
 	int Bcount;
 	bool blink;
 
+	bool FaderCheck1 = false;
+	bool FaderCheck2 = false;
+
 	//STATE_VS“à‚ÅŠÇ—
 	float Vx1 = 125;
 	float Vx2 = 595;
-	float Vy1 = 720;
+	float Vy1 = 740; //C³‘O720
 	float Vy2 = -840;
 	
 	bool early = false;

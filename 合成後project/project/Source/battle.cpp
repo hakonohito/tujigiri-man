@@ -59,6 +59,11 @@ void Battle::Update()
 
 	case STATE_TUTORIAL:
 
+		if (!FaderCheck1) {
+			fader->isChange = true;
+			FaderCheck1 = true;
+		}
+		
 		Bcount += 1;
 
 		if (Bcount == 180) {
@@ -68,10 +73,13 @@ void Battle::Update()
 
 		if (KeyUtility::CheckTrigger(KEY_INPUT_P)) {
 			fader->isChange = true;
+			FaderCheck2 = true;
 		}
 
-		if (fader->fader) {
+		if (fader->fader && FaderCheck2) {
 			gameState = STATE_VS;
+			FaderCheck1 = false;
+			FaderCheck2 = false;
 			Bcount = 0;
 			blink = false;
 			fader->isChange = true;

@@ -1,8 +1,17 @@
 #include "TujigiriFader.h"
 #include "Screen.h"
 
-Fader::Fader()
+Fader::Fader(float num)
 {
+	alpha = num;
+	
+	if (num == 255) {
+		fader = true;
+	}
+	else {
+		fader = false;
+	}
+
 }
 
 Fader::~Fader()

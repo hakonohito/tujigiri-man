@@ -3,7 +3,7 @@
 
 class Fader : public GameObject {
 public:
-	Fader();
+	Fader(float num);
 	~Fader();
 	void Update() override;
 	void Draw() override;
