@@ -39,6 +39,7 @@ Battle::Battle()
 	blink = false;
 
 	isWin = false;
+
 	gameState = STATE_TUTORIAL;
 	count = 0; //実際の時間
 	point = 0;
@@ -101,9 +102,16 @@ void Battle::Update()
 			count += 1;
 		}
 
-		if (count == 180) {
+		if (count == 180 && !fader->fader) {
+			fader->isChange = true;
+		}
+
+		if (count >= 180 && fader->fader) {
 			gameState = STATE_WAIT;
 			count = 0;
+			fader->isChange = true;
+			Vy1 = 740;
+			Vy2 = -840;
 		}
 
 		break;
@@ -185,8 +193,8 @@ void Battle::Update()
 			if (isWin) {
 				//次のステージへ
 				if (KeyUtility::CheckTrigger(KEY_INPUT_N)) {
-					gameState = STATE_WAIT;
-					isWin = false;
+					fader->isChange = true;
+					
 					count = 0;
 				}
 			}
@@ -194,24 +202,38 @@ void Battle::Update()
 			if (!isWin) {
 				//リトライ
 				if (KeyUtility::CheckTrigger(KEY_INPUT_R)) {
-					gameState = STATE_WAIT;
+					fader->isChange = true;
 					count = 0;
 					point = 0;
 					count2 = 0;
 					early = false;
 				}
 			}
+
+			if (fader->fader) {
+				gameState = STATE_VS;
+				fader->isChange = true;
+				isWin = false;
+			}
+
 		}
 
 		//仮
 		if (point == 3) {
 			if (KeyUtility::CheckTrigger(KEY_INPUT_N)) {
-				SceneManager::ChangeScene("TUJIGIRITITLE");
+				fader->isChange = true;
+				TitleFlag = true;
 			}
 		}
 
 		//タイトルに戻る
 		if (KeyUtility::CheckTrigger(KEY_INPUT_T)) {
+			fader->isChange = true;
+			TitleFlag = true;
+			
+		}
+
+		if (TitleFlag && fader->fader) {
 			SceneManager::ChangeScene("TUJIGIRITITLE");
 		}
 
@@ -247,9 +269,9 @@ void Battle::Draw()
 
 		DrawExtendGraph(Vx1, Vy1, 560 + Vx1, 840 + Vy1, hImage[4], 1);
 
-		DrawExtendGraph(Vx2, Vy2, 560 + Vx2, 840 + Vy2, hImage[5], 1);
+		DrawExtendGraph(Vx2, Vy2, 560 + Vx2, 840 + Vy2, hImage[5 + point], 1);
 
-		DrawExtendGraph(490, 135, 300 + 490, 450 + 135, hImage[8], 1); //描写優先順位は最後
+		DrawExtendGraph(490, 135, 300 + 490, 450 + 135, hImage[8], 1); //描写順位は最後
 
 		break;
 

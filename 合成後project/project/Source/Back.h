@@ -3,12 +3,13 @@
 
 class Back : public GameObject {
 public:
-	Back();
+	Back(int num);
 	~Back();
 	void Update() override;
 	void Draw() override;
 private:
-	int hImage[2];
+	int scene;
+	int hImage[3];
 	int Bcount;
 	bool blink;
 };

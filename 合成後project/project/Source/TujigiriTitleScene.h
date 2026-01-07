@@ -15,6 +15,6 @@ public:
 	void Draw() override;
 private:
 	int BGMHandle = -1;
-	int hImage[2];
-	bool faderCheck = false; //‰¼
+	bool FaderCheck1 = false; //‰¼
+	bool FaderCheck2 = false;
 };

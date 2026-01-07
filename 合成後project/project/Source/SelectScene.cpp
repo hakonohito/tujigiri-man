@@ -1,12 +1,16 @@
 #include "SelectScene.h"
 #include <assert.h>
+#include "TujigiriFader.h"
+#include "utility.h"
+#include "Back.h"
 
 SelectScene::SelectScene()
 {
-	hImage = LoadGraph("data/image/homescene.png");
 	SEHandle = LoadSoundMem("data/SE_BGM/selectscene/homeBGM.mp3");
 	assert(SEHandle != -1);
 	PlaySoundMem(SEHandle, DX_PLAYTYPE_BACK);
+	new Back(0);
+	new Fader(0);
 }
 
 SelectScene::~SelectScene()
@@ -16,10 +20,15 @@ SelectScene::~SelectScene()
 
 void SelectScene::Update()
 {
-	if (CheckHitKey(KEY_INPUT_T)) {
+	Fader* fader = FindGameObject<Fader>();
+
+	if (KeyUtility::CheckTrigger(KEY_INPUT_T)) {
+		fader->isChange = true;
+	}
+	if (fader->fader) {
 		SceneManager::ChangeScene("TUJIGIRITITLE");
 	}
-	if (CheckHitKey(KEY_INPUT_H)) {
+	if (KeyUtility::CheckTrigger(KEY_INPUT_H)) {
 		SceneManager::ChangeScene("TITLE");
 	}
 	//‰¼
@@ -30,5 +39,4 @@ void SelectScene::Update()
 
 void SelectScene::Draw()
 {
-	DrawExtendGraph(0, 0, 1280, 720, hImage, 1);
 }

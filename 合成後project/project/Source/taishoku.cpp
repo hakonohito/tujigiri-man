@@ -22,7 +22,7 @@ Taishoku::~Taishoku()
 void Taishoku::Update()
 {
 	Battle* battle = FindGameObject<Battle>();
-	if (battle->gameState == STATE_WAIT) {
+	if (battle->gameState == STATE_VS) {
 		isWin = false;
 		count = 0;
 	}

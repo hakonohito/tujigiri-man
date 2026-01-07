@@ -31,6 +31,7 @@ private:
 
 	bool FaderCheck1 = false;
 	bool FaderCheck2 = false;
+	bool TitleFlag = false;
 
 	//STATE_VSì‡Ç≈ä«óù
 	float Vx1 = 125;
