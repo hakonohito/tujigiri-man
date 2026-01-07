@@ -1,42 +1,45 @@
 #include "TujigiriFader.h"
 #include "Screen.h"
+#include "FaderManager.h"
 
-Fader::Fader(float num)
+Fader::Fader()
 {
-	alpha = num;
-	
-	if (num == 255) {
-		fader = true;
+	if (FaderManager::GetFader()) {
+		alpha = 255;
 	}
 	else {
-		fader = false;
+		alpha = 0;
 	}
-
 }
 
 Fader::~Fader()
 {
 }
 
+
+
 void Fader::Update() {
 
+	
+	fader = FaderManager::GetFader();
+
 	if (isChange) {
-		switch (fader) {
+		switch(fader) {
 
 		case false:
-			alpha += (255 / 30);
+			alpha += (255.0f / 30.0f);
 			if (alpha >= 255) {
 				alpha = 255;
-				fader = true;
+				FaderManager::SetFader(true);
 				isChange = false;
 			}
 			break;
 
 		case true:
-			alpha -= (255 / 30);
+			alpha -= (255.0f / 30.0f);
 			if (alpha <= 0) {
 				alpha = 0;
-				fader = false;
+				FaderManager::SetFader(false);
 				isChange = false;
 			}
 			break;

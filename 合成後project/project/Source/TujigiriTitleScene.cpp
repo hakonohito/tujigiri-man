@@ -13,7 +13,7 @@ TujigiriTitleScene::TujigiriTitleScene()
 	PlaySoundMem(BGMHandle, DX_PLAYTYPE_LOOP);
 	
 	new Back(1);
-	new Fader(255);
+	new Fader();
 }
 
 TujigiriTitleScene::~TujigiriTitleScene()
@@ -35,6 +35,10 @@ void TujigiriTitleScene::Update()
 		fader->isChange = true;
 	}
 	if (KeyUtility::CheckTrigger(KEY_INPUT_S)) {
+		FaderCheck3 = true;
+		fader->isChange = true;
+	}
+	if (fader->fader && FaderCheck3) {
 		SceneManager::ChangeScene("SELECT");
 	}
 	//‰¼
@@ -44,8 +48,6 @@ void TujigiriTitleScene::Update()
 
 	if (fader->fader && FaderCheck2) {
 		SceneManager::ChangeScene("TUJIGIRIPLAY");
-		FaderCheck1 = false;
-		FaderCheck2 = false;
 	}
 
 }

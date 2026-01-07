@@ -57,16 +57,16 @@
       <Filter>HeartTitleScene</Filter>
     </ClCompile>
     <ClCompile Include="Source\HeartScene.cpp">
-      <Filter>HeartPlayScene</Filter>
+      <Filter>HeartRankingScene\HeartPlayScene</Filter>
     </ClCompile>
     <ClCompile Include="Source\fruit.cpp">
-      <Filter>HeartPlayScene</Filter>
+      <Filter>HeartRankingScene\HeartPlayScene</Filter>
     </ClCompile>
     <ClCompile Include="Source\Field.cpp">
-      <Filter>HeartPlayScene</Filter>
+      <Filter>HeartRankingScene\HeartPlayScene</Filter>
     </ClCompile>
     <ClCompile Include="Source\basket.cpp">
-      <Filter>HeartPlayScene</Filter>
+      <Filter>HeartRankingScene\HeartPlayScene</Filter>
     </ClCompile>
     <ClCompile Include="Source\RankingScene.cpp">
       <Filter>HeartRankingScene</Filter>
@@ -90,12 +90,15 @@
       <Filter>HeartRankingScene</Filter>
     </ClCompile>
     <ClCompile Include="Source\SoundManager.cpp">
-      <Filter>HeartPlayScene</Filter>
+      <Filter>HeartRankingScene\HeartPlayScene</Filter>
     </ClCompile>
     <ClCompile Include="Source\TujigiriFader.cpp">
       <Filter>TujigiriPlayScene</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Back.cpp" />
+    <ClCompile Include="Source\FaderManager.cpp" />
+    <ClCompile Include="Source\Back.cpp">
+      <Filter>TujigiriTitleScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -179,16 +182,16 @@
       <Filter>SelectScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\HeartScene.h">
-      <Filter>HeartPlayScene</Filter>
+      <Filter>HeartRankingScene\HeartPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\fruit.h">
-      <Filter>HeartPlayScene</Filter>
+      <Filter>HeartRankingScene\HeartPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\Field.h">
-      <Filter>HeartPlayScene</Filter>
+      <Filter>HeartRankingScene\HeartPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\basket.h">
-      <Filter>HeartPlayScene</Filter>
+      <Filter>HeartRankingScene\HeartPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\RankingScene.h">
       <Filter>HeartRankingScene</Filter>
@@ -200,13 +203,16 @@
       <Filter>HeartRankingScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\SoundManager.h">
-      <Filter>HeartPlayScene</Filter>
+      <Filter>HeartRankingScene\HeartPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\TujigiriFader.h">
       <Filter>TujigiriPlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\Back.h">
       <Filter>TujigiriTitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FaderManager.h">
+      <Filter>TujigiriPlayScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -228,14 +234,14 @@
     <Filter Include="HeartTitleScene">
       <UniqueIdentifier>{22f8fbed-214d-4da1-9831-afc06a9ad08b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="HeartPlayScene">
-      <UniqueIdentifier>{53476052-de13-4d24-b246-83b8cd78f1c5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HeartRankingScene">
       <UniqueIdentifier>{62b2fc10-7db2-4f1e-afd3-0c7a5763637e}</UniqueIdentifier>
     </Filter>
     <Filter Include="TujigiriPlayScene">
       <UniqueIdentifier>{8123ada4-16d1-40da-a8f3-3f9e93aafb30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeartRankingScene\HeartPlayScene">
+      <UniqueIdentifier>{53476052-de13-4d24-b246-83b8cd78f1c5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

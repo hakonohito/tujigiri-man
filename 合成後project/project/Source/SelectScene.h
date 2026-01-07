@@ -10,4 +10,5 @@ public:
 	void Draw() override;
 private:
 	int SEHandle;
+	bool FaderCheck = false;
 };

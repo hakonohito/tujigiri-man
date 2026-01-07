@@ -16,7 +16,7 @@ TujigiriPlayScene::TujigiriPlayScene()
 	new Player();
 	new Enemy();
 	new Taishoku();
-	new Fader(255);
+	new Fader();
 }
 
 TujigiriPlayScene::~TujigiriPlayScene()

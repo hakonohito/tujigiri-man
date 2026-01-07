@@ -17,4 +17,5 @@ private:
 	int BGMHandle = -1;
 	bool FaderCheck1 = false; //‰¼
 	bool FaderCheck2 = false;
+	bool FaderCheck3 = false;
 };
