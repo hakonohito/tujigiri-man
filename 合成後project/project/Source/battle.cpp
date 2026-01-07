@@ -204,13 +204,15 @@ void Battle::Update()
 				if (KeyUtility::CheckTrigger(KEY_INPUT_R)) {
 					fader->isChange = true;
 					count = 0;
-					point = 0;
 					count2 = 0;
 					early = false;
 				}
 			}
 
 			if (fader->fader) {
+				if (!isWin) {
+					point = 0;
+				}
 				gameState = STATE_VS;
 				fader->isChange = true;
 				isWin = false;
