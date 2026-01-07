@@ -7,7 +7,7 @@ Enemy::Enemy()
 	hImage[0] = LoadGraph("data/image/jousi.png");
 	hImage[1] = LoadGraph("data/image/kyokutyou2.png");
 	hImage[2] = LoadGraph("data/image/syatyou.png");
-	hImage[3] = LoadGraph("data/image/enemy.png"); //–¢—pˆÓ
+	hImage[3] = LoadGraph("data/image/jousi_lose.png");
 	hImage[4] = LoadGraph("data/image/kyokutyou_2.jpg");
 	hImage[5] = LoadGraph("data/image/syatyou_2.png");
 	hImage[6] = LoadGraph("data/image/jousi_win.png");
@@ -99,7 +99,7 @@ void Enemy::Draw()
 			if (battle->isWin) {
 				switch (Enum) {
 				case 0:
-					DrawExtendGraph(x, y - 50, x + 300, y + 440, hImage[Enum + 3], 1);
+					DrawExtendGraph(x, y - 50 + 50 + 25, x + 300, y + 440 + 50, hImage[Enum + 3], 1);
 					break;
 
 				case 1:
