@@ -118,15 +118,35 @@ HeartScene::~HeartScene()
 void HeartScene::Update()
 {
     if (showTutorial) {
-        if (CheckHitKey(KEY_INPUT_P)) {
-            showTutorial = false;
 
-            //チュートリアル終了時にゲーム開始タイマーをリセット
-            startTime = GetNowCount();
-            isReadyToStart = false;
+        // Pキーでチュートリアル終了 → ワイプ開始
+        if (CheckHitKey(KEY_INPUT_P) && !isWiping) {
+            isWiping = true;
+            wipeFrame = 0;
         }
+
+        // ワイプ進行
+        if (isWiping) {
+            wipeFrame++;
+            wipeAlpha = (int)(255.0 * wipeFrame / 30); // 30フレームで暗転
+
+            if (wipeFrame >= 30) {
+                // チュートリアル終了
+                showTutorial = false;
+
+                // ゲーム開始の準備
+                startTime = GetNowCount();
+                isReadyToStart = false;
+
+                // ワイプ解除
+                isWiping = false;
+                wipeAlpha = 0;
+            }
+        }
+
         return;
     }
+
 
     if (GameOver)
     {
@@ -220,14 +240,6 @@ void HeartScene::Update()
         ScoreManager::AddScore(score); // ← スコア保存！ 
     }
 
-    if (isWiping) {
-        wipeFrame++;
-        wipeAlpha = (int)(255.0 * wipeFrame / 60); // 60フレームで255まで
-
-        if (wipeFrame >= 60) {
-            SceneManager::ChangeScene("TITLE"); // ← 遷移先に合わせて変更
-        }
-    }
 
 }
 
@@ -237,86 +249,88 @@ void HeartScene::Draw()
     //チュートリアル画像を表示
     if (showTutorial) {
         DrawExtendGraph(0, 0, 1280, 720, tutorialHandle, TRUE);
-        return; // ← チュートリアル中は他の描画をしない
+        //return; // ← チュートリアル中は他の描画をしない
     }
 
-
-    // 背景画像を画面全体に表示
-    DrawExtendGraph(0, 0, 1280, 720, backgroundHandle, TRUE);
-
-    //女の子の表情変化
-    int girlImage;
-
-    if (score < 2000) {
-        girlImage = woman_1;
-    }
-    else if (score < 5000) {
-        girlImage = woman_2;
-    }
-    else {
-        girlImage = woman_3;
-    }
-
-    DrawGraph(950, 260, girlImage, TRUE); // ← 表示位置はそのまま
-    //DrawRotaGraph(1110, 442, 1.2, 0.0, girlImage, TRUE);
-
-    // 以下、バスケット・フルーツ・スコアなどの描画
-    SetFontSize(16);
-    DrawString(0, 0, "PLAY SCENE", GetColor(255, 255, 255));
-
-    //スタート表示　※必要なら
-    //if (!isReadyToStart) {
-    //    SetFontSize(30);
-    //    DrawString(440, 300, "Ready... 3秒後にスタート！", GetColor(0, 0, 0));
-    //}
-
-
-    for (auto& f : fruits)
+    if (!showTutorial)
     {
-        f.Draw(); // ハートを描画
+        // 背景画像を画面全体に表示
+        DrawExtendGraph(0, 0, 1280, 720, backgroundHandle, TRUE);
+
+        //女の子の表情変化
+        int girlImage;
+
+        if (score < 2000) {
+            girlImage = woman_1;
+        }
+        else if (score < 5000) {
+            girlImage = woman_2;
+        }
+        else {
+            girlImage = woman_3;
+        }
+
+        DrawGraph(950, 260, girlImage, TRUE); // ← 表示位置はそのまま
+        //DrawRotaGraph(1110, 442, 1.2, 0.0, girlImage, TRUE);
+
+        // 以下、バスケット・フルーツ・スコアなどの描画
+        SetFontSize(16);
+        DrawString(0, 0, "PLAY SCENE", GetColor(255, 255, 255));
+
+        //スタート表示　※必要なら
+        if (!isReadyToStart) {
+            SetFontSize(30);
+            DrawString(440, 300, "Ready... 3秒後にスタート！", GetColor(0, 0, 0));
+        }
+
+
+        for (auto& f : fruits)
+        {
+            f.Draw(); // ハートを描画
+        }
+
+        basket.Draw();
+
+        if (GameOver) {
+            SetFontSize(150);
+            DrawString(380, 280, "TIME UP", GetColor(255, 0, 0));
+        }
+
+        // スコアや時間の表示（必要なら追加）
+
+        SetFontSize(50); // フォントサイズ設定
+
+        //  Time文字表示
+        DrawString(155, 90, "Time", GetColor(0, 0, 0));
+
+        //  Score文字表示  
+        DrawString(130, 240, "Score", GetColor(0, 0, 0));
+        SetFontSize(72);
+        //  TimeLimit表示（秒数）残り10秒以下で点滅
+        int timeSec = timelimit / 60;
+        int timeColor;
+        if (timeSec <= 10) {
+            bool blink = (GetNowCount() / 300) % 2 == 0;  // 300msごとに点滅
+            timeColor = blink ? GetColor(255, 0, 0) : GetColor(0, 0, 0);
+        }
+        else {
+            timeColor = GetColor(0, 0, 0); // 通常は黒
+        }
+
+        DrawFormatString(190, 160, timeColor, "%d", timeSec);
+        SetFontSize(70);
+
+        //  Scorenumber表示（得点）  スコアを5桁ゼロ埋めで表示
+        DrawFormatString(80, 300, GetColor(0, 0, 0), "%05d", score);
+
+
+        //ハートごとの得点表示
+        SetFontSize(40); // ← ここで文字サイズを大きく設定
+        DrawFormatString(170, 440, GetColor(0, 0, 0), "+100点");
+        DrawFormatString(170, 535, GetColor(0, 0, 0), "-50点");
+        DrawFormatString(170, 630, GetColor(0, 0, 0), "+300点");
+
     }
-
-    basket.Draw();
-
-    if (GameOver) {
-        SetFontSize(150);
-        DrawString(380, 280, "TIME UP", GetColor(255, 0, 0));
-    }
-
-    // スコアや時間の表示（必要なら追加）
-
-    SetFontSize(50); // フォントサイズ設定
-
-    //  Time文字表示
-    DrawString(155, 90, "Time", GetColor(0, 0, 0));
-
-    //  Score文字表示  
-    DrawString(130, 240, "Score", GetColor(0, 0, 0));
-    SetFontSize(72);
-    //  TimeLimit表示（秒数）残り10秒以下で点滅
-    int timeSec = timelimit / 60;
-    int timeColor;
-    if (timeSec <= 10) {
-        bool blink = (GetNowCount() / 300) % 2 == 0;  // 300msごとに点滅
-        timeColor = blink ? GetColor(255, 0, 0) : GetColor(0, 0, 0);
-    }
-    else {
-        timeColor = GetColor(0, 0, 0); // 通常は黒
-    }
-
-    DrawFormatString(190, 160, timeColor, "%d", timeSec);
-    SetFontSize(70); 
-
-    //  Scorenumber表示（得点）  スコアを5桁ゼロ埋めで表示
-    DrawFormatString(80, 300, GetColor(0, 0, 0), "%05d", score);
-
-
-    //ハートごとの得点表示
-    SetFontSize(40); // ← ここで文字サイズを大きく設定
-    DrawFormatString(170, 440, GetColor(0, 0, 0), "+100点");
-    DrawFormatString(170, 535, GetColor(0, 0, 0), "-50点");
-    DrawFormatString(170, 630, GetColor(0, 0, 0), "+300点");
-
 
     // 画面ワイプ処理
     if (isWiping) {
