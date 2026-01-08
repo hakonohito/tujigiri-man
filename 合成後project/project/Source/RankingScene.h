@@ -13,6 +13,9 @@ private:
     bool isWiping = false;
     int wipeAlpha = 0;
     int wipeFrame = 0;
+    //oキーでセレクトシーン切り替え
+    bool goSelect = false;
+
 
 };
 

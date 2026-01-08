@@ -117,6 +117,7 @@ HeartScene::~HeartScene()
 
 void HeartScene::Update()
 {
+    
     if (showTutorial) {
 
         // Pキーでチュートリアル終了 → ワイプ開始
@@ -185,6 +186,14 @@ void HeartScene::Update()
         return; // まだゲーム開始してないので処理しない
     }
 
+    // Oキーでセレクトシーンへワイプ開始
+    if (CheckHitKey(KEY_INPUT_O) && !isWiping) {
+        isWiping = true;
+        wipeFrame = 0;
+        goSelect = true;
+    }
+
+
     for (auto& f : fruits)
     {
         f.Update(); // ハートの位置を更新
@@ -240,6 +249,15 @@ void HeartScene::Update()
         ScoreManager::AddScore(score); // ← スコア保存！ 
     }
 
+    //Oキー用ワイプ進行（通常プレイ中）
+    if (isWiping && goSelect && !GameOver && !showTutorial) {
+        wipeFrame++;
+        wipeAlpha = (int)(255.0 * wipeFrame / 30); // 30フレームで暗転
+
+        if (wipeFrame >= 30) {
+            SceneManager::ChangeScene("SELECT");
+        }
+    }
 
 }
 

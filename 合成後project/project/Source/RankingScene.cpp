@@ -35,14 +35,30 @@ void RankingScene::Update()
         isWiping = true;
         wipeFrame = 0;
     }
+
+    //Oキーでセレクトシーンへ
+    if (CheckHitKey(KEY_INPUT_O) && !isWiping) {
+        PlaySoundMem(RselectSE, DX_PLAYTYPE_BACK);
+        isWiping = true;
+        wipeFrame = 0;
+        goSelect = true;   // ← 遷移先を SELECT にするフラグ
+    }
+
+   
     //ワイプ進行処理（Update の最後に追加）
     if (isWiping) {
         wipeFrame++;
         wipeAlpha = (int)(255.0 * wipeFrame / 30); // 30フレームで真っ黒
 
         if (wipeFrame >= 30) {
-            SceneManager::ChangeScene("TITLE"); // ← タイトルへ
+            if (goSelect) {
+                SceneManager::ChangeScene("SELECT");  // ← Oキーのとき
+            }
+            else {
+                SceneManager::ChangeScene("TITLE");   // ← Tキーのとき
+            }
         }
+
     }
 
 }
