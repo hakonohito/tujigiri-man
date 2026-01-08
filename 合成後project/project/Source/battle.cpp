@@ -20,7 +20,7 @@ Battle::Battle()
 	assert(SEHandle2 != -1);
 	SEHandle3 = LoadSoundMem("data/SE_BGM/playscene/オフィス電話.mp3");
 	assert(SEHandle3 != -1);
-	PlaySoundMem(SEHandle3, DX_PLAYTYPE_BACK);
+	
 	
 	
 
@@ -118,11 +118,14 @@ void Battle::Update()
 
 	case STATE_WAIT:
 
+
+
 		isAttack = false;
 		if (count == 0) {
 			SEHandle4 = LoadSoundMem("data/SE_BGM/playscene/キーボード_3.mp3");
 			assert(SEHandle4 != -1);
 			PlaySoundMem(SEHandle4, DX_PLAYTYPE_BACK);
+			PlaySoundMem(SEHandle3, DX_PLAYTYPE_BACK);
 		}
 
 		count += 1;
