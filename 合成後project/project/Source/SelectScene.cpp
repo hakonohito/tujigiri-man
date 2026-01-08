@@ -3,6 +3,7 @@
 #include "TujigiriFader.h"
 #include "utility.h"
 #include "Back.h"
+#include "DxLib.h"
 //#include "FaderManager.h"
 
 SelectScene::SelectScene()
@@ -14,6 +15,7 @@ SelectScene::SelectScene()
 	PlaySoundMem(SEHandle, DX_PLAYTYPE_LOOP);
 	new Back(0);
 	new Fader();
+	ChangeVolumeSoundMem(100, SEHandle);
 }
 
 SelectScene::~SelectScene()
@@ -24,6 +26,7 @@ SelectScene::~SelectScene()
 
 void SelectScene::Update()
 {
+
 	Fader* fader = FindGameObject<Fader>();
 	Back* back = FindGameObject<Back>();
 

@@ -43,6 +43,7 @@ HeartScene::HeartScene()
     //BGMロード
     playBGM = LoadSoundMem("data/SE_BGM/heartgamescene/BGM.mp3");
     PlaySoundMem(playBGM, DX_PLAYTYPE_LOOP);
+    ChangeVolumeSoundMem(100, playBGM); //追加しました　齊藤　音の大きさ
 
     //チュートリアル画像ロード
     tutorialHandle = LoadGraph("data/image/heart_Tutorial.png");

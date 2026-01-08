@@ -23,6 +23,7 @@ TitleScene::TitleScene()
 	//BGMロード
 	titleBGM = LoadSoundMem("data/SE_BGM/heartgamescene/BGM.mp3");
 	PlaySoundMem(titleBGM, DX_PLAYTYPE_LOOP);
+	ChangeVolumeSoundMem(100, titleBGM); //追加しました　齊藤　音の大きさ
 
 
 	selectSE = LoadSoundMem("data/SE_BGM/heartgamescene/select.mp3");

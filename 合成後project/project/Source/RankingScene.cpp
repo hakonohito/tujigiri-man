@@ -20,6 +20,7 @@ RankingScene::RankingScene()
     //BGMロード
     rankingBGM = LoadSoundMem("data/SE_BGM/heartgamescene/BGM.mp3");
     PlaySoundMem(rankingBGM, DX_PLAYTYPE_LOOP);
+    ChangeVolumeSoundMem(100, rankingBGM); //追加しました　齊藤　音の大きさ
 
 }
 RankingScene::~RankingScene() 

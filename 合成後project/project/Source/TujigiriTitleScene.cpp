@@ -4,6 +4,7 @@
 #include "Screen.h"
 #include "TujigiriFader.h"
 #include "Back.h"
+#include "DxLib.h"
 
 TujigiriTitleScene::TujigiriTitleScene()
 {
@@ -11,6 +12,7 @@ TujigiriTitleScene::TujigiriTitleScene()
 	BGMHandle = LoadSoundMem("data/SE_BGM/titlescene/Driving_Wheel.mp3");
 	assert(BGMHandle != -1);
 	PlaySoundMem(BGMHandle, DX_PLAYTYPE_LOOP);
+	ChangeVolumeSoundMem(100, BGMHandle);
 	SEHandle = LoadSoundMem("data/SE_BGM/titlescene/ÉQÅ[ÉÄÇÃÉ{É^Éìâπ.mp3");
 	assert(SEHandle != -1);
 	
