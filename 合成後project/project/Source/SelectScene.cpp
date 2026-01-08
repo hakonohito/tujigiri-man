@@ -9,7 +9,9 @@ SelectScene::SelectScene()
 {
 	SEHandle = LoadSoundMem("data/SE_BGM/selectscene/homeBGM.mp3");
 	assert(SEHandle != -1);
-	PlaySoundMem(SEHandle, DX_PLAYTYPE_BACK);
+	SEHandle2 = LoadSoundMem("data/SE_BGM/selectscene/Œˆ’è‰¹_10.mp3");
+	assert(SEHandle2 != -1);
+	PlaySoundMem(SEHandle, DX_PLAYTYPE_LOOP);
 	new Back(0);
 	new Fader();
 }
@@ -17,6 +19,7 @@ SelectScene::SelectScene()
 SelectScene::~SelectScene()
 {
 	DeleteSoundMem(SEHandle);
+	DeleteSoundMem(SEHandle2);
 }
 
 void SelectScene::Update()
@@ -28,17 +31,19 @@ void SelectScene::Update()
 		fader->isChange = true;
 	}
 
-	if (KeyUtility::CheckTrigger(KEY_INPUT_T)) {
+	if (KeyUtility::CheckTrigger(KEY_INPUT_T) && back->start) {
 		fader->isChange = true;
+		PlaySoundMem(SEHandle2, DX_PLAYTYPE_BACK);
 		FaderCheck = true;
 	}
-	if (fader->fader && FaderCheck && back->start) {
+	if (fader->fader && FaderCheck) {
 		SceneManager::ChangeScene("TUJIGIRITITLE");
 	}
 
 	//’Ç‰Á‚µ‚Ü‚µ‚½i–Ø‘ºj
-	if (KeyUtility::CheckTrigger(KEY_INPUT_H)) {
+	if (KeyUtility::CheckTrigger(KEY_INPUT_H) && back->start) {
 		fader->isChange = true;
+		PlaySoundMem(SEHandle2, DX_PLAYTYPE_BACK);
 		HtoHeart = true;
 	}
 	if (fader->fader && HtoHeart) {

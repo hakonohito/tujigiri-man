@@ -11,6 +11,7 @@ public:
 private:
 	int scene;
 	int hImage[4];
+	int SEHandle = -1;
 	bool FaderCheck = false;
 	int Bcount;
 	bool blink;

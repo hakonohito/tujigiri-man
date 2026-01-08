@@ -11,6 +11,9 @@ TujigiriTitleScene::TujigiriTitleScene()
 	BGMHandle = LoadSoundMem("data/SE_BGM/titlescene/Driving_Wheel.mp3");
 	assert(BGMHandle != -1);
 	PlaySoundMem(BGMHandle, DX_PLAYTYPE_LOOP);
+	SEHandle = LoadSoundMem("data/SE_BGM/titlescene/ƒQ[ƒ€‚Ìƒ{ƒ^ƒ“‰¹.mp3");
+	assert(SEHandle != -1);
+	
 	
 	new Back(1);
 	new Fader();
@@ -36,6 +39,7 @@ void TujigiriTitleScene::Update()
 	}
 	if (KeyUtility::CheckTrigger(KEY_INPUT_O)) {
 		FaderCheck3 = true;
+		PlaySoundMem(SEHandle, DX_PLAYTYPE_BACK);
 		fader->isChange = true;
 	}
 	if (fader->fader && FaderCheck3) {

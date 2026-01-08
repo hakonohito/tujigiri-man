@@ -2,6 +2,7 @@
 #include "Screen.h"
 #include "utility.h"
 #include "TujigiriFader.h"
+#include <assert.h>
 
 Back::Back(int num)
 {
@@ -9,6 +10,8 @@ Back::Back(int num)
 	hImage[1] = LoadGraph("data/image/title.png");
 	hImage[2] = LoadGraph("data/image/homescene.png");
 	hImage[3] = LoadGraph("data/image/book_BackGround.png");
+	SEHandle = LoadSoundMem("data/SE_BGM/selectscene/Œˆ’è‰¹_10.mp3");
+	assert(SEHandle != -1);
 	Bcount = 0;
 	blink = false;
 	scene = num;
@@ -17,6 +20,7 @@ Back::Back(int num)
 
 Back::~Back()
 {
+	DeleteSoundMem(SEHandle);
 }
 
 void Back::Update()
@@ -30,6 +34,7 @@ void Back::Update()
 
 		if (KeyUtility::CheckTrigger(KEY_INPUT_S)) {
 			fader->isChange = true;
+			PlaySoundMem(SEHandle, DX_PLAYTYPE_BACK);
 			FaderCheck = !FaderCheck;
 		}
 

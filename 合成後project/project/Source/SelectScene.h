@@ -10,6 +10,7 @@ public:
 	void Draw() override;
 private:
 	int SEHandle;
+	int SEHandle2;
 	bool FaderCheck = false;
 	bool HtoHeart = false; //í«â¡ÇµÇ‹ÇµÇΩÅ@Åiñÿë∫Åj
 

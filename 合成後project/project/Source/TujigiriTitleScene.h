@@ -18,4 +18,5 @@ private:
 	bool FaderCheck1 = false; //‰¼
 	bool FaderCheck2 = false;
 	bool FaderCheck3 = false;
+	int SEHandle = -1;
 };
