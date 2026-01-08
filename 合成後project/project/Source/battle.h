@@ -34,8 +34,6 @@ private:
 	bool TitleFlag = false;
 
 	//STATE_VS内で管理
-	float Vx1 = 125;
-	float Vx2 = 595;
 	float Vy1 = 740; //修正前720
 	float Vy2 = -840;
 	
@@ -43,6 +41,8 @@ private:
 	
 	int count;
 	int count2 = 0; //フライング管理
+	bool Scount = false; //SE管理
+	bool Scount2 = false;
 	int randomtime = 0;
 	
 	int level[3] = {100, 100, 100};//[GO]が出てから負け判定が出るまでの時間.{正式版数値100，20、10}
@@ -52,6 +52,8 @@ private:
 	int SEHandle2 = -1;
 	int SEHandle3 = -1;
 	int SEHandle4 = -1;
+	int SEHandle5 = -1;
+	int SEHandle6 = -1;
 
 	int hImage[10];
 };

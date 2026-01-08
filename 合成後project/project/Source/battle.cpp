@@ -20,6 +20,10 @@ Battle::Battle()
 	assert(SEHandle2 != -1);
 	SEHandle3 = LoadSoundMem("data/SE_BGM/playscene/オフィス電話.mp3");
 	assert(SEHandle3 != -1);
+	SEHandle5 = LoadSoundMem("data/SE_BGM/playscene/移動開始時音源.mp3");
+	assert(SEHandle5 != -1);
+	SEHandle6 = LoadSoundMem("data/SE_BGM/playscene/VS音源.mp3");
+	assert(SEHandle6 != -1);
 	
 	
 	
@@ -49,6 +53,8 @@ Battle::~Battle()
 {
 	DeleteSoundMem(SEHandle);
 	DeleteSoundMem(SEHandle2);
+	DeleteSoundMem(SEHandle5);
+	DeleteSoundMem(SEHandle6);
 }
 
 void Battle::Update()
@@ -90,6 +96,11 @@ void Battle::Update()
 
 	case STATE_VS:
 
+		if (!Scount) {
+			Scount = true;
+			PlaySoundMem(SEHandle5, DX_PLAYTYPE_BACK);
+		}
+
 		if (Vy1 > -50) {
 			Vy1 -= 10;
 		}
@@ -100,6 +111,10 @@ void Battle::Update()
 		
 		if (Vy1 <= -50 && Vy2 >= -50) {
 			count += 1;
+			if (!Scount2) {
+				Scount2 = true;
+				PlaySoundMem(SEHandle6, DX_PLAYTYPE_BACK);
+			}
 		}
 
 		if (count == 180 && !fader->fader) {
@@ -109,6 +124,8 @@ void Battle::Update()
 		if (count >= 180 && fader->fader) {
 			gameState = STATE_WAIT;
 			count = 0;
+			Scount = false;
+			Scount = false;
 			fader->isChange = true;
 			Vy1 = 740;
 			Vy2 = -840;
@@ -272,9 +289,9 @@ void Battle::Draw()
 
 		//比率2.5
 
-		DrawExtendGraph(Vx1, Vy1, 560 + Vx1, 840 + Vy1, hImage[4], 1);
+		DrawExtendGraph(125, Vy1, 560 + 125, 840 + Vy1, hImage[4], 1);
 
-		DrawExtendGraph(Vx2, Vy2, 560 + Vx2, 840 + Vy2, hImage[5 + point], 1);
+		DrawExtendGraph(595, Vy2, 560 + 595, 840 + Vy2, hImage[5 + point], 1);
 
 		DrawExtendGraph(490, 135, 300 + 490, 450 + 135, hImage[8], 1); //描写順位は最後
 
