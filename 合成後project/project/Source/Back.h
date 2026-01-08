@@ -7,11 +7,9 @@ public:
 	~Back();
 	void Update() override;
 	void Draw() override;
-	bool start;
 private:
 	int scene;
-	int hImage[4];
-	bool FaderCheck = false;
+	int hImage[3];
 	int Bcount;
 	bool blink;
 };

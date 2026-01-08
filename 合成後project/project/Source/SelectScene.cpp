@@ -3,6 +3,7 @@
 #include "TujigiriFader.h"
 #include "utility.h"
 #include "Back.h"
+
 #include "FaderManager.h"
 
 SelectScene::SelectScene()
@@ -22,7 +23,6 @@ SelectScene::~SelectScene()
 void SelectScene::Update()
 {
 	Fader* fader = FindGameObject<Fader>();
-	Back* back = FindGameObject<Back>();
 
 	if (fader->alpha == 255) {
 		fader->isChange = true;
@@ -32,7 +32,7 @@ void SelectScene::Update()
 		fader->isChange = true;
 		FaderCheck = true;
 	}
-	if (fader->fader && FaderCheck && back->start) {
+	if (fader->fader && FaderCheck) {
 		SceneManager::ChangeScene("TUJIGIRITITLE");
 	}
 
