@@ -34,7 +34,7 @@ void TujigiriTitleScene::Update()
 		FaderCheck2 = true;
 		fader->isChange = true;
 	}
-	if (KeyUtility::CheckTrigger(KEY_INPUT_S)) {
+	if (KeyUtility::CheckTrigger(KEY_INPUT_O)) {
 		FaderCheck3 = true;
 		fader->isChange = true;
 	}

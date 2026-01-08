@@ -31,6 +31,9 @@ void TujigiriPlayScene::Update()
 		SceneManager::Exit();
 	}
 	
+	if (CheckHitKey(KEY_INPUT_O)) {
+		SceneManager::ChangeScene("SELECT");
+	}
 }
 
 void TujigiriPlayScene::Draw()

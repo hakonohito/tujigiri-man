@@ -49,7 +49,7 @@ void Back::Draw()
 		if (!blink) {
 			DrawString(170, 330, "[P]を押してゲーム開始", GetColor(255, 255, 255));
 		}
-		DrawString(0, 0, "仮 [S]Key 選択画面に戻る", GetColor(255, 255, 255));
+		DrawString(0, 0, " [O]Key 選択画面に戻る", GetColor(255, 255, 255));
 		break;
 	}
 	
