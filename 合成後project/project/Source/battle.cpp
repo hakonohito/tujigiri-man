@@ -91,11 +91,11 @@ void Battle::Update()
 	case STATE_VS:
 
 		if (Vy1 > -50) {
-			Vy1 -= 5;
+			Vy1 -= 15;
 		}
 
 		if (Vy2 < -50) {
-			Vy2 += 5;
+			Vy2 += 15;
 		}
 		
 		if (Vy1 <= -50 && Vy2 >= -50) {
