@@ -6,8 +6,3 @@ void FaderManager::SetFader(bool flag)
 {
 	faderflag = flag;
 }
-
-int FaderManager::GetFader()
-{
-	return faderflag;
-}
