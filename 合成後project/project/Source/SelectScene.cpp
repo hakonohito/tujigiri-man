@@ -35,9 +35,16 @@ void SelectScene::Update()
 	if (fader->fader && FaderCheck) {
 		SceneManager::ChangeScene("TUJIGIRITITLE");
 	}
+
+	//’Ç‰Á‚µ‚Ü‚µ‚½i–Ø‘ºj
 	if (KeyUtility::CheckTrigger(KEY_INPUT_H)) {
+		fader->isChange = true;
+		HtoHeart = true;
+	}
+	if (fader->fader && HtoHeart) {
 		SceneManager::ChangeScene("TITLE");
 	}
+
 	//‰¼
 	if (CheckHitKey(KEY_INPUT_ESCAPE)) {
 		SceneManager::Exit();

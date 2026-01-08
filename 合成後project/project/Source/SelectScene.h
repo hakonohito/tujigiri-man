@@ -11,4 +11,6 @@ public:
 private:
 	int SEHandle;
 	bool FaderCheck = false;
+	bool HtoHeart = false; //í«â¡ÇµÇ‹ÇµÇΩÅ@Åiñÿë∫Åj
+
 };
