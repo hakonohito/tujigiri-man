@@ -3,7 +3,7 @@
 #include "TujigiriFader.h"
 #include "utility.h"
 #include "Back.h"
-#include "FaderManager.h"
+//#include "FaderManager.h"
 
 SelectScene::SelectScene()
 {
