@@ -117,7 +117,6 @@ HeartScene::~HeartScene()
 
 void HeartScene::Update()
 {
-    
     if (showTutorial) {
 
         // Pキーでチュートリアル終了 → ワイプ開始
@@ -126,16 +125,28 @@ void HeartScene::Update()
             wipeFrame = 0;
         }
 
+        // ★ Oキーでセレクトシーンへワイプ開始（チュートリアル中）
+        if (CheckHitKey(KEY_INPUT_O) && !isWiping) {
+            isWiping = true;
+            wipeFrame = 0;
+            goSelect = true;   // ← 遷移先を SELECT にするフラグ
+        }
+
         // ワイプ進行
         if (isWiping) {
             wipeFrame++;
-            wipeAlpha = (int)(255.0 * wipeFrame / 30); // 30フレームで暗転
+            wipeAlpha = (int)(255.0 * wipeFrame / 30);
 
             if (wipeFrame >= 30) {
-                // チュートリアル終了
-                showTutorial = false;
 
-                // ゲーム開始の準備
+                // ★ Oキーで来た場合は SELECT へ
+                if (goSelect) {
+                    SceneManager::ChangeScene("SELECT");
+                    return;
+                }
+
+                // ★ Pキーで来た場合はチュートリアル終了
+                showTutorial = false;
                 startTime = GetNowCount();
                 isReadyToStart = false;
 
