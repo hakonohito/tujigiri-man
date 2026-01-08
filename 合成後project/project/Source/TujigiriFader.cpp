@@ -27,7 +27,7 @@ void Fader::Update() {
 		switch(fader) {
 
 		case false:
-			alpha += (255.0f / 30.0f);
+			alpha += (255.0f / 10.0f);
 			if (alpha >= 255) {
 				alpha = 255;
 				FaderManager::SetFader(true);
@@ -36,7 +36,7 @@ void Fader::Update() {
 			break;
 
 		case true:
-			alpha -= (255.0f / 30.0f);
+			alpha -= (255.0f / 10.0f);
 			if (alpha <= 0) {
 				alpha = 0;
 				FaderManager::SetFader(false);
