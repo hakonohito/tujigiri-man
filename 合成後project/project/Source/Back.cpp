@@ -1,14 +1,18 @@
 #include "Back.h"
 #include "Screen.h"
+#include "utility.h"
+#include "TujigiriFader.h"
 
 Back::Back(int num)
 {
 	hImage[0] = LoadGraph("data/image/background.png");
 	hImage[1] = LoadGraph("data/image/title.png");
 	hImage[2] = LoadGraph("data/image/homescene.png");
+	hImage[3] = LoadGraph("data/image/book_BackGround.png");
 	Bcount = 0;
 	blink = false;
 	scene = num;
+	start = false;
 }
 
 Back::~Back()
@@ -18,9 +22,25 @@ Back::~Back()
 void Back::Update()
 {
 
+	Fader* fader = FindGameObject<Fader>();
+
 	switch (scene) {
 
 	case 0:
+
+		if (KeyUtility::CheckTrigger(KEY_INPUT_S)) {
+			fader->isChange = true;
+			FaderCheck = !FaderCheck;
+		}
+
+		if (fader->fader && FaderCheck) {
+			start = true;
+		}
+
+		if (fader->fader && !FaderCheck) {
+			start = false;
+		}
+
 		break;
 
 	case 1:
@@ -41,6 +61,9 @@ void Back::Draw()
 
 	case 0:
 		DrawExtendGraph(0, 0, 1280, 720, hImage[2], 1);
+		if (!start) {
+			DrawExtendGraph(0, 0, 1280, 720, hImage[3], 1);
+		}
 		break;
 
 	case 1:
