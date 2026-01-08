@@ -29,6 +29,7 @@ private:
 	bool isWiping = false;     // ワイプ中かどうか
 	int wipeAlpha = 0;         // 黒板の透明度（0〜255）
 	int wipeFrame = 0;         // 経過フレーム数
+	int gameOverStartTime = 0; //GameOver→Ranking　切り替え
 
 
 

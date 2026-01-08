@@ -130,24 +130,29 @@ void HeartScene::Update()
 
     if (GameOver)
     {
-        if (CheckHitKey(KEY_INPUT_RETURN) && !isWiping)
-        {
-            isWiping = true;
-            wipeFrame = 0;
-        }
-
-        // ワイプ中は進行させる
-        if (isWiping) {
-            wipeFrame++;
-            wipeAlpha = (int)(255.0 * wipeFrame / 60);
-
-            if (wipeFrame >= 60) {
-                SceneManager::ChangeScene("TITLE");
+        //3秒経ったらワイプ開始
+        if (!isWiping) {
+            int elapsed = GetNowCount() - gameOverStartTime;
+            if (elapsed >= 3000) { // 3000ms = 3秒
+                isWiping = true;
+                wipeFrame = 0;
             }
         }
 
-        return;  // ← ここで抜けてOK
+        //ワイプ進行
+        if (isWiping) {
+            wipeFrame++;
+            wipeAlpha = (int)(255.0 * wipeFrame / 30);
+
+            if (wipeFrame >= 60) {
+                SceneManager::ChangeScene("RANKING"); // ← 自動でランキングへ
+            }
+        }
+
+        return;
     }
+
+
 
     // 終了状態なら何もしない
 
@@ -211,8 +216,8 @@ void HeartScene::Update()
 
     if (timelimit <= 0) {
         GameOver = true;
-        ScoreManager::AddScore(score); // ← スコア保存！
-        SceneManager::ChangeScene("RANKING"); // ← ここでランキング画面へ切り替え！
+        gameOverStartTime = GetNowCount();
+        ScoreManager::AddScore(score); // ← スコア保存！ 
     }
 
     if (isWiping) {
@@ -259,10 +264,11 @@ void HeartScene::Draw()
     SetFontSize(16);
     DrawString(0, 0, "PLAY SCENE", GetColor(255, 255, 255));
 
-
-    if (!isReadyToStart) {
-        DrawString(640, 300, "Ready... 3秒後にスタート！", GetColor(255, 255, 255));
-    }
+    //スタート表示　※必要なら
+    //if (!isReadyToStart) {
+    //    SetFontSize(30);
+    //    DrawString(440, 300, "Ready... 3秒後にスタート！", GetColor(0, 0, 0));
+    //}
 
 
     for (auto& f : fruits)
@@ -272,15 +278,9 @@ void HeartScene::Draw()
 
     basket.Draw();
 
-
-
     if (GameOver) {
-        SetFontSize(48); // ← ここで文字サイズを大きく設定
-        DrawFormatString(240, 130, GetColor(255, 0, 0), "ゲーム終了");
-        SetFontSize(16);
-        DrawFormatString(270, 230, GetColor(255, 255, 255), "あなたのスコア: %d", score);
-        DrawString(260, 300, "Press [Enter] To Title", GetColor(255, 255, 255));
-        // DrawString(180, 310, "Press [Space] To Play Again", GetColor(255, 255, 255));
+        SetFontSize(150);
+        DrawString(380, 280, "TIME UP", GetColor(255, 0, 0));
     }
 
     // スコアや時間の表示（必要なら追加）

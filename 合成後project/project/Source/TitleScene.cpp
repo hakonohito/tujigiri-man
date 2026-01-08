@@ -48,8 +48,8 @@ void TitleScene::Update()
 		nextScene = 0;
 	}
 
-	// Sキー → セレクト
-	if (CheckHitKey(KEY_INPUT_S) && !isWiping) {
+	// Oキー → セレクト
+	if (CheckHitKey(KEY_INPUT_O) && !isWiping) {
 		PlaySoundMem(selectSE, DX_PLAYTYPE_BACK);
 		isWiping = true;
 		wipeFrame = 0;
@@ -74,9 +74,9 @@ void TitleScene::Update()
 	// ワイプ進行処理（Update の一番最後に追加）
 	if (isWiping) {
 		wipeFrame++;
-		wipeAlpha = (int)(255.0 * wipeFrame / 60);
+		wipeAlpha = (int)(255.0 * wipeFrame / 30);
 
-		if (wipeFrame >= 60) {
+		if (wipeFrame >= 30) {
 			switch (nextScene) {
 			case 0: SceneManager::ChangeScene("HEART"); break;
 			case 1: SceneManager::ChangeScene("SELECT"); break;
@@ -139,7 +139,7 @@ void TitleScene::Draw()
 	SetFontSize(16);
 	DrawString(rankX + 110, btnY + 60, "[Rキー]", GetColor(200, 200, 200));
 
-	DrawString(0, 0, "仮 [S]Key 選択画面に戻る", GetColor(255, 255, 255));
+	DrawString(0, 0, "[O]Key 選択画面に戻る", GetColor(255, 255, 255));
 
 	// 画面ワイプ描画（Draw の一番最後）
 	if (isWiping) 

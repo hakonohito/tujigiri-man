@@ -29,11 +29,22 @@ RankingScene::~RankingScene()
 
 void RankingScene::Update()
 {
-    // Tキーでタイトルに戻る
-    if (CheckHitKey(KEY_INPUT_T)) {
+    // Tキーでタイトルへワイプ開始
+    if (CheckHitKey(KEY_INPUT_T) && !isWiping) {
         PlaySoundMem(RselectSE, DX_PLAYTYPE_BACK);
-        SceneManager::ChangeScene("TITLE");
+        isWiping = true;
+        wipeFrame = 0;
     }
+    //ワイプ進行処理（Update の最後に追加）
+    if (isWiping) {
+        wipeFrame++;
+        wipeAlpha = (int)(255.0 * wipeFrame / 30); // 30フレームで真っ黒
+
+        if (wipeFrame >= 30) {
+            SceneManager::ChangeScene("TITLE"); // ← タイトルへ
+        }
+    }
+
 }
 
 void RankingScene::Draw()
@@ -88,5 +99,11 @@ void RankingScene::Draw()
     SetFontSize(40); 
     DrawString(100, 620, "Tキー", GetColor(0, 0, 0));
 
+    // 画面ワイプ描画（Draw の最後）
+    if (isWiping) {
+        SetDrawBlendMode(DX_BLENDMODE_ALPHA, wipeAlpha);
+        DrawBox(0, 0, 1280, 720, GetColor(0, 0, 0), TRUE);
+        SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+    }
 
 }
