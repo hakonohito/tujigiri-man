@@ -21,6 +21,9 @@ Back::Back(int num)
 Back::~Back()
 {
 	DeleteSoundMem(SEHandle);
+	for (int i = 0; i < 4; i += 1) {
+		DeleteGraph(hImage[i]);
+	}
 }
 
 void Back::Update()

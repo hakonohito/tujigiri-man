@@ -17,6 +17,9 @@ Taishoku::Taishoku()
 Taishoku::~Taishoku()
 {
 	DeleteSoundMem(SEHandle);
+	for (int i = 0; i < 5; i += 1) {
+		DeleteGraph(hImage[i]);
+	}
 }
 
 void Taishoku::Update()

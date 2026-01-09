@@ -16,7 +16,9 @@ Player::Player()
 
 Player::~Player()
 {
-
+	for (int i = 0; i < 3; i += 10) {
+		DeleteGraph(hImage[i]);
+	}
 }
 
 void Player::Update()

@@ -23,6 +23,9 @@ Enemy::Enemy()
 
 Enemy::~Enemy()
 {
+	for (int i = 0; i < 9; i += 1) {
+		DeleteGraph(hImage[i]);
+	}
 }
 
 void Enemy::Update() 

@@ -55,6 +55,11 @@ Battle::~Battle()
 	DeleteSoundMem(SEHandle2);
 	DeleteSoundMem(SEHandle5);
 	DeleteSoundMem(SEHandle6);
+
+	for (int i = 0; i < 10; i += 1) {
+		DeleteGraph(hImage[i]);
+	}
+
 }
 
 void Battle::Update()
