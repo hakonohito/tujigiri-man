@@ -11,7 +11,7 @@ Enemy::Enemy()
 	hImage[4] = LoadGraph("data/image/kyokutyou_lose_11.jpg");
 	hImage[5] = LoadGraph("data/image/syatyou_2.png");
 	hImage[6] = LoadGraph("data/image/jousi_win.png");
-	hImage[7] = LoadGraph("data/image/kyokutyou_win.jpg");
+	hImage[7] = LoadGraph("data/image/kyokutyou_win_12.png");
 	hImage[8] = LoadGraph("data/image/syatyou_win.png");
 	//x = 800; 
 	//y = 512;
@@ -86,7 +86,7 @@ void Enemy::Draw()
 					break;
 
 				case 1:
-					DrawExtendGraph(x, y - 50 - 50 - 50, x + 300 - 50 - 30 - 20, y + 440 + 10 + 15, hImage[Enum + 6], 1);
+					DrawExtendGraph(x + 20, y - 50, x + 300 - 50- 20, y + 440 + 10 + 15, hImage[Enum + 6], 1);
 					break;
 
 				case 2:
