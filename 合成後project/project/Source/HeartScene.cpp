@@ -290,10 +290,10 @@ void HeartScene::Draw()
         //—‚Ìq‚Ì•\î•Ï‰»
         int girlImage;
 
-        if (score < 2000) {
+        if (score < 5000) {
             girlImage = woman_1;
         }
-        else if (score < 5000) {
+        else if (score < 8500) {
             girlImage = woman_2;
         }
         else {
