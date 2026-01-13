@@ -12,10 +12,11 @@ SelectScene::SelectScene()
 	assert(SEHandle != -1);
 	SEHandle2 = LoadSoundMem("data/SE_BGM/selectscene/Œˆ’è‰¹_10.mp3");
 	assert(SEHandle2 != -1);
+	ChangeVolumeSoundMem(100, SEHandle);
 	PlaySoundMem(SEHandle, DX_PLAYTYPE_LOOP);
 	new Back(0);
 	new Fader();
-	ChangeVolumeSoundMem(100, SEHandle);
+	
 }
 
 SelectScene::~SelectScene()

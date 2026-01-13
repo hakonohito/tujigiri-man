@@ -11,8 +11,8 @@ TujigiriTitleScene::TujigiriTitleScene()
 	SetFontSize(20);
 	BGMHandle = LoadSoundMem("data/SE_BGM/titlescene/Driving_Wheel.mp3");
 	assert(BGMHandle != -1);
-	PlaySoundMem(BGMHandle, DX_PLAYTYPE_LOOP);
 	ChangeVolumeSoundMem(100, BGMHandle);
+	PlaySoundMem(BGMHandle, DX_PLAYTYPE_LOOP);
 	SEHandle = LoadSoundMem("data/SE_BGM/titlescene/ÉQÅ[ÉÄÇÃÉ{É^Éìâπ.mp3");
 	assert(SEHandle != -1);
 	
