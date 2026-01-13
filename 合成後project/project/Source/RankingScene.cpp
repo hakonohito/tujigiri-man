@@ -83,10 +83,10 @@ void RankingScene::Draw()
 
     // 女の子の画像をスコアに応じて選ぶ
     int girlHandle = 0;
-    if (lastScore < 4000) {
+    if (lastScore < 5000) {
         girlHandle = LoadGraph("data/image/woman_1.png");
     }
-    else if (lastScore < 8000) {
+    else if (lastScore < 8500) {
         girlHandle = LoadGraph("data/image/woman_2.png");
     }
     else {
