@@ -175,6 +175,7 @@ void Battle::Update()
 				isWin = false;
 				//isAttack = true;
 				gameState = STATE_RESULT;
+				PlaySoundMem(SEHandle2, DX_PLAYTYPE_BACK);
 				break;
 			}
 			//SPACEÉLÅ[Ç≈îªíË
