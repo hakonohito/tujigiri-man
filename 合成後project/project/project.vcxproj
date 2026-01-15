@@ -159,6 +159,7 @@
     <ClInclude Include="Source\enemy.h" />
     <ClInclude Include="Source\FaderManager.h" />
     <ClInclude Include="Source\Field.h" />
+    <ClInclude Include="Source\flash.h" />
     <ClInclude Include="Source\fruit.h" />
     <ClInclude Include="Source\HeartScene.h" />
     <ClInclude Include="Source\player.h" />
@@ -196,6 +197,7 @@
     <ClCompile Include="Source\enemy.cpp" />
     <ClCompile Include="Source\FaderManager.cpp" />
     <ClCompile Include="Source\Field.cpp" />
+    <ClCompile Include="Source\flash.cpp" />
     <ClCompile Include="Source\fruit.cpp" />
     <ClCompile Include="Source\HeartScene.cpp" />
     <ClCompile Include="Source\player.cpp" />
