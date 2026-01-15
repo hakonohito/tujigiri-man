@@ -4,7 +4,6 @@
 #include "battle.h"
 #include "Taishoku.h"
 #include "TujigiriFader.h"
-#include "flash.h"
 #include <assert.h>
 
 TujigiriPlayScene::TujigiriPlayScene()
@@ -17,7 +16,6 @@ TujigiriPlayScene::TujigiriPlayScene()
 	new Player();
 	new Enemy();
 	new Taishoku();
-	new Flash();
 	new Fader();
 }
 

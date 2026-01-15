@@ -101,7 +101,6 @@
     <ClCompile Include="Source\FaderManager.cpp">
       <Filter>TujigiriPlayScene</Filter>
     </ClCompile>
-    <ClCompile Include="Source\flash.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -215,9 +214,6 @@
       <Filter>TujigiriTitleScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\FaderManager.h">
-      <Filter>TujigiriPlayScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\flash.h">
       <Filter>TujigiriPlayScene</Filter>
     </ClInclude>
   </ItemGroup>
