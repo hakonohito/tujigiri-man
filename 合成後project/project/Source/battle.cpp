@@ -3,6 +3,7 @@
 #include "enemy.h"
 #include "player.h"
 #include "TujigiriFader.h"
+#include "flash.h"
 #include <assert.h>
 #include <iostream>
 #include <random>
@@ -66,6 +67,7 @@ void Battle::Update()
 {
 
 	Fader* fader = FindGameObject<Fader>();
+	Flash* flash = FindGameObject<Flash>();
 
 	switch (gameState) {
 
@@ -173,6 +175,7 @@ void Battle::Update()
 			//SPACEキーの入力が間に合わなかった時の負け判定
 			if (count > (randomtime + level[point]) && !early) {
 				isWin = false;
+				flash->isChange = true;
 				//isAttack = true;
 				gameState = STATE_RESULT;
 				PlaySoundMem(SEHandle2, DX_PLAYTYPE_BACK);
@@ -181,6 +184,7 @@ void Battle::Update()
 			//SPACEキーで判定
 			if (KeyUtility::CheckTrigger(KEY_INPUT_SPACE) && !early) {
 				PlaySoundMem(SEHandle2, DX_PLAYTYPE_BACK);
+				flash->isChange = true;
 				//isAttack = true;
 				//勝ち判定
 				if (count <= (randomtime + level[point]) && count >= randomtime) {
@@ -190,6 +194,7 @@ void Battle::Update()
 				}
 				//合図が出る前にキーを押した場合の負け判定
 				if (count < randomtime) {
+					flash->isChange = true;
 					early = true;
 					isWin = false;
 					count2 = count;
